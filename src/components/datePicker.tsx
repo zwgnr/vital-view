@@ -1,0 +1,109 @@
+import { Fragment, useState } from "react";
+import { ChevronDownIcon } from "@heroicons/react/24/solid";
+import { Menu, Transition } from "@headlessui/react";
+import clsx from "clsx";
+
+export default function DatePicker({ dateRange, setDateRange }) {
+  const [rangeDisplayName, setrangeDisplayName] = useState("Last 7 Days");
+
+  return (
+    <>
+      <Menu as="div" className="relative">
+        <Menu.Button
+          type="button"
+          className="flex items-center rounded-md  bg-white p-2 text-sm font-medium shadow-sm hover:bg-gray-50 dark:bg-slate-700 "
+        >
+          {rangeDisplayName}
+          <ChevronDownIcon
+            className="ml-2 h-5 w-5 text-gray-400"
+            aria-hidden="true"
+          />
+        </Menu.Button>
+
+        <Transition
+          as={Fragment}
+          enter="transition ease-out duration-100"
+          enterFrom="transform opacity-0 scale-95"
+          enterTo="transform opacity-100 scale-100"
+          leave="transition ease-in duration-75"
+          leaveFrom="transform opacity-100 scale-100"
+          leaveTo="transform opacity-0 scale-95"
+        >
+          <Menu.Items className="bg- absolute left-0 z-50 mt-3 w-36 origin-top-right overflow-hidden rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-slate-800 dark:text-whit">
+            <div className="py-1 ">
+              <Menu.Item>
+                {() => (
+                  <button
+                    onClick={() => {
+                      setDateRange("today");
+                      setrangeDisplayName("Today");
+                    }}
+                    className={clsx(
+                      "flex w-36",
+                      rangeDisplayName === 'Today' ? "bg-gray-600 text-blue-300 " : "text-gray-700 dark:text-white hover:bg-slate-500",
+                      "block px-4 py-2 text-sm"
+                    )}
+                  >
+                    Today
+                  </button>
+                )}
+              </Menu.Item>
+              <Menu.Item>
+                {({ active }) => (
+                  <button
+                    onClick={() => {
+                      setDateRange("last7Days");
+                      setrangeDisplayName("Last 7 Days");
+                    }}
+                    className={clsx(
+                      "flex w-36",
+                      rangeDisplayName === 'Last 7 Days' ? "bg-gray-100 text-gray-900" : "text-gray-700 dark:text-white hover:bg-slate-500",
+                      "block px-4 py-2 text-sm"
+                    )}
+                  >
+                    Last 7 Days
+                  </button>
+                )}
+              </Menu.Item>
+              <Menu.Item>
+                {({ active }) => (
+                  <button
+                    onClick={() => {
+                      setDateRange("last30Days");
+                      setrangeDisplayName("Last 30 Days");
+                      //handleTrend
+                    }}
+                    className={clsx(
+                      "flex w-36",
+                      rangeDisplayName === 'Last 30 Days' ? "bg-gray-100 text-gray-900" : "text-gray-700 dark:text-white hover:bg-slate-500",
+                      "block px-4 py-2 text-sm"
+                    )}
+                  >
+                    Last 30 Days
+                  </button>
+                )}
+              </Menu.Item>
+              <Menu.Item>
+                {({ active }) => (
+                  <button
+                    onClick={() => {
+                      setDateRange("thisYear");
+                      setrangeDisplayName("This Year");
+                    }}
+                    className={clsx(
+                      "flex w-36",
+                      rangeDisplayName === 'This Year' ?  "bg-gray-100 text-gray-900" : "text-gray-700 dark:text-white hover:bg-slate-500",
+                      "block px-4 py-2 text-sm "
+                    )}
+                  >
+                    This Year
+                  </button>
+                )}
+              </Menu.Item>
+            </div>
+          </Menu.Items>
+        </Transition>
+      </Menu>
+    </>
+  );
+}
