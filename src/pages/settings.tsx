@@ -1,18 +1,6 @@
 import { useState } from "react";
 import { Dialog, Switch, Transition } from "@headlessui/react";
-import {
-  BellIcon,
-  BriefcaseIcon,
-  HeartIcon,
-  CogIcon,
-  // DocumentSearchIcon,
-  HomeIcon,
-  // MenuAlt2Icon,
-  QuestionMarkCircleIcon,
-  UsersIcon,
-  //XIcon,
-} from "@heroicons/react/24/solid";
-import Layout from "../components/layout/layout";
+import clsx from "clsx";
 
 const tabs = [
   { name: "General", href: "#", current: true },
@@ -22,10 +10,6 @@ const tabs = [
   { name: "Billing", href: "#", current: false },
   { name: "Team Members", href: "#", current: false },
 ];
-// @ts-ignore
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
 
 function Settings() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -66,7 +50,7 @@ function Settings() {
                       <a
                         key={tab.name}
                         href={tab.href}
-                        className={classNames(
+                        className={clsx(
                           tab.current
                             ? "border-purple-500 text-purple-600"
                             : "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700",
@@ -247,7 +231,7 @@ function Settings() {
                         <Switch
                           checked={automaticTimezoneEnabled}
                           onChange={setAutomaticTimezoneEnabled}
-                          className={classNames(
+                          className={clsx(
                             automaticTimezoneEnabled
                               ? "bg-purple-600"
                               : "bg-gray-200",
@@ -256,7 +240,7 @@ function Settings() {
                         >
                           <span
                             aria-hidden="true"
-                            className={classNames(
+                            className={clsx(
                               automaticTimezoneEnabled
                                 ? "translate-x-5"
                                 : "translate-x-0",
@@ -281,7 +265,7 @@ function Settings() {
                         <Switch
                           checked={autoUpdateApplicantDataEnabled}
                           onChange={setAutoUpdateApplicantDataEnabled}
-                          className={classNames(
+                          className={clsx(
                             autoUpdateApplicantDataEnabled
                               ? "bg-purple-600"
                               : "bg-gray-200",
@@ -290,7 +274,7 @@ function Settings() {
                         >
                           <span
                             aria-hidden="true"
-                            className={classNames(
+                            className={clsx(
                               autoUpdateApplicantDataEnabled
                                 ? "translate-x-5"
                                 : "translate-x-0",
