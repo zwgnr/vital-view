@@ -9,7 +9,7 @@ export const SignInButton = () => {
           <button
             onClick={(e) => {
               e.preventDefault();
-              signIn("oura");
+              signIn("oura", { callbackUrl: "/" });
             }}
             className="mr-4 rounded-md bg-blue-500 p-2"
           >
@@ -22,7 +22,9 @@ export const SignInButton = () => {
             Try Demo
           </a>
         </div>
-      ) : null}
+      ) : (
+       null
+      )}
     </>
   );
 };

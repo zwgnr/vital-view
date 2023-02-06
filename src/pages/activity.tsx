@@ -15,13 +15,20 @@ import {
 
 import { Heatmap } from "../components/charts/heatmap";
 import { BarChart } from "../components/charts/barChart";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/router";
 
 export const Activity = () => {
+  const { data: session, status } = useSession();
   const [dateRange, setDateRange] = useState("last7Days");
   const { activity, activityLoading } = useActivity(dateRange);
   const [enabled, setEnabled] = useState(false);
   const [activeTrendName, setActiveTrendName] =
     useState<keyof TrendData>("Score");
+
+  if (status === "unauthenticated") {
+    useRouter().push("/sign-in");
+  }
 
   const stats: Stats[] = [
     {
@@ -115,67 +122,69 @@ export const Activity = () => {
       data: [activity?.rangeAverage.highActiveTime],
     },
   ];
-  return (
-    <div className="flex flex-grow flex-col gap-4 overflow-y-auto  bg-white p-4 dark:bg-slate-800 sm:p-6">
-      <>
-        {/*DatePicker*/}
-        <div className="flex w-full items-center justify-between">
-          <DatePicker dateRange={dateRange} setDateRange={setDateRange} />
-          <LabelToggle enabled={enabled} setEnabled={setEnabled} />
-        </div>
-        {/*StatCards*/}
-        <div className="flex w-full flex-col gap-4 py-2 sm:flex-row sm:flex-wrap lg:flex-nowrap">
-          <StatCards
-            data={stats}
-            activeTrendName={activeTrendName}
-            setActiveTrendName={setActiveTrendName}
-          />
-        </div>
-        {/*TrendsChart*/}
-        <div className="flex-grow rounded-xl p-4 shadow-md dark:bg-slate-700 ">
-          {activityLoading ? (
-            <div className="flex items-center justify-center">
-              <Loader />
-            </div>
-          ) : (
-            <TrendChart
-              enabled={enabled}
-              dateRange={dateRange}
-              name={activeTrendName}
-              data={trendData[activeTrendName]}
-              period={activity?.timePeriod}
+  if (status === "authenticated") {
+    return (
+      <div className="flex flex-grow flex-col gap-4 overflow-y-auto  bg-white p-4 dark:bg-slate-800 sm:p-6">
+        <>
+          {/*DatePicker*/}
+          <div className="flex w-full items-center justify-between">
+            <DatePicker dateRange={dateRange} setDateRange={setDateRange} />
+            <LabelToggle enabled={enabled} setEnabled={setEnabled} />
+          </div>
+          {/*StatCards*/}
+          <div className="flex w-full flex-col gap-4 py-2 sm:flex-row sm:flex-wrap lg:flex-nowrap">
+            <StatCards
+              data={stats}
+              activeTrendName={activeTrendName}
+              setActiveTrendName={setActiveTrendName}
             />
-          )}
-        </div>
-        <div className="grid h-72 min-h-0 grid-cols-3 gap-4 ">
-          <div className="col-span-2 min-h-0 overflow-hidden rounded-xl p-4 pb-12 shadow-md dark:bg-slate-700 md:col-span-2 ">
-            <p className="text-md">Score Board</p>
+          </div>
+          {/*TrendsChart*/}
+          <div className="flex-grow rounded-xl p-4 shadow-md dark:bg-slate-700 ">
             {activityLoading ? (
               <div className="flex items-center justify-center">
                 <Loader />
               </div>
             ) : (
-              <Heatmap
+              <TrendChart
                 enabled={enabled}
                 dateRange={dateRange}
+                name={activeTrendName}
+                data={trendData[activeTrendName]}
                 period={activity?.timePeriod}
-                data={heatmapData}
               />
             )}
           </div>
-          <div className=" rounded-xl p-4 shadow-md  dark:bg-slate-700 md:col-span-1">
-            <h1>Movement</h1>
-            {activityLoading ? (
-              <div className="flex items-center justify-center">
-                <Loader />
-              </div>
-            ) : (
-              <BarChart enabled={enabled} data={barChartData} />
-            )}
+          <div className="grid h-72 min-h-0 grid-cols-3 gap-4 ">
+            <div className="col-span-2 min-h-0 overflow-hidden rounded-xl p-4 pb-12 shadow-md dark:bg-slate-700 md:col-span-2 ">
+              <p className="text-md">Score Board</p>
+              {activityLoading ? (
+                <div className="flex items-center justify-center">
+                  <Loader />
+                </div>
+              ) : (
+                <Heatmap
+                  enabled={enabled}
+                  dateRange={dateRange}
+                  period={activity?.timePeriod}
+                  data={heatmapData}
+                />
+              )}
+            </div>
+            <div className=" rounded-xl p-4 shadow-md  dark:bg-slate-700 md:col-span-1">
+              <h1>Movement</h1>
+              {activityLoading ? (
+                <div className="flex items-center justify-center">
+                  <Loader />
+                </div>
+              ) : (
+                <BarChart enabled={enabled} data={barChartData} />
+              )}
+            </div>
           </div>
-        </div>
-      </>
-    </div>
-  );
+        </>
+      </div>
+    );
+  }
 };
 export default Activity;
