@@ -15,12 +15,15 @@ import {
   getDailyChange,
 } from "../../../lib/range/rangeMath";
 import { queryDates } from "../../../lib/dates/dates";
+import { getServerSession } from "next-auth";
+import { authOptions } from "../auth/[...nextauth]";
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
+  const session = await getServerSession(req, res, authOptions);
+  const token = session?.accessToken;
+  
   const { dateRange } = req.query as { dateRange: string };
   const url = `https://api.ouraring.com/v2/usercollection/daily_sleep?${queryDates[dateRange]}`;
-  const tokenResponse = await getToken({ req });
-  const token = tokenResponse?.accessToken;
   const headers = {
     Authorization: `Bearer ${token}`,
   };

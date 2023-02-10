@@ -24,12 +24,14 @@ import {
 } from "../../../lib/range/rangeMath";
 import { getPriorRange, getRange } from "../../../lib/range/getRanges";
 import dayjs from "dayjs";
+import { getServerSession } from "next-auth";
+import { authOptions } from "../auth/[...nextauth]";
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
+  const session = await getServerSession(req, res, authOptions);
+  const token = session?.accessToken;
+  
   const { dateRange } = req.query as { dateRange: string };
-
-  const tokenResponse = await getToken({ req });
-  const token = tokenResponse?.accessToken;
 
   const headers = {
     Authorization: `Bearer ${token}`,
