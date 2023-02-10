@@ -3,7 +3,7 @@ import DiscordProvider from "next-auth/providers/discord";
 
 import { env } from "../../../env/server.mjs";
 
-export const authOptions: NextAuthOptions = {
+export const authOptions:NextAuthOptions = {
   // Include user.id on session
   callbacks: {
     async jwt({ token, account, profile }) {
@@ -16,8 +16,7 @@ export const authOptions: NextAuthOptions = {
     },
     async session({ session, token, user }) {
       // Send properties to the client, like an access_token and user id from a provider.
-      // session.accessToken = token.accessToken;
-      //  session.user.id = token.id;
+      session.accessToken = token.accessToken;
       return session;
     },
   },
@@ -39,13 +38,13 @@ export const authOptions: NextAuthOptions = {
         url: "https://api.ouraring.com/oauth/token",
       },
       userinfo:
-        "https://api.ouraring.com/v2/usercollection/personal_info?start_date=2022-11-01&end_date=2022-12-01",
+        "https://api.ouraring.com/v2/usercollection/personal_info",
       clientId: process.env.OURA_CLIENT_ID,
       clientSecret: process.env.OURA_CLIENT_SECRET,
 
       profile(profile) {
         return {
-          id: profile.email,
+          id: profile.id,
           email: profile.email,
         };
       },

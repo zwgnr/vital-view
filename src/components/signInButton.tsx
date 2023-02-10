@@ -16,7 +16,7 @@ export const SignInButton = () => {
             Sign In with Oura
           </button>
           <a
-            href="/demo/test"
+            href="/demo/home"
             className="flex items-center rounded-md bg-blue-500 p-2"
           >
             Try Demo

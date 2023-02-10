@@ -21,7 +21,7 @@ specifiers:
   eslint: ^8.30.0
   eslint-config-next: 13.1.1
   next: 13.1.1
-  next-auth: ^4.18.8
+  next-auth: ^4.19.2
   next-themes: ^0.2.1
   postcss: ^8.4.14
   prettier: ^2.8.1
@@ -47,7 +47,7 @@ dependencies:
   dayjs: 1.11.7
   duration: link:dayjs/plugin/duration
   next: 13.1.1_biqbaboplfbrettd7655fr4n2y
-  next-auth: 4.18.8_q76c2b4vyoegvsbrcwkfvimnai
+  next-auth: 4.19.2_q76c2b4vyoegvsbrcwkfvimnai
   next-themes: 0.2.1_q76c2b4vyoegvsbrcwkfvimnai
   react: 18.2.0
   react-apexcharts: 1.4.0_g3lvop6jrvmpqnlf3mxot4n2ym
@@ -2035,9 +2035,8 @@ packages:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
     dev: true
 
-  /next-auth/4.18.8_q76c2b4vyoegvsbrcwkfvimnai:
-    resolution: {integrity: sha512-USP8ihmvB7iCGtkS0+toe2QPrzdbZfkydQZX56JOI9Ft5n/BardOXh3D4wQ2An+vpq/jDKojGlgfv21wVElW7A==}
-    engines: {node: ^12.19.0 || ^14.15.0 || ^16.13.0 || ^18.12.0}
+  /next-auth/4.19.2_q76c2b4vyoegvsbrcwkfvimnai:
+    resolution: {integrity: sha512-6V2YG3IJQVhgCAH7mvT3yopTW92gMdUrcwGX7NQ0dCreT/+axGua/JmVdarjec0C/oJukKpIYRgjMlV+L5ZQOQ==}
     peerDependencies:
       next: ^12.2.5 || ^13
       nodemailer: ^6.6.5
