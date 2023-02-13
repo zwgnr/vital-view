@@ -14,15 +14,15 @@ export const TopBar = (props: SetSideBarOpenPropsOnlyProp) => {
     <div className="flex h-16 w-full border-b border-gray-200 p-1 dark:border-gray-800  dark:bg-slate-900">
       <button
         type="button"
-        className="border-r border-gray-200 px-4 text-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 md:hidden"
+        className="border-r border-gray-200 px-4 text-gray-100 sm:hidden"
         onClick={() => setSidebarOpen(true)}
       >
         <span className="sr-only">Open sidebar</span>
         <Icon
           icon="material-symbols:menu-rounded"
-          width={24}
-          height={24}
-          color="gray"
+          width={36}
+          height={36}
+          color="white"
           aria-hidden="true"
         />
       </button>

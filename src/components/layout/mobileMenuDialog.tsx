@@ -1,12 +1,29 @@
-import { Fragment, Dispatch, SetStateAction } from "react";
+import { Fragment } from "react";
+import useSWR from "swr";
 import { Dialog, Transition, Menu } from "@headlessui/react";
 import { navigation } from "./navigation";
-import { XMarkIcon as XIcon } from "@heroicons/react/24/solid";
 import { clsx } from "clsx";
 
 import { type SideBarOpenProps } from "./layout";
+import { Icon } from "@iconify/react";
+import Link from "next/link";
+import router from "next/router";
+import { signOut, useSession } from "next-auth/react";
+import { fetcher } from "../../lib/fetcher";
+
+const Email = () => {
+  const { data, error } = useSWR("api/info/", fetcher);
+  if (error) {
+    return "Error Loading";
+  }
+  if (!data) {
+    return "Loading...";
+  }
+  return data.email;
+};
 
 export const MobileMenuDialog = (props: SideBarOpenProps) => {
+  const { data: session, status } = useSession();
   const { sidebarOpen, setSidebarOpen } = props;
   return (
     <Transition.Root show={sidebarOpen} as={Fragment}>
@@ -35,55 +52,112 @@ export const MobileMenuDialog = (props: SideBarOpenProps) => {
           leaveFrom="translate-x-0"
           leaveTo="-translate-x-full"
         >
-          <div className="relative flex w-full max-w-xs flex-1 flex-col bg-indigo-700 pt-5 pb-4">
-            <Transition.Child
-              as={Fragment}
-              enter="ease-in-out duration-300"
-              enterFrom="opacity-0"
-              enterTo="opacity-100"
-              leave="ease-in-out duration-300"
-              leaveFrom="opacity-100"
-              leaveTo="opacity-0"
-            >
-              <div className="absolute top-0 right-0 -mr-12 pt-2">
-                <button
-                  type="button"
-                  className="ml-1 flex h-10 w-10 items-center justify-center rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
-                  onClick={() => setSidebarOpen(false)}
-                >
-                  <span className="sr-only">Close sidebar</span>
-                  <XIcon className="h-6 w-6 text-white" aria-hidden="true" />
-                </button>
-              </div>
-            </Transition.Child>
-            <div className="flex flex-shrink-0 items-center px-4">
-              <img
-                className="h-8 w-auto"
-                src="https://tailwindui.com/img/logos/workflow-logo-indigo-300-mark-white-text.svg"
-                alt="Workflow"
-              />
+          <div className="relative flex w-full max-w-xs flex-1 flex-col bg-slate-900 pt-5 pb-4">
+            <div className="absolute top-0 right-0 -mr-12 pt-2">
+              <button
+                type="button"
+                className="ml-1 flex h-10 w-10 items-center justify-center rounded-full"
+                onClick={() => setSidebarOpen(false)}
+              >
+                <span className="sr-only">Close sidebar</span>
+                <Icon
+                  icon="mdi:close-circle-outline"
+                  width={36}
+                  height={36}
+                  className="flex-shrink-0 text-white"
+                />
+              </button>
             </div>
-            <div className="mt-5 h-0 flex-1 overflow-y-auto">
-              <nav className="space-y-1 px-2">
-                {navigation.map((item) => (
-                  <a
-                    key={item.name}
-                    href={item.href}
+            <div className="flex items-center justify-center px-4">
+              <Icon
+                width={36}
+                height={36}
+                className="flex-shrink-0 text-indigo-300"
+                icon="ion:cube-outline"
+              />
+              <h1 className=" ml-3 text-xl text-white">Ring Lab</h1>
+            </div>
+            <div className="mt-5 flex flex-1 flex-col">
+              <nav className="flex-1 space-y-1 px-2 pb-4">
+                {status !== "authenticated" ? (
+                  <Link
+                    href="/"
                     className={clsx(
-                      item.current
-                        ? "bg-indigo-800 text-white"
-                        : "text-indigo-100 hover:bg-indigo-600",
-                      "group flex items-center rounded-md px-2 py-2 text-base font-medium"
+                      "group flex items-center rounded-md bg-indigo-800 px-2 py-2 text-sm font-medium text-white"
                     )}
                   >
-                    <item.icon
-                      className="mr-4 h-6 w-6 flex-shrink-0 text-indigo-300"
-                      aria-hidden="true"
+                    <Icon
+                      icon="ph:house"
+                      width={24}
+                      height={24}
+                      className="mr-3 h-6 w-6 flex-shrink-0 text-indigo-300"
                     />
-                    {item.name}
-                  </a>
-                ))}
+                    Overview
+                  </Link>
+                ) : (
+                  <>
+                    {" "}
+                    {navigation.map((item) => (
+                      <Link
+                        key={item.name}
+                        href={item.href}
+                        className={clsx(
+                          router.pathname == item.href
+                            ? "bg-indigo-800 text-white"
+                            : "text-indigo-100 hover:bg-indigo-600",
+                          "group flex items-center rounded-md px-2 py-2 text-sm font-medium"
+                        )}
+                      >
+                        <Icon
+                          icon={item.icon}
+                          width={24}
+                          height={24}
+                          className="mr-3 h-6 w-6 flex-shrink-0 text-indigo-300"
+                        />
+                        {item.name}
+                      </Link>
+                    ))}
+                  </>
+                )}
               </nav>
+              <div className="flex flex-row items-center justify-center gap-2 p-2">
+                <Icon icon="mdi:github" width={24} height={24} />
+                <p className="text-xs text-white">v.0.0.1</p>
+              </div>
+
+              <div className="flex flex-row">
+                {status === "authenticated" ? (
+                  <div className="w-full border-t border-gray-300 p-2">
+                    <div className="group flex items-center rounded-md px-2 py-2 text-sm font-medium">
+                      <Icon
+                        icon="clarity:avatar-line"
+                        width={24}
+                        height={24}
+                        className="mr-3 h-6 w-6 flex-shrink-0 text-indigo-300"
+                      />
+                      <p className="text-white">
+                        <Email />
+                      </p>
+                    </div>
+
+                    <button
+                      className="group flex w-full items-center rounded-md px-2 py-2 text-sm font-medium hover:bg-indigo-600"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        signOut();
+                      }}
+                    >
+                      <Icon
+                        icon="material-symbols:logout"
+                        width={24}
+                        height={24}
+                        className="mr-3 h-6 w-6 flex-shrink-0 text-indigo-300"
+                      />
+                      <p className="text-white">Logout </p>
+                    </button>
+                  </div>
+                ) : null}
+              </div>
             </div>
           </div>
         </Transition.Child>
