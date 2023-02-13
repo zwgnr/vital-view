@@ -1,5 +1,4 @@
 /** @type {import('tailwindcss').Config} */
-const { addDynamicIconSelectors } = require('@iconify/tailwind');
 
 module.exports = {
   content: ["./src/**/*.{js,ts,jsx,tsx}"],
@@ -11,5 +10,5 @@ module.exports = {
     },
   },
   darkMode: 'class',
-  plugins: [require("daisyui"), addDynamicIconSelectors(),],
+  plugins: [],
 };
