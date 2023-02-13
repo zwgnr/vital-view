@@ -11,7 +11,7 @@ export const SideBar = () => {
   const { data: session, status } = useSession();
   const router = useRouter();
   return (
-    <div className="hidden w-56 flex-col bg-slate-900 pt-5 sm:flex">
+    <div className="hidden w-56 flex-col bg-slate-900 pt-5 md:flex">
       <div className="flex items-center justify-center px-4">
         <Icon
           width={36}

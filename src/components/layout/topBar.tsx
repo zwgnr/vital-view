@@ -14,7 +14,7 @@ export const TopBar = (props: SetSideBarOpenPropsOnlyProp) => {
     <div className="flex h-16 w-full border-b border-gray-200 p-1 dark:border-gray-800  dark:bg-slate-900">
       <button
         type="button"
-        className="border-r border-gray-200 px-4 text-gray-100 sm:hidden"
+        className="border-r border-gray-200 px-4 text-gray-100 md:hidden"
         onClick={() => setSidebarOpen(true)}
       >
         <span className="sr-only">Open sidebar</span>

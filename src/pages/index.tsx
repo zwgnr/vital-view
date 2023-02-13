@@ -17,7 +17,7 @@ export const Home = () => {
         <TodaysScores />
         <Trends />
       </div>
-    );
+    ); 
   }
 };
 

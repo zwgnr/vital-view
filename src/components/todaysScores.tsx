@@ -14,10 +14,10 @@ export const TodaysScores = () => {
   const todaysActivity = activity?.rangeDataPoints.score;
 
   return (
-    <div className="h-1/3 w-full rounded-xl bg-slate-700">
+    <div className=" h-full w-full rounded-xl bg-slate-700 md:h-1/3">
       <h1 className="ml-4 mt-4 text-lg">Todays Scores</h1>
-      <div className=" flex h-full  min-h-0 w-full flex-row  rounded-xl bg-slate-700">
-        <div className="flex h-full w-1/3 justify-center  overflow-hidden rounded-xl ">
+      <div className=" flex h-full min-h-0 w-full flex-col rounded-xl  bg-slate-700 md:flex-row">
+        <div className="flex h-full w-full justify-center overflow-hidden rounded-xl md:w-1/3 ">
           <div className="flex h-full min-h-0 w-full flex-col items-center justify-center rounded-xl ">
             {dailySleepLoading ? (
               <Loader />
@@ -26,7 +26,7 @@ export const TodaysScores = () => {
             )}
           </div>
         </div>
-        <div className="flex h-full w-1/3 justify-center  overflow-hidden rounded-xl ">
+        <div className="flex h-full w-full justify-center overflow-hidden  rounded-xl md:w-1/3 ">
           <div className="flex h-full min-h-0 w-full flex-col items-center justify-center rounded-xl ">
             {readinessLoading ? (
               <Loader />
@@ -35,7 +35,7 @@ export const TodaysScores = () => {
             )}
           </div>
         </div>
-        <div className="flex h-full w-1/3 justify-center  overflow-hidden rounded-xl ">
+        <div className="flex h-full w-full justify-center overflow-hidden  rounded-xl md:w-1/3 ">
           <div className="flex h-full min-h-0 w-full flex-col items-center justify-center rounded-xl ">
             {activityLoading ? (
               <Loader />
