@@ -1,10 +1,15 @@
-import { Fragment, useState } from "react";
+import { Dispatch, Fragment, SetStateAction, useState } from "react";
 import { Icon } from "@iconify/react";
-import { ChevronDownIcon } from "@heroicons/react/24/solid";
 import { Menu, Transition } from "@headlessui/react";
 import clsx from "clsx";
 
-export default function DatePicker({ dateRange, setDateRange }) {
+export type DatePickerProps = {
+  dateRange: string;
+  setDateRange: Dispatch<SetStateAction<string>>;
+};
+
+export default function DatePicker(props: DatePickerProps) {
+  const { dateRange, setDateRange } = props;
   const [rangeDisplayName, setrangeDisplayName] = useState("Last 7 Days");
 
   return (
@@ -55,7 +60,7 @@ export default function DatePicker({ dateRange, setDateRange }) {
                 )}
               </Menu.Item>
               <Menu.Item>
-                {({ active }) => (
+                {() => (
                   <button
                     onClick={() => {
                       setDateRange("last7Days");
@@ -74,12 +79,11 @@ export default function DatePicker({ dateRange, setDateRange }) {
                 )}
               </Menu.Item>
               <Menu.Item>
-                {({ active }) => (
+                {() => (
                   <button
                     onClick={() => {
                       setDateRange("last30Days");
                       setrangeDisplayName("Last 30 Days");
-                      //handleTrend
                     }}
                     className={clsx(
                       "flex w-36",
@@ -94,7 +98,7 @@ export default function DatePicker({ dateRange, setDateRange }) {
                 )}
               </Menu.Item>
               <Menu.Item>
-                {({ active }) => (
+                {() => (
                   <button
                     onClick={() => {
                       setDateRange("thisYear");
