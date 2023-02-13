@@ -1,5 +1,4 @@
 import { Fragment } from "react";
-import useSWR from "swr";
 import { Dialog, Transition, Menu } from "@headlessui/react";
 import { navigation } from "./navigation";
 import { clsx } from "clsx";
@@ -9,18 +8,8 @@ import { Icon } from "@iconify/react";
 import Link from "next/link";
 import router from "next/router";
 import { signOut, useSession } from "next-auth/react";
-import { fetcher } from "../../lib/fetcher";
 
-const Email = () => {
-  const { data, error } = useSWR("api/info/", fetcher);
-  if (error) {
-    return "Error Loading";
-  }
-  if (!data) {
-    return "Loading...";
-  }
-  return data.email;
-};
+import { Email } from "../email";
 
 export const MobileMenuDialog = (props: SideBarOpenProps) => {
   const { data: session, status } = useSession();

@@ -1,24 +1,11 @@
 import Link from "next/link";
-import useSWR from "swr";
 import { clsx } from "clsx";
 import { Icon } from "@iconify/react";
 import { useSession, signIn, signOut } from "next-auth/react";
 import { useRouter } from "next/router";
 
-import { fetcher } from "../../lib/fetcher";
-
+import { Email } from "../email";
 import { navigation } from "./navigation";
-
-const Email = () => {
-  const { data, error } = useSWR("api/info/", fetcher);
-  if (error) {
-    return "Error Loading";
-  }
-  if (!data) {
-    return "Loading...";
-  }
-  return data.email;
-};
 
 export const SideBar = () => {
   const { data: session, status } = useSession();
