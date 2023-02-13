@@ -90,13 +90,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
               "total_sleep"
             ),
           },
-          priorRangeDataPoints: {
-            score: getYearlyRangeData(getPriorRange(dateRange, data), "score"),
-            //efficiency: getYearlyRangeData(
-            //  getPriorRange(dateRange, result),
-            //  "efficiency"
-            //),
-          },
           rangeAverage: {
             score: getYearlyRangeAverage(getRange(dateRange, data), "score"),
             // efficiency: getYearlyContributorAverage(
@@ -153,13 +146,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
               getRange(dateRange, data),
               "total_sleep"
             ),
-          },
-          priorRangeDataPoints: {
-            score: getRangeData(getPriorRange(dateRange, data), "score"),
-            //efficiency: getContributorData(
-            // getPriorRange(dateRange, result),
-            //  "efficiency"
-            // ),
           },
           rangeAverage: {
             score: getRangeAverage(getRange(dateRange, data), "score"),

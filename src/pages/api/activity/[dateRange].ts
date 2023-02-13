@@ -103,14 +103,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
               "training_volume"
             ),
           },
-          priorRangeDataPoints: {
-            score: getYearlyRangeData(getPriorRange(dateRange, data), "score"),
-            activeCalories: getYearlyRangeData(
-              getPriorRange(dateRange, data),
-              "active_calories"
-            ),
-            steps: getYearlyRangeData(getPriorRange(dateRange, data), "steps"),
-          },
           rangeAverage: {
             score: getYearlyRangeAverage(getRange(dateRange, data), "score"),
             activeCalories: getYearlyRangeAverage(
@@ -191,14 +183,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
               getRange(dateRange, data),
               "training_volume"
             ),
-          },
-          priorRangeDataPoints: {
-            score: getRangeData(getPriorRange(dateRange, data), "score"),
-            activeCalories: getRangeData(
-              getPriorRange(dateRange, data),
-              "active_calories"
-            ),
-            steps: getRangeData(getPriorRange(dateRange, data), "steps"),
           },
           rangeAverage: {
             score: getRangeAverage(getRange(dateRange, data), "score"),
