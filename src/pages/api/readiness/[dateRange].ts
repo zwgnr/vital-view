@@ -99,18 +99,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
           },
           rangeAverage: {
             score: getYearlyRangeAverage(getRange(dateRange, data), "score"),
-            // efficiency: getYearlyContributorAverage(
-            //  getRange(dateRange, result),
-            //   "efficiency"
-            //  ),
           },
           percentChange: {
             score: getYearlyPercentChange(dateRange, data, "score"),
-            //efficiency: getYearlyContributorChange(
-            //  dateRange,
-            //   result,
-            //  "efficiency"
-            // ),
           },
           timePeriod: [
             "Jan",
@@ -166,14 +157,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
           },
           rangeAverage: {
             score: getRangeAverage(getRange(dateRange, data), "score"),
-            //efficiency: getContributorAverage(
-            //  getRange(dateRange, result),
-            //  "efficiency"
-            // ),
           },
           percentChange: {
             score: getChange(dateRange, data, "score"),
-            //efficiency: getContributorChange(dateRange, result, "efficiency"),
           },
           timePeriod: getTimePeriod(dateRange, data),
         });
