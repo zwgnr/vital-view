@@ -1,4 +1,5 @@
 import { Fragment, useState } from "react";
+import { Icon } from "@iconify/react";
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
 import { Menu, Transition } from "@headlessui/react";
 import clsx from "clsx";
@@ -14,9 +15,12 @@ export default function DatePicker({ dateRange, setDateRange }) {
           className="flex items-center rounded-md  bg-white p-2 text-sm font-medium shadow-sm hover:bg-gray-50 dark:bg-slate-700 "
         >
           {rangeDisplayName}
-          <ChevronDownIcon
-            className="ml-2 h-5 w-5 text-gray-400"
+          <Icon
+            icon="carbon:chevron-down"
+            width={24}
+            height={24}
             aria-hidden="true"
+            className="ml-2"
           />
         </Menu.Button>
 
@@ -29,7 +33,7 @@ export default function DatePicker({ dateRange, setDateRange }) {
           leaveFrom="transform opacity-100 scale-100"
           leaveTo="transform opacity-0 scale-95"
         >
-          <Menu.Items className="bg- absolute left-0 z-50 mt-3 w-36 origin-top-right overflow-hidden rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-slate-800 dark:text-whit">
+          <Menu.Items className="bg- dark:text-whit absolute left-0 z-50 mt-3 w-36 origin-top-right overflow-hidden rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-slate-800">
             <div className="py-1 ">
               <Menu.Item>
                 {() => (
@@ -40,7 +44,9 @@ export default function DatePicker({ dateRange, setDateRange }) {
                     }}
                     className={clsx(
                       "flex w-36",
-                      rangeDisplayName === 'Today' ? "bg-gray-600 text-blue-300 " : "text-gray-700 dark:text-white hover:bg-slate-500",
+                      rangeDisplayName === "Today"
+                        ? "bg-gray-600 text-blue-300 "
+                        : "text-gray-700 hover:bg-slate-500 dark:text-white",
                       "block px-4 py-2 text-sm"
                     )}
                   >
@@ -57,7 +63,9 @@ export default function DatePicker({ dateRange, setDateRange }) {
                     }}
                     className={clsx(
                       "flex w-36",
-                      rangeDisplayName === 'Last 7 Days' ? "bg-gray-100 text-gray-900" : "text-gray-700 dark:text-white hover:bg-slate-500",
+                      rangeDisplayName === "Last 7 Days"
+                        ? "bg-gray-100 text-gray-900"
+                        : "text-gray-700 hover:bg-slate-500 dark:text-white",
                       "block px-4 py-2 text-sm"
                     )}
                   >
@@ -75,7 +83,9 @@ export default function DatePicker({ dateRange, setDateRange }) {
                     }}
                     className={clsx(
                       "flex w-36",
-                      rangeDisplayName === 'Last 30 Days' ? "bg-gray-100 text-gray-900" : "text-gray-700 dark:text-white hover:bg-slate-500",
+                      rangeDisplayName === "Last 30 Days"
+                        ? "bg-gray-100 text-gray-900"
+                        : "text-gray-700 hover:bg-slate-500 dark:text-white",
                       "block px-4 py-2 text-sm"
                     )}
                   >
@@ -92,7 +102,9 @@ export default function DatePicker({ dateRange, setDateRange }) {
                     }}
                     className={clsx(
                       "flex w-36",
-                      rangeDisplayName === 'This Year' ?  "bg-gray-100 text-gray-900" : "text-gray-700 dark:text-white hover:bg-slate-500",
+                      rangeDisplayName === "This Year"
+                        ? "bg-gray-100 text-gray-900"
+                        : "text-gray-700 hover:bg-slate-500 dark:text-white",
                       "block px-4 py-2 text-sm "
                     )}
                   >
