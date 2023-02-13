@@ -1,9 +1,6 @@
 import { type NextPage } from "next";
 import { useSession } from "next-auth/react";
 import { SignInButton } from "../components/signInButton";
-import { TodaysScores } from "../components/todaysScores";
-import { Trends } from "../components/charts/overviewTrends";
-import { greeter } from "../lib/greeter";
 export const SignIn: NextPage = () => {
   const { data: session, status } = useSession();
   if (status === "authenticated") {

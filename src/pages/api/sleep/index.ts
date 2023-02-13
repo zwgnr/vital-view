@@ -11,7 +11,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       .json({ message: "You must be logged in to access this content" });
   } else {
     return res.status(200).json({
-      message: "Please specify a date range",
+      message: "Date Range not set",
     });
   }
 };

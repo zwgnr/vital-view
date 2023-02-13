@@ -1,5 +1,4 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { getToken } from "next-auth/jwt";
 
 import { getRange, getPriorRange } from "../../../lib/range/getRanges";
 import {

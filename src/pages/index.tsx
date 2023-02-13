@@ -1,11 +1,8 @@
-import { type NextPage } from "next";
-import Router, { useRouter } from "next/router";
+import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
-import { SignInButton } from "../components/signInButton";
 import { TodaysScores } from "../components/todaysScores";
 import { Trends } from "../components/charts/overviewTrends";
 import { greeter } from "../lib/greeter";
-import SignIn from "./sign-in";
 
 export const Home = () => {
   const { data: session, status } = useSession();

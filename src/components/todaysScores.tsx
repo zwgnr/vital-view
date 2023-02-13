@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useActivity } from "../hooks/useActivity";
 import { useDailySleep } from "../hooks/useDailySleep";
 import { useReadiness } from "../hooks/useReadiness";
