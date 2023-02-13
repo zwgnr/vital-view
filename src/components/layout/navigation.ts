@@ -18,10 +18,4 @@ export const navigation = [
     icon: "iconoir:running",
     current: false,
   },
-  {
-    name: "Settings",
-    href: "/settings",
-    icon: "mdi:cog-outline",
-    current: true,
-  },
 ];
