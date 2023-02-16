@@ -22,8 +22,8 @@ export const StatCards = (props: StatCardProps) => {
             }}
             className={clsx(
               activeTrendName === item.name
-                ? "border-4 border-slate-900 dark:bg-slate-400 dark:text-black hover:dark:bg-white"
-                : "hover:bg-slate-200",
+                ? "border-slate-900  dark:bg-slate-400 dark:text-black hover:dark:bg-white"
+                : null,
               " flex h-full flex-col flex-wrap rounded-xl border-2 border-slate-200 p-4 shadow-lg hover:cursor-pointer  dark:bg-slate-700  hover:dark:bg-slate-500"
             )}
           >
@@ -45,14 +45,14 @@ export const StatCards = (props: StatCardProps) => {
                       icon="material-symbols:arrow-circle-up-outline"
                       width={28}
                       height={28}
-                      className="text-green-400"
+                      className='text-green-400'
                     />
                   ) : (
                     <Icon
                       icon="material-symbols:arrow-circle-down-outline"
                       width={28}
                       height={28}
-                      className="text-red-400"
+                      className='text-red-400'
                     />
                   )}
                 </div>
