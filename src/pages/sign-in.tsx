@@ -12,7 +12,7 @@ export const SignIn: NextPage = () => {
   }
   return (
     <>
-      <div className=" flex h-full flex-col items-center justify-center dark:bg-slate-700">
+      <div className=" flex h-screen flex-col items-center justify-center dark:bg-slate-700">
         <h1 className="mb-8 text-xl">
           Welcome to RingLab. A data dashboard for your Oura Ring.
         </h1>

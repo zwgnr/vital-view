@@ -38,7 +38,13 @@ export default function Layout(props: LayoutProps) {
           <Loader />
         </div>
       ) : (
-        <div className="flex md:h-screen w-full overflow-hidden ">
+        <div
+          className={
+            status === "authenticated"
+              ? "flex w-full overflow-hidden md:h-screen"
+              : "flex h-screen w-full overflow-hidden"
+          }
+        >
           <SideBar />
           <main className="flex h-full flex-grow flex-col overflow-hidden text-black dark:text-white">
             <TopBar setSidebarOpen={setSidebarOpen} />
