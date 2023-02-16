@@ -21,7 +21,7 @@ export const Trends = () => {
   );
   const { theme, setTheme } = useTheme();
   return (
-    <div className="mt-12 flex min-h-0 w-full flex-grow  flex-col rounded-xl bg-slate-700 ">
+    <div className="flex min-h-0 w-full flex-grow flex-col  rounded-xl border-2  dark:bg-slate-700 ">
       <>
         <div className="flex items-center justify-around px-8"></div>
         <div className="h-full  min-h-0  w-full min-w-0 overflow-hidden rounded-xl p-4">

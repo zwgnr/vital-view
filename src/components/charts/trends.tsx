@@ -19,6 +19,18 @@ export const TrendChart = (props: TrendChartType) => {
       width="100%"
       height="100%"
       options={{
+        //fill: {
+        //  type: "gradient",
+        //  gradient: {
+        //    shade: "dark",
+        //    gradientToColors: ["#f5c1ff"],
+        //    shadeIntensity: 1,
+        //    type: "vertical",
+        //    opacityFrom: 1,
+        //    opacityTo: .5,
+        //    stops: [0, 100, 100, 100 ],
+        //  },
+       // },
         dataLabels: {
           enabled: enabled ? true : false,
         },
@@ -37,6 +49,7 @@ export const TrendChart = (props: TrendChartType) => {
             enabled: false,
           },
         },
+        colors: ['#3b82f6'],
         xaxis: {
           categories: period,
           tickAmount: dateRange === "thisYear" ? 12 : 7,

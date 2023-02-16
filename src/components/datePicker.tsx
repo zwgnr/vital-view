@@ -17,7 +17,7 @@ export default function DatePicker(props: DatePickerProps) {
       <Menu as="div" className="relative">
         <Menu.Button
           type="button"
-          className="flex items-center rounded-md  bg-white p-2 text-sm font-medium shadow-sm hover:bg-gray-50 dark:bg-slate-700 "
+          className="flex items-center rounded-md  bg-white p-2 text-sm font-medium border-2 border-slate-400 hover:bg-slate-200 dark:bg-slate-700 "
         >
           {rangeDisplayName}
           <Icon
@@ -38,7 +38,7 @@ export default function DatePicker(props: DatePickerProps) {
           leaveFrom="transform opacity-100 scale-100"
           leaveTo="transform opacity-0 scale-95"
         >
-          <Menu.Items className="bg- dark:text-whit absolute left-0 z-50 mt-3 w-36 origin-top-right overflow-hidden rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-slate-800">
+          <Menu.Items className="bg- dark:text-whit absolute left-0 z-50 mt-3 w-36 origin-top-right overflow-hidden rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none bg-white dark:bg-slate-800">
             <div className="py-1 ">
               <Menu.Item>
                 {() => (

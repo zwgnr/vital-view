@@ -121,14 +121,14 @@ export const Sleep = () => {
 
   if (status === "authenticated") {
     return (
-      <div className="flex flex-grow flex-col gap-4 overflow-y-auto  bg-white p-4 dark:bg-slate-800 sm:p-6">
+      <div className="flex flex-grow flex-col gap-4 overflow-y-auto  bg-white p-4 dark:bg-slate-800 sm:px-12 sm:py-6">
         <>
           <div className="flex w-full items-center justify-between">
             <DatePicker dateRange={dateRange} setDateRange={setDateRange} />
             <LabelToggle enabled={enabled} setEnabled={setEnabled} />
           </div>
           {/*StatCards*/}
-          <div className="flex w-full flex-col gap-4 py-2 sm:flex-row sm:flex-wrap lg:flex-nowrap">
+          <div className="flex h-1/6 w-full flex-col gap-4 py-2 sm:flex-row sm:flex-wrap lg:flex-nowrap">
             <StatCards
               data={stats}
               activeTrendName={activeTrendName}
@@ -136,7 +136,8 @@ export const Sleep = () => {
             />
           </div>
           {/*TrendsChart*/}
-          <div className="flex-grow rounded-xl p-4 shadow-md dark:bg-slate-700 ">
+          <div className="flex-grow rounded-xl mb-6 border-2 p-4 dark:bg-slate-700 ">
+            <h1 className="text-md font-bold">{activeTrendName} Trend</h1>
             {sleepLoading ? (
               <div className="flex items-center justify-center">
                 <Loader />
@@ -152,8 +153,8 @@ export const Sleep = () => {
             )}
           </div>
           <div className="grid h-72 min-h-0 grid-cols-3 gap-4 ">
-            <div className="col-span-2 min-h-0 overflow-hidden rounded-xl p-4 pb-12 shadow-md dark:bg-slate-700 md:col-span-2 ">
-              <p className="text-md">Score Board</p>
+            <div className="col-span-2 min-h-0 overflow-hidden rounded-xl border-2 border-slate-200 p-4 pb-12 dark:bg-slate-700 md:col-span-2 ">
+              <p className="text-md font-bold">Score Board</p>
               {sleepLoading ? (
                 <div className="flex items-center justify-center">
                   <Loader />
@@ -167,7 +168,7 @@ export const Sleep = () => {
                 />
               )}
             </div>
-            <div className=" rounded-xl p-4 shadow-md  dark:bg-slate-700 md:col-span-1">
+            <div className=" rounded-xl border-2 border-slate-200 p-4 dark:bg-slate-700 md:col-span-1">
               <h1>Sleep Stages</h1>
               {sleepLoading ? (
                 <div className="flex items-center justify-center">

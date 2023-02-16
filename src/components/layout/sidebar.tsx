@@ -16,10 +16,10 @@ export const SideBar = () => {
         <Icon
           width={36}
           height={36}
-          className="flex-shrink-0 text-indigo-300"
+          className="flex-shrink-0 text-slate-800"
           icon="ion:cube-outline"
         />
-        <h1 className=" ml-3 text-xl dark:text-white">Ring Lab</h1>
+        <h1 className=" ml-3 text-xl  dark:text-white">Ring Lab</h1>
       </div>
       <div className="mt-5 flex flex-1 flex-col">
         <nav className="flex-1 space-y-1 px-2 pb-4">
@@ -46,8 +46,8 @@ export const SideBar = () => {
                   href={item.href}
                   className={clsx(
                     router.pathname == item.href
-                      ? "bg-indigo-200"
-                      : "text-gray-700 hover:bg-indigo-200",
+                      ? "bg-slate-800 text-white"
+                      : "text-slate-800 hover:bg-slate-200",
                     "group flex items-center rounded-md px-2 py-2 text-sm font-medium"
                   )}
                 >
@@ -55,7 +55,12 @@ export const SideBar = () => {
                     icon={item.icon}
                     width={24}
                     height={24}
-                    className="mr-3 h-6 w-6 flex-shrink-0 text-gray-700"
+                    className={clsx(
+                      router.pathname == item.href
+                        ? "text-white"
+                        : "hover:text-white",
+                      "mr-3 h-6 w-6 flex-shrink-0"
+                    )}
                   />
                   {item.name}
                 </Link>

@@ -18,9 +18,9 @@ export const BarChart = (props: BarChart) => {
       height="90%"
       options={{
         colors: [
-          "rgb(176, 56, 82)",
-          "rgb(130, 255, 99)",
-          "rgba(255, 161, 99, 0.973)",
+          "#2563eb",
+          "#93c5fd",
+          "#dbeafe",
         ],
         dataLabels: {
           enabled: enabled ? true : false,

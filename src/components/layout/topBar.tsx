@@ -26,7 +26,8 @@ export const TopBar = (props: SetSideBarOpenPropsOnlyProp) => {
           aria-hidden="true"
         />
       </button>
-      <div className="flex flex-1 justify-between px-4">
+      <div className="flex flex-1 items-center justify-between px-4">
+      <h1 className="font-semibold text-xl">Sleep Stats</h1>
         <div className="flex flex-1">
           {/* Spacer element to ensure proper alignment for Dark Mode toggle */}
         </div>
