@@ -61,7 +61,7 @@ export const Heatmap = (props: HeatmapChartType) => {
                   from: 85,
                   to: 100,
                   name: "Optimal",
-                  color: "#2563eb",
+                  color: "#3b82f6",
                 },
               ],
             },

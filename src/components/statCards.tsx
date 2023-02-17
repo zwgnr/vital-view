@@ -22,7 +22,7 @@ export const StatCards = (props: StatCardProps) => {
             }}
             className={clsx(
               activeTrendName === item.name
-                ? "border-slate-900  dark:bg-slate-400 dark:text-black hover:dark:bg-white"
+                ? "bg-blue-500 border-blue-500 shadow-blue-300 dark:bg-slate-400 dark:text-black hover:dark:bg-white"
                 : null,
               " flex h-full flex-col flex-wrap rounded-xl border-2 border-slate-200 p-4 shadow-lg hover:cursor-pointer  dark:bg-slate-700  hover:dark:bg-slate-500"
             )}
