@@ -133,7 +133,7 @@ export const Sleep = () => {
             <LabelToggle enabled={enabled} setEnabled={setEnabled} />
           </div>
           {/*StatCards*/}
-          <div className="flex h-1/5 w-full flex-col lg:flex-row">
+          <div className="flex h-1/5 w-full gap-4 flex-col lg:flex-row">
             <StatCards
               data={stats}
               activeTrendName={activeTrendName}
@@ -265,7 +265,7 @@ export const Sleep = () => {
             )}
           </div>
 
-          <div className="grid min-h-0 grid-cols-3 gap-4 ">
+          <div className="grid min-h-0 h-72 grid-cols-3 gap-4 ">
             <div className="col-span-3 min-h-0  rounded-xl border-2 border-slate-200 p-4 pb-12 dark:bg-slate-700 xl:col-span-2 ">
               <p className="text-md font-bold">Score Board</p>
               {sleepLoading ? (
