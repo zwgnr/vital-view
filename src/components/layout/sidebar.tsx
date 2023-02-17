@@ -46,7 +46,7 @@ export const SideBar = () => {
                   href={item.href}
                   className={clsx(
                     router.pathname == item.href
-                      ? " text-blue-500"
+                      ? " bg-blue-500 text-white"
                       : "text-slate-800 hover:bg-slate-200",
                     "group flex items-center rounded-md px-2 py-2 text-sm font-semibold"
                   )}
@@ -57,7 +57,7 @@ export const SideBar = () => {
                     height={24}
                     className={clsx(
                       router.pathname == item.href
-                        ? "text-blue-500"
+                        ? "text-white"
                         : "hover:text-white",
                       "mr-3 h-6 w-6 flex-shrink-0"
                     )}

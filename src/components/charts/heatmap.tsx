@@ -25,23 +25,32 @@ export const Heatmap = (props: HeatmapChartType) => {
         chart: {
           id: "heatmap",
           foreColor: theme === "dark" ? "white" : "black",
+          toolbar: { show: false },
         },
 
         xaxis: {
           categories: period,
           labels: { show: false },
           tickAmount: dateRange === "thisYear" ? 12 : 7,
-          tooltip: {
-            enabled: true,
-            formatter: undefined,
-            offsetY: 0,
+          tooltip: { enabled: true },
+        },
+        stroke: { colors: ["white"], width: 6 },
+        tooltip: {
+          fillSeriesColor: true,
+          theme: "light",
+          x: {
+            formatter(val, opts) {
+              if (dateRange === "today") {
+                return val.toString();
+              }
+              return val.toString().slice(0, 5);
+            },
           },
         },
-        tooltip: { fillSeriesColor: true, theme: "dark" },
         plotOptions: {
           heatmap: {
             shadeIntensity: 0.5,
-            radius: 0,
+            radius: 5,
             useFillColorAsStroke: false,
             colorScale: {
               ranges: [
@@ -49,19 +58,19 @@ export const Heatmap = (props: HeatmapChartType) => {
                   from: 0,
                   to: 69,
                   name: "Pay Attention",
-                  color: "#dbeafe",
+                  color: "#f87171",
                 },
                 {
                   from: 70,
                   to: 84,
                   name: "Good",
-                  color: "#93c5fd",
+                  color: "#4ade80",
                 },
                 {
                   from: 85,
                   to: 100,
                   name: "Optimal",
-                  color: "#3b82f6",
+                  color: "#15803d",
                 },
               ],
             },

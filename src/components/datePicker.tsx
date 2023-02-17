@@ -17,7 +17,7 @@ export default function DatePicker(props: DatePickerProps) {
       <Menu as="div" className="relative">
         <Menu.Button
           type="button"
-          className="flex items-center rounded-md  bg-white p-2 text-sm font-medium border-2 border-slate-400 hover:bg-slate-200 dark:bg-slate-700 "
+          className="flex items-center rounded-md p-2 text-sm text-white font-medium  bg-black hover:bg-slate-200 dark:bg-slate-700 "
         >
           {rangeDisplayName}
           <Icon

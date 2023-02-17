@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import { useSleep } from "../hooks/useSleep";
 import { useDailySleep } from "../hooks/useDailySleep";
 import { Loader } from "../components/loader";
@@ -11,6 +11,9 @@ import { Heatmap } from "../components/charts/heatmap";
 import { BarChart } from "../components/charts/barChart";
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
+import { Menu, Transition } from "@headlessui/react";
+import clsx from "clsx";
+import { Icon } from "@iconify/react";
 
 export const Sleep = () => {
   const { data: session, status } = useSession();
@@ -21,7 +24,9 @@ export const Sleep = () => {
   const [enabled, setEnabled] = useState(false);
   const [activeTrendName, setActiveTrendName] =
     useState<keyof TrendData>("Score");
+  const [trendDisplayName, setTrendDisplayName] = useState("Sleep Score");
 
+  const loading = dailySleepLoading && sleepLoading;
   if (status === "unauthenticated") {
     useRouter().push("/sign-in");
   }
@@ -29,7 +34,7 @@ export const Sleep = () => {
   const stats: Stats[] = [
     {
       id: 1,
-      name: "Score",
+      name: "Sleep Score",
       stat: dailySleep?.rangeAverage.score,
       unit: null,
       change: `${dailySleep?.percentChange.score} %`,
@@ -44,7 +49,7 @@ export const Sleep = () => {
       change: `${sleep?.percentChange.efficiencyChange} %`,
       changeType:
         sleep?.percentChange.efficiencyChange > 0 ? "increase" : "decrease",
-      dataset: sleepLoading ? null : sleep.rangeDataPoints.efficiency,
+      dataset: sleep?.rangeDataPoints.efficiency,
     },
     {
       id: 3,
@@ -57,7 +62,7 @@ export const Sleep = () => {
       change: `${sleep?.percentChange.durationChange} %`,
       changeType:
         sleep?.percentChange.durationChange > 0 ? "increase" : "decrease",
-      dataset: sleepLoading ? null : sleep.rangeDataPoints.duration,
+      dataset: sleep?.rangeDataPoints.duration,
     },
   ];
 
@@ -121,23 +126,130 @@ export const Sleep = () => {
 
   if (status === "authenticated") {
     return (
-      <div className="flex flex-grow flex-col gap-4 overflow-y-auto  bg-white p-4 dark:bg-slate-800 sm:px-12 sm:py-6">
+      <div className="mb-6 flex flex-grow flex-col gap-6 overflow-y-auto bg-white p-4 dark:bg-slate-800 sm:px-12 sm:py-8">
         <>
           <div className="flex w-full items-center justify-between">
             <DatePicker dateRange={dateRange} setDateRange={setDateRange} />
             <LabelToggle enabled={enabled} setEnabled={setEnabled} />
           </div>
           {/*StatCards*/}
-          <div className="flex h-1/6 w-full flex-col gap-4 py-2 sm:flex-row sm:flex-wrap lg:flex-nowrap">
+          <div className="flex h-1/5 w-full flex-col lg:flex-row">
             <StatCards
               data={stats}
               activeTrendName={activeTrendName}
               setActiveTrendName={setActiveTrendName}
+              loading={loading}
             />
           </div>
-          {/*TrendsChart*/}
-          <div className="flex-grow rounded-xl mb-6 border-2 p-4 dark:bg-slate-700 ">
-            <h1 className="text-md font-bold">{activeTrendName} Trend</h1>
+          {/*TrendsChart   */}
+          <div className="flex-grow rounded-xl border-2 p-6 dark:bg-slate-700 ">
+            <div className="flex items-center justify-between">
+              <h1 className="text-md font-bold">Trends</h1>
+              <Menu as="div" className="relative">
+                <Menu.Button
+                  type="button"
+                  className="flex items-center rounded-md bg-black p-2  text-xs text-white  hover:bg-slate-200 dark:bg-slate-700 "
+                >
+                  <h1>{trendDisplayName}</h1>
+                  <Icon
+                    icon="carbon:chevron-down"
+                    width={24}
+                    height={24}
+                    aria-hidden="true"
+                    className="ml-2"
+                  />
+                </Menu.Button>
+
+                <Transition
+                  as={Fragment}
+                  enter="transition ease-out duration-100"
+                  enterFrom="transform opacity-0 scale-95"
+                  enterTo="transform opacity-100 scale-100"
+                  leave="transition ease-in duration-75"
+                  leaveFrom="transform opacity-100 scale-100"
+                  leaveTo="transform opacity-0 scale-95"
+                >
+                  <Menu.Items className=" dark:text-whit absolute left-0 z-50 mt-3 w-36 origin-top-right overflow-hidden rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-slate-800">
+                    <div className="py-1 ">
+                      <Menu.Item>
+                        {() => (
+                          <button
+                            onClick={() => {
+                              setActiveTrendName("Score");
+                              setTrendDisplayName("Sleep Score");
+                            }}
+                            className={clsx(
+                              "flex w-36",
+                              1 > 3
+                                ? "bg-gray-600 text-blue-300 "
+                                : "text-gray-700 hover:bg-slate-500 dark:text-white",
+                              "block px-4 py-2 text-sm"
+                            )}
+                          >
+                            Sleep Score
+                          </button>
+                        )}
+                      </Menu.Item>
+                      <Menu.Item>
+                        {() => (
+                          <button
+                            onClick={() => {
+                              setActiveTrendName("Efficiency");
+                              setTrendDisplayName("Efficiency");
+                            }}
+                            className={clsx(
+                              "flex w-36",
+                              1 > 3
+                                ? "bg-gray-100 text-gray-900"
+                                : "text-gray-700 hover:bg-slate-500 dark:text-white",
+                              "block px-4 py-2 text-sm"
+                            )}
+                          >
+                            Efficiency
+                          </button>
+                        )}
+                      </Menu.Item>
+                      <Menu.Item>
+                        {() => (
+                          <button
+                            onClick={() => {
+                              setActiveTrendName("Duration");
+                              setTrendDisplayName("Duration");
+                            }}
+                            className={clsx(
+                              "flex w-36",
+                              1 > 3
+                                ? "bg-gray-100 text-gray-900"
+                                : "text-gray-700 hover:bg-slate-500 dark:text-white",
+                              "block px-4 py-2 text-sm"
+                            )}
+                          >
+                            Duration
+                          </button>
+                        )}
+                      </Menu.Item>
+                      <Menu.Item>
+                        {() => (
+                          <button
+                            onClick={() => {}}
+                            className={clsx(
+                              "flex w-36",
+                              1 > 3
+                                ? "bg-gray-100 text-gray-900"
+                                : "text-gray-700 hover:bg-slate-500 dark:text-white",
+                              "block px-4 py-2 text-sm "
+                            )}
+                          >
+                            This Year
+                          </button>
+                        )}
+                      </Menu.Item>
+                    </div>
+                  </Menu.Items>
+                </Transition>
+              </Menu>
+            </div>
+
             {sleepLoading ? (
               <div className="flex items-center justify-center">
                 <Loader />
@@ -152,8 +264,9 @@ export const Sleep = () => {
               />
             )}
           </div>
-          <div className="grid h-72 min-h-0 grid-cols-3 gap-4 ">
-            <div className="col-span-2 min-h-0 overflow-hidden rounded-xl border-2 border-slate-200 p-4 pb-12 dark:bg-slate-700 md:col-span-2 ">
+
+          <div className="grid min-h-0 grid-cols-3 gap-4 ">
+            <div className="col-span-3 min-h-0  rounded-xl border-2 border-slate-200 p-4 pb-12 dark:bg-slate-700 xl:col-span-2 ">
               <p className="text-md font-bold">Score Board</p>
               {sleepLoading ? (
                 <div className="flex items-center justify-center">
@@ -168,8 +281,8 @@ export const Sleep = () => {
                 />
               )}
             </div>
-            <div className=" rounded-xl border-2 border-slate-200 p-4 dark:bg-slate-700 md:col-span-1">
-              <h1>Sleep Stages</h1>
+            <div className=" col-span-3 rounded-xl border-2 border-slate-200 p-6 dark:bg-slate-700 xl:col-span-1">
+              <h1 className="font-semibold">Sleep Stages</h1>
               {sleepLoading ? (
                 <div className="flex items-center justify-center">
                   <Loader />

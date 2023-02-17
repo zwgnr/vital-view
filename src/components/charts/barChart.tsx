@@ -17,20 +17,23 @@ export const BarChart = (props: BarChart) => {
       width="100%"
       height="90%"
       options={{
-        colors: [
-          "#2563eb",
-          "#93c5fd",
-          "#dbeafe",
-        ],
+        colors: ["#2563eb", "#93c5fd", "#dbeafe"],
         dataLabels: {
           enabled: enabled ? true : false,
         },
         markers: {
           size: [0, 0],
         },
+        plotOptions: {
+          bar: {
+            horizontal: true,
+          },
+        },
+
         chart: {
           id: "main-chart",
           foreColor: theme === "dark" ? "white" : "black",
+          stacked: true,
           zoom: {
             enabled: false,
           },
