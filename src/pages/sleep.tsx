@@ -44,7 +44,6 @@ export const Sleep = () => {
   };
 
   const getSleepChangeType = (param: string) => {
-    console.log(sleep?.percentChange.durationChange);
 
     if (sleep?.percentChange[param] === 0) {
       return "noChange";

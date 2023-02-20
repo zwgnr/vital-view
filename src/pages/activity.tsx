@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Fragment, useState } from "react";
 
 import { useActivity } from "../hooks/useActivity";
 import { Loader } from "../components/loader";
@@ -17,6 +17,9 @@ import { Heatmap } from "../components/charts/heatmap";
 import { BarChart } from "../components/charts/barChart";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
+import { Menu, Transition } from "@headlessui/react";
+import { Icon } from "@iconify/react";
+import clsx from "clsx";
 
 export const Activity = () => {
   const { data: session, status } = useSession();
@@ -25,10 +28,23 @@ export const Activity = () => {
   const [enabled, setEnabled] = useState(false);
   const [activeTrendName, setActiveTrendName] =
     useState<keyof TrendData>("Score");
+  const [trendDisplayName, setTrendDisplayName] = useState("Activity Score");
 
   if (status === "unauthenticated") {
     useRouter().push("/sign-in");
   }
+
+  const getActivityChangeType = (param: string) => {
+    if (activity?.percentChange[param] === 0) {
+      return "noChange";
+    }
+    if (activity?.percentChange[param] > 0) {
+      return "increase";
+    }
+    if (activity?.percentChange[param] < 0) {
+      return "decrease";
+    }
+  };
 
   const stats: Stats[] = [
     {
@@ -37,7 +53,7 @@ export const Activity = () => {
       stat: activity?.rangeAverage.score,
       unit: null,
       change: `${activity?.percentChange.score} %`,
-      changeType: activity?.percentChange.score > 0 ? "increase" : "decrease",
+      changeType: getActivityChangeType("score"),
       dataset: activity?.rangeDataPoints.score,
     },
     {
@@ -46,8 +62,7 @@ export const Activity = () => {
       stat: activity?.rangeAverage.activeCalories,
       unit: "cals",
       change: `${activity?.percentChange.activeCalories} %`,
-      changeType:
-        activity?.percentChange.activeCalories > 0 ? "increase" : "decrease",
+      changeType: getActivityChangeType("activeCalories"),
       dataset: activityLoading ? null : activity.rangeDataPoints.activeCalories,
     },
     {
@@ -59,8 +74,7 @@ export const Activity = () => {
          `,
       unit: "steps",
       change: `${activity?.percentChange.steps} %`,
-      changeType:
-        activity?.percentChange.durationChange > 0 ? "increase" : "decrease",
+      changeType: getActivityChangeType("steps"),
       dataset: activityLoading ? null : activity.rangeDataPoints.steps,
     },
   ];
@@ -124,7 +138,7 @@ export const Activity = () => {
   ];
   if (status === "authenticated") {
     return (
-      <div className="flex flex-grow flex-col gap-4 overflow-y-auto  bg-white p-4 dark:bg-slate-800 sm:p-6">
+      <div className="flex flex-grow flex-col gap-4 overflow-y-auto  bg-slate-100  p-4 dark:bg-slate-800 sm:p-6">
         <>
           {/*DatePicker*/}
           <div className="flex w-full items-center justify-between">
@@ -132,7 +146,7 @@ export const Activity = () => {
             <LabelToggle enabled={enabled} setEnabled={setEnabled} />
           </div>
           {/*StatCards*/}
-          <div className="flex w-full flex-col gap-4 py-2 sm:flex-row sm:flex-wrap lg:flex-nowrap">
+          <div className="flex h-1/5 w-full flex-col gap-4 lg:flex-row">
             <StatCards
               data={stats}
               activeTrendName={activeTrendName}
@@ -140,7 +154,97 @@ export const Activity = () => {
             />
           </div>
           {/*TrendsChart*/}
-          <div className="flex-grow rounded-xl p-4 shadow-md dark:bg-slate-700 ">
+          <div className="flex-grow rounded-xl bg-white p-6 dark:bg-slate-700 ">
+            <div className="flex items-center justify-between">
+              <h1 className="text-md font-bold">Trends</h1>
+              <Menu as="div" className="relative">
+                <Menu.Button
+                  type="button"
+                  className="flex items-center rounded-md bg-slate-200 p-2  text-xs text-black  hover:bg-slate-300 dark:bg-slate-700 "
+                >
+                  <h1 className="font-bold">{trendDisplayName}</h1>
+                  <Icon
+                    icon="carbon:chevron-down"
+                    width={24}
+                    height={24}
+                    aria-hidden="true"
+                    className="ml-2"
+                  />
+                </Menu.Button>
+
+                <Transition
+                  as={Fragment}
+                  enter="transition ease-out duration-100"
+                  enterFrom="transform opacity-0 scale-95"
+                  enterTo="transform opacity-100 scale-100"
+                  leave="transition ease-in duration-75"
+                  leaveFrom="transform opacity-100 scale-100"
+                  leaveTo="transform opacity-0 scale-95"
+                >
+                  <Menu.Items className=" dark:text-whit absolute left-0 z-50 mt-3 w-36 origin-top-right  overflow-hidden rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-slate-800">
+                    <div className="py-1">
+                      <Menu.Item>
+                        {() => (
+                          <button
+                            onClick={() => {
+                              setActiveTrendName("Score");
+                              setTrendDisplayName("Activity Score");
+                            }}
+                            className={clsx(
+                              "flex w-36",
+                              trendDisplayName === "Activity Score"
+                                ? "text-indigo-600"
+                                : "text-gray-700 hover:bg-slate-200 dark:text-white",
+                              "block px-4 py-2 text-sm "
+                            )}
+                          >
+                            Activity Score
+                          </button>
+                        )}
+                      </Menu.Item>
+                      <Menu.Item>
+                        {() => (
+                          <button
+                            onClick={() => {
+                              setActiveTrendName("Active Burn");
+                              setTrendDisplayName("Active Burn");
+                            }}
+                            className={clsx(
+                              "flex w-36",
+                              trendDisplayName === "Active Burn"
+                                ? "text-indigo-600"
+                                : "text-gray-700 hover:bg-slate-200 dark:text-white",
+                              "block px-4 py-2 text-sm"
+                            )}
+                          >
+                            Active Burn
+                          </button>
+                        )}
+                      </Menu.Item>
+                      <Menu.Item>
+                        {() => (
+                          <button
+                            onClick={() => {
+                              setActiveTrendName("Steps");
+                              setTrendDisplayName("Steps");
+                            }}
+                            className={clsx(
+                              "flex w-36",
+                              trendDisplayName === "Steps"
+                                ? "text-indigo-600"
+                                : "text-gray-700 hover:bg-slate-200 dark:text-white",
+                              "block px-4 py-2 text-sm"
+                            )}
+                          >
+                            Steps
+                          </button>
+                        )}
+                      </Menu.Item>
+                    </div>
+                  </Menu.Items>
+                </Transition>
+              </Menu>
+            </div>
             {activityLoading ? (
               <div className="flex items-center justify-center">
                 <Loader />
