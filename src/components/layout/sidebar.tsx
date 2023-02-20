@@ -7,6 +7,8 @@ import { useRouter } from "next/router";
 import { Email } from "../email";
 import { navigation } from "./navigation";
 
+const package_json = require("../../../package.json");
+
 export const SideBar = () => {
   const { data: session, status } = useSession();
   const router = useRouter();
@@ -40,9 +42,7 @@ export const SideBar = () => {
                   width={24}
                   height={24}
                   className={clsx(
-                    router.pathname == item.href
-                      ? "text-indigo-500"
-                      : "hover:text-white",
+                    router.pathname == item.href ? "text-indigo-500" : "",
                     "mr-3 h-6 w-6 flex-shrink-0"
                   )}
                 />
@@ -52,19 +52,27 @@ export const SideBar = () => {
           </>
         </nav>
         <div className="flex flex-row items-center justify-center gap-2 p-2">
-          <Icon icon="mdi:github" width={24} height={24} />
-          <p className="text-xs dark:text-white">v.0.0.1</p>
+          <a href="https://github.com/zwagnr/ring-lab">
+            <Icon
+              icon="mdi:github"
+              width={24}
+              height={24}
+              className="hover:text-indigo-600"
+            />
+          </a>
+
+          <p className="text-xs dark:text-white">{`v${package_json.version}`}</p>
         </div>
 
         <div className="flex flex-row">
           {status === "authenticated" ? (
             <div className="border-t border-gray-300 p-2">
-              <div className="group flex items-center rounded-md px-2 py-2 text-sm font-medium">
+              <div className="group flex items-center rounded-md px-2 py-2 text-sm font-medium text-gray-400">
                 <Icon
                   icon="clarity:avatar-line"
                   width={24}
                   height={24}
-                  className="mr-3 h-6 w-6 flex-shrink-0 text-gray-700"
+                  className="mr-3 h-6 w-6 flex-shrink-0 text-gray-400"
                 />
                 <p className="dark:text-white">
                   <Email />
@@ -72,7 +80,7 @@ export const SideBar = () => {
               </div>
 
               <button
-                className="group flex w-full items-center rounded-md px-2 py-2 text-sm font-medium hover:bg-indigo-200"
+                className="group flex w-full items-center rounded-md px-2 py-2 text-sm font-medium text-gray-400 hover:bg-slate-200"
                 onClick={(e) => {
                   e.preventDefault();
                   signOut();
@@ -82,7 +90,7 @@ export const SideBar = () => {
                   icon="material-symbols:logout"
                   width={24}
                   height={24}
-                  className="mr-3 h-6 w-6 flex-shrink-0 text-gray-700"
+                  className="mr-3 h-6 w-6 flex-shrink-0 text-gray-400"
                 />
                 <p className="dark:text-white">Logout </p>
               </button>
