@@ -14,8 +14,8 @@ export const TodaysScores = () => {
   const todaysActivity = activity?.rangeDataPoints.score;
 
   return (
-    <div className="w-full rounded-xl dark:bg-slate-700 md:h-1/3 border-2">
-      <h1 className="ml-4 mt-4 text-lg">Todays Scores</h1>
+    <div className="w-full bg-white rounded-xl dark:bg-slate-700 md:h-1/3 ">
+      <h1 className="ml-4 mt-4 text-md font-bold">Todays Scores</h1>
       <div className=" flex h-[80%] min-h-0 w-full flex-col rounded-xl dark:bg-slate-700 md:flex-row">
         <div className="flex h-full w-full justify-center overflow-hidden rounded-xl md:w-1/3 ">
           <div className="flex h-full min-h-0 w-full flex-col items-center justify-center rounded-xl ">

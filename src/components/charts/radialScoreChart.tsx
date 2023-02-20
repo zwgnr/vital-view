@@ -15,9 +15,9 @@ export const RadialScoreChart = (props: RadialScoreChartProps) => {
   const todaysScore = data[0]!;
 
   const fillColor = () => {
-    if (todaysScore >= 85) return ["#DFB2F4"];
-    if (todaysScore <= 84 && todaysScore >= 71) return ["#55D6C2"];
-    if (todaysScore <= 70) return ["#F49097"];
+    if (todaysScore >= 85) return ["#4f46e5"];
+    if (todaysScore <= 84 && todaysScore >= 71) return ["#818cf8"];
+    if (todaysScore <= 70) return ["#94a3b8"];
   };
 
   return (
@@ -96,7 +96,7 @@ export const RadialScoreChart = (props: RadialScoreChartProps) => {
       {data[0]! < 85 ? (
         <div className="h-6 w-6"></div>
       ) : (
-        <Icon icon="ph:crown-simple-bold" width={24} height={24} color="gold" />
+        <Icon icon="ph:crown-simple-bold" width={24} height={24} color="#4f46e5" />
       )}
     </>
   );

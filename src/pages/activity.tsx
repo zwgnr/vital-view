@@ -154,7 +154,7 @@ export const Activity = () => {
             />
           </div>
           {/*TrendsChart*/}
-          <div className="flex-grow rounded-xl bg-white p-6 dark:bg-slate-700 ">
+          <div className="flex-grow rounded-xl bg-white p-4 dark:bg-slate-700 ">
             <div className="flex items-center justify-between">
               <h1 className="text-md font-bold">Trends</h1>
               <Menu as="div" className="relative">
@@ -261,7 +261,7 @@ export const Activity = () => {
           </div>
           <div className="grid h-72 min-h-0 grid-cols-3 gap-4">
             <div className="col-span-3 min-h-0 rounded-xl bg-white p-4 pb-12 dark:bg-slate-700 xl:col-span-2">
-              <p className="text-md">Score Board</p>
+              <p className="text-md font-bold">Score Board</p>
               {activityLoading ? (
                 <div className="flex items-center justify-center">
                   <Loader />
@@ -276,7 +276,7 @@ export const Activity = () => {
               )}
             </div>
             <div className="col-span-3 rounded-xl bg-white p-6 dark:bg-slate-700 xl:col-span-1">
-              <h1>Movement</h1>
+              <h1 className="text-md font-bold">Movement</h1>
               {activityLoading ? (
                 <div className="flex items-center justify-center">
                   <Loader />

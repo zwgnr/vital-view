@@ -1,15 +1,27 @@
 import { useTheme } from "next-themes";
-import { useState, useEffect } from "react";
-import { SignInButton } from "../signInButton";
 import { Icon } from "@iconify/react";
 import { type SideBarOpenProps } from "./layout";
+import { useRouter } from "next/router";
 
 type SetSideBarOpenPropsOnlyProp = Omit<SideBarOpenProps, "sidebarOpen">;
 
 export const TopBar = (props: SetSideBarOpenPropsOnlyProp) => {
   const { theme, setTheme } = useTheme();
   const { setSidebarOpen } = props;
+  const router = useRouter();
 
+  const handleTitle = () => {
+    if (router.pathname === "/sleep") {
+      return "Sleep Stats";
+    }
+    if (router.pathname === "/readiness") {
+      return "Readiness Stats";
+    }
+    if (router.pathname === "/activity") {
+      return "Activity Stats";
+    }
+    return null;
+  };
   return (
     <div className="flex h-16 w-full  p-1 dark:border-gray-800  dark:bg-slate-900">
       <button
@@ -27,7 +39,7 @@ export const TopBar = (props: SetSideBarOpenPropsOnlyProp) => {
         />
       </button>
       <div className="flex flex-1 items-center justify-between px-4">
-      <h1 className="font-semibold text-xl">Sleep Stats</h1>
+        <h1 className="text-xl font-semibold">{handleTitle()}</h1>
         <div className="flex flex-1">
           {/* Spacer element to ensure proper alignment for Dark Mode toggle */}
         </div>

@@ -21,11 +21,11 @@ export const Trends = () => {
   );
   const { theme, setTheme } = useTheme();
   return (
-    <div className="flex min-h-0 w-full flex-grow flex-col  rounded-xl border-2  dark:bg-slate-700 ">
+    <div className="flex min-h-0 w-full flex-grow flex-col  rounded-xl bg-white  dark:bg-slate-700 ">
       <>
         <div className="flex items-center justify-around px-8"></div>
         <div className="h-full  min-h-0  w-full min-w-0 overflow-hidden rounded-xl p-4">
-          <h1 className="text-lg">Trends (last 7 days)</h1>
+          <h1 className="text-md font-bold">Trends (last 7 days)</h1>
           <div className="h-full">
             <div className="bg-slate-00 h-full">
               {dailySleepLoading ? (
@@ -41,6 +41,7 @@ export const Trends = () => {
                     xaxis: {
                       categories: dailySleep?.timePeriod,
                     },
+                    colors:['#7dd3fc','#d8b4fe','#5eead4'],
                     chart: {
                       id: "trends",
                       sparkline: {
@@ -50,6 +51,7 @@ export const Trends = () => {
                       zoom: {
                         enabled: false,
                       },
+                      toolbar: { show: false },
                     },
                     tooltip: {
                       theme: "dark",

@@ -30,10 +30,10 @@ export const StatCards = (props: StatCardProps) => {
             }}
             className={clsx(
               activeTrendName === item.name ? " " : null,
-              " flex h-full flex-col flex-wrap rounded-xl bg-white  p-4 dark:bg-slate-700  hover:dark:bg-slate-500"
+              " flex h-full flex-col flex-wrap rounded-xl bg-white p-4 dark:bg-slate-700  hover:dark:bg-slate-500"
             )}
           >
-            <div className="flex h-full flex-col justify-between p-2 pb-8 ">
+            <div className="flex h-full flex-col justify-between  pb-8 ">
               <div className="flex items-center justify-between ">
                 <p className="truncate text-lg font-semibold text-slate-500 dark:text-gray-300">
                   {item.name}

@@ -165,7 +165,7 @@ export const Sleep = () => {
             />
           </div>
           {/*TrendsChart   */}
-          <div className="flex-grow rounded-xl bg-white p-6 dark:bg-slate-700 ">
+          <div className="flex-grow rounded-xl bg-white p-4 dark:bg-slate-700 ">
             <div className="flex items-center justify-between">
               <h1 className="text-md font-bold">Trends</h1>
               <Menu as="div" className="relative">
@@ -288,7 +288,7 @@ export const Sleep = () => {
                 />
               )}
             </div>
-            <div className=" col-span-3 rounded-xl bg-white p-6 dark:bg-slate-700 xl:col-span-1">
+            <div className=" col-span-3 rounded-xl bg-white p-4 dark:bg-slate-700 xl:col-span-1">
               <h1 className="font-semibold">Sleep Stages</h1>
               {sleepLoading ? (
                 <div className="flex items-center justify-center">
