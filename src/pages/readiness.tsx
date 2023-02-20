@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Fragment, useState } from "react";
 
 import { useSleep } from "../hooks/useSleep";
 import { useReadiness } from "../hooks/useReadiness";
@@ -12,6 +12,9 @@ import { TrendChart } from "../components/charts/trends";
 import { Heatmap } from "../components/charts/heatmap";
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
+import { Menu, Transition } from "@headlessui/react";
+import { Icon } from "@iconify/react";
+import clsx from "clsx";
 
 export const Readiness = () => {
   const { data: session, status } = useSession();
@@ -21,6 +24,32 @@ export const Readiness = () => {
   const [enabled, setEnabled] = useState(false);
   const [activeTrendName, setActiveTrendName] =
     useState<keyof TrendData>("Score");
+
+  const [trendDisplayName, setTrendDisplayName] = useState("Readiness Score");
+
+  const getReadinessChangeType = () => {
+    if (readiness?.percentChange.score === 0) {
+      return "noChange";
+    }
+    if (readiness?.percentChange.score > 0) {
+      return "increase";
+    }
+    if (readiness?.percentChange.score < 0) {
+      return "decrease";
+    }
+  };
+
+  const getSleepChangeType = (param: string) => {
+    if (sleep?.percentChange[param] === 0) {
+      return "noChange";
+    }
+    if (sleep?.percentChange[param] > 0) {
+      return "increase";
+    }
+    if (sleep?.percentChange[param] < 0) {
+      return "decrease";
+    }
+  };
 
   if (status === "unauthenticated") {
     useRouter().push("/sign-in");
@@ -33,7 +62,7 @@ export const Readiness = () => {
       stat: readiness?.rangeAverage.score,
       unit: null,
       change: `${readiness?.percentChange.score} %`,
-      changeType: readiness?.percentChange.score > 0 ? "increase" : "decrease",
+      changeType: getReadinessChangeType(),
       dataset: readiness?.rangeDataPoints.score,
     },
     {
@@ -42,11 +71,8 @@ export const Readiness = () => {
       stat: sleep?.rangeAverage.restingHeartRate,
       unit: "bpm",
       change: `${sleep?.percentChange.restingHeartRateChange} %`,
-      changeType:
-        sleep?.percentChange.restingHeartRateChange > 0
-          ? "increase"
-          : "decrease",
-      dataset: sleepLoading ? null : sleep.rangeDataPoints.restingHeartRate,
+      changeType: getSleepChangeType("restingHeartRateChange"),
+      dataset: sleep?.rangeDataPoints.restingHeartRate,
     },
     {
       id: 3,
@@ -57,8 +83,8 @@ export const Readiness = () => {
          `,
       unit: "ms",
       change: `${sleep?.percentChange.hrvChange} %`,
-      changeType: sleep?.percentChange.hrvChange > 0 ? "increase" : "decrease",
-      dataset: sleepLoading ? null : sleep.rangeDataPoints.hrv,
+      changeType: getSleepChangeType("hrvChange"),
+      dataset: sleep?.rangeDataPoints.hrv,
     },
   ];
 
@@ -114,14 +140,14 @@ export const Readiness = () => {
   ];
   if (status === "authenticated") {
     return (
-      <div className="flex flex-grow flex-col gap-4 overflow-y-auto  bg-white p-4 dark:bg-slate-800 sm:p-6">
+      <div className="flex flex-grow flex-col gap-6 overflow-y-auto bg-slate-100 p-4 dark:bg-slate-800 sm:px-6 sm:py-8">
         <>
           <div className="flex w-full items-center justify-between">
             <DatePicker dateRange={dateRange} setDateRange={setDateRange} />
             <LabelToggle enabled={enabled} setEnabled={setEnabled} />
           </div>
           {/*StatCards*/}
-          <div className="flex w-full flex-col gap-4 py-2 sm:flex-row sm:flex-wrap lg:flex-nowrap">
+          <div className="flex h-1/5 w-full flex-col gap-4 lg:flex-row">
             <StatCards
               data={stats}
               activeTrendName={activeTrendName}
@@ -129,8 +155,98 @@ export const Readiness = () => {
             />
           </div>
           {/*TrendsChart*/}
-          <div className="flex-grow rounded-xl p-4 shadow-md dark:bg-slate-700 ">
-            {sleepLoading ? (
+          <div className="flex-grow rounded-xl bg-white p-6 dark:bg-slate-700 ">
+            <div className="flex items-center justify-between">
+              <h1 className="text-md font-bold">Trends</h1>
+              <Menu as="div" className="relative">
+                <Menu.Button
+                  type="button"
+                  className="flex items-center rounded-md bg-slate-200 p-2  text-xs text-black  hover:bg-slate-300 dark:bg-slate-700 "
+                >
+                  <h1 className="font-bold">{trendDisplayName}</h1>
+                  <Icon
+                    icon="carbon:chevron-down"
+                    width={24}
+                    height={24}
+                    aria-hidden="true"
+                    className="ml-2"
+                  />
+                </Menu.Button>
+
+                <Transition
+                  as={Fragment}
+                  enter="transition ease-out duration-100"
+                  enterFrom="transform opacity-0 scale-95"
+                  enterTo="transform opacity-100 scale-100"
+                  leave="transition ease-in duration-75"
+                  leaveFrom="transform opacity-100 scale-100"
+                  leaveTo="transform opacity-0 scale-95"
+                >
+                  <Menu.Items className=" dark:text-whit absolute right-0 z-50 mt-3 w-36 origin-top-right  overflow-hidden rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-slate-800">
+                    <div className="py-1">
+                      <Menu.Item>
+                        {() => (
+                          <button
+                            onClick={() => {
+                              setActiveTrendName("Score");
+                              setTrendDisplayName("Readiness Score");
+                            }}
+                            className={clsx(
+                              "flex w-36",
+                              trendDisplayName === "Sleep Score"
+                                ? "text-indigo-600"
+                                : "text-gray-700 hover:bg-slate-200 dark:text-white",
+                              "block px-4 py-2 text-sm "
+                            )}
+                          >
+                            Readiness Score
+                          </button>
+                        )}
+                      </Menu.Item>
+                      <Menu.Item>
+                        {() => (
+                          <button
+                            onClick={() => {
+                              setActiveTrendName("RHR");
+                              setTrendDisplayName("RHR");
+                            }}
+                            className={clsx(
+                              "flex w-36",
+                              trendDisplayName === "RHR"
+                                ? "text-indigo-600"
+                                : "text-gray-700 hover:bg-slate-200 dark:text-white",
+                              "block px-4 py-2 text-sm"
+                            )}
+                          >
+                            RHR
+                          </button>
+                        )}
+                      </Menu.Item>
+                      <Menu.Item>
+                        {() => (
+                          <button
+                            onClick={() => {
+                              setActiveTrendName("HRV");
+                              setTrendDisplayName("HRV");
+                            }}
+                            className={clsx(
+                              "flex w-36",
+                              trendDisplayName === "HRV"
+                                ? "text-indigo-600"
+                                : "text-gray-700 hover:bg-slate-200 dark:text-white",
+                              "block px-4 py-2 text-sm"
+                            )}
+                          >
+                            HRV
+                          </button>
+                        )}
+                      </Menu.Item>
+                    </div>
+                  </Menu.Items>
+                </Transition>
+              </Menu>
+            </div>
+            {sleepLoading && readinessLoading ? (
               <div className="flex items-center justify-center">
                 <Loader />
               </div>
@@ -145,7 +261,7 @@ export const Readiness = () => {
             )}
           </div>
           <div className="grid h-72 min-h-0 gap-4 ">
-            <div className=" min-h-0 overflow-hidden rounded-xl p-4 pb-12 shadow-md dark:bg-slate-700 md:col-span-2 ">
+            <div className=" col-span-3 min-h-0  rounded-xl bg-white p-4 pb-12 dark:bg-slate-700 xl:col-span-3 ">
               <p className="text-md">Score Board</p>
               {readinessLoading ? (
                 <div className="flex items-center justify-center">

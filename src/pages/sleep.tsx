@@ -149,7 +149,7 @@ export const Sleep = () => {
 
   if (status === "authenticated") {
     return (
-      <div className=" flex flex-grow flex-col gap-6 overflow-y-auto bg-slate-100 p-4 dark:bg-slate-800 sm:px-6 sm:py-8">
+      <div className="flex flex-grow flex-col gap-6 overflow-y-auto bg-slate-100 p-4 dark:bg-slate-800 sm:px-6 sm:py-8">
         <>
           <div className="flex w-full items-center justify-between">
             <DatePicker dateRange={dateRange} setDateRange={setDateRange} />
@@ -192,7 +192,7 @@ export const Sleep = () => {
                   leaveFrom="transform opacity-100 scale-100"
                   leaveTo="transform opacity-0 scale-95"
                 >
-                  <Menu.Items className=" dark:text-whit absolute left-0 z-50 mt-3 w-36 origin-top-right  overflow-hidden rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-slate-800">
+                  <Menu.Items className=" dark:text-whit absolute right-0 z-50 mt-3 w-36 origin-top-right  overflow-hidden rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-slate-800">
                     <div className="py-1">
                       <Menu.Item>
                         {() => (

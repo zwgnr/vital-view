@@ -138,7 +138,7 @@ export const Activity = () => {
   ];
   if (status === "authenticated") {
     return (
-      <div className="flex flex-grow flex-col gap-4 overflow-y-auto  bg-slate-100  p-4 dark:bg-slate-800 sm:p-6">
+      <div className="flex flex-grow flex-col gap-6 overflow-y-auto bg-slate-100 p-4 dark:bg-slate-800 sm:px-6 sm:py-8">
         <>
           {/*DatePicker*/}
           <div className="flex w-full items-center justify-between">
@@ -181,7 +181,7 @@ export const Activity = () => {
                   leaveFrom="transform opacity-100 scale-100"
                   leaveTo="transform opacity-0 scale-95"
                 >
-                  <Menu.Items className=" dark:text-whit absolute left-0 z-50 mt-3 w-36 origin-top-right  overflow-hidden rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-slate-800">
+                  <Menu.Items className=" dark:text-whit absolute right-0 z-50 mt-3 w-36 origin-top-right  overflow-hidden rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-slate-800">
                     <div className="py-1">
                       <Menu.Item>
                         {() => (
@@ -259,8 +259,8 @@ export const Activity = () => {
               />
             )}
           </div>
-          <div className="grid h-72 min-h-0 grid-cols-3 gap-4 ">
-            <div className="col-span-2 min-h-0 overflow-hidden rounded-xl p-4 pb-12 shadow-md dark:bg-slate-700 md:col-span-2 ">
+          <div className="grid h-72 min-h-0 grid-cols-3 gap-4">
+            <div className="col-span-3 min-h-0 rounded-xl bg-white p-4 pb-12 dark:bg-slate-700 xl:col-span-2">
               <p className="text-md">Score Board</p>
               {activityLoading ? (
                 <div className="flex items-center justify-center">
@@ -275,7 +275,7 @@ export const Activity = () => {
                 />
               )}
             </div>
-            <div className=" rounded-xl p-4 shadow-md  dark:bg-slate-700 md:col-span-1">
+            <div className="col-span-3 rounded-xl bg-white p-6 dark:bg-slate-700 xl:col-span-1">
               <h1>Movement</h1>
               {activityLoading ? (
                 <div className="flex items-center justify-center">
