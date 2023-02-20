@@ -17,7 +17,7 @@ export default function DatePicker(props: DatePickerProps) {
       <Menu as="div" className="relative">
         <Menu.Button
           type="button"
-          className="flex items-center rounded-md p-2 text-sm text-white font-medium  bg-black hover:bg-slate-200 dark:bg-slate-700 "
+          className="flex items-center rounded-md p-2 text-sm text-black font-bold  bg-slate-200 hover:bg-slate-300 dark:bg-slate-700 "
         >
           {rangeDisplayName}
           <Icon
@@ -50,8 +50,8 @@ export default function DatePicker(props: DatePickerProps) {
                     className={clsx(
                       "flex w-36",
                       rangeDisplayName === "Today"
-                        ? "bg-gray-600 text-blue-300 "
-                        : "text-gray-700 hover:bg-slate-500 dark:text-white",
+                        ? "text-indigo-600"
+                        : "text-gray-700 hover:bg-slate-200 dark:text-white",
                       "block px-4 py-2 text-sm"
                     )}
                   >
@@ -69,8 +69,8 @@ export default function DatePicker(props: DatePickerProps) {
                     className={clsx(
                       "flex w-36",
                       rangeDisplayName === "Last 7 Days"
-                        ? "bg-gray-100 text-gray-900"
-                        : "text-gray-700 hover:bg-slate-500 dark:text-white",
+                        ? " text-indigo-600"
+                        : "text-gray-700 hover:bg-slate-200 dark:text-white",
                       "block px-4 py-2 text-sm"
                     )}
                   >
@@ -88,8 +88,8 @@ export default function DatePicker(props: DatePickerProps) {
                     className={clsx(
                       "flex w-36",
                       rangeDisplayName === "Last 30 Days"
-                        ? "bg-gray-100 text-gray-900"
-                        : "text-gray-700 hover:bg-slate-500 dark:text-white",
+                        ? "text-indigo-600"
+                        : "text-gray-700 hover:bg-slate-200 dark:text-white",
                       "block px-4 py-2 text-sm"
                     )}
                   >
@@ -107,8 +107,8 @@ export default function DatePicker(props: DatePickerProps) {
                     className={clsx(
                       "flex w-36",
                       rangeDisplayName === "This Year"
-                        ? "bg-gray-100 text-gray-900"
-                        : "text-gray-700 hover:bg-slate-500 dark:text-white",
+                        ? "text-indigo-600"
+                        : "text-gray-700 hover:bg-slate-200 dark:text-white",
                       "block px-4 py-2 text-sm "
                     )}
                   >

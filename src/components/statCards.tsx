@@ -30,12 +30,12 @@ export const StatCards = (props: StatCardProps) => {
             }}
             className={clsx(
               activeTrendName === item.name ? " " : null,
-              " flex h-full flex-col flex-wrap rounded-xl border-2 border-slate-200 p-4 shadow-md dark:bg-slate-700  hover:dark:bg-slate-500"
+              " flex h-full flex-col flex-wrap rounded-xl bg-white  p-4 dark:bg-slate-700  hover:dark:bg-slate-500"
             )}
           >
             <div className="flex h-full flex-col justify-between p-2 pb-8 ">
               <div className="flex items-center justify-between ">
-                <p className="truncate text-lg font-semibold dark:text-gray-300">
+                <p className="truncate text-lg font-semibold text-slate-500 dark:text-gray-300">
                   {item.name}
                 </p>
               </div>
@@ -43,19 +43,39 @@ export const StatCards = (props: StatCardProps) => {
                 <div className="flex h-full w-1/3 flex-col justify-between">
                   <div></div>
                   <div className="flex items-baseline">
-                    <p className=" text-4xl sm:text-2xl xl:text-3xl font-semibold">{item.stat}</p>
+                    <p className=" text-4xl font-semibold sm:text-2xl xl:text-3xl">
+                      {item.stat}
+                    </p>
                     <p className="ml-1 text-sm">{item.unit}</p>
                   </div>
-                  <div className="flex items-center">
+                  <div
+                    className={clsx(
+                      item.changeType === "noChange"
+                        ? "bg-slate-100"
+                        : item.changeType === "increase"
+                        ? "bg-green-100"
+                        : "bg-red-100",
+                      "flex w-fit items-center rounded-xl p-1 px-2"
+                    )}
+                  >
                     <div
                       className={clsx(
-                        item.changeType === "increase"
-                          ? "text-green-600"
-                          : "text-red-600",
-                        " flex items-baseline text-sm font-semibold"
+                        item.changeType === "noChange"
+                          ? "text-slate-400"
+                          : item.changeType === "increase"
+                          ? "text-green-400"
+                          : "text-red-400",
+                        " flex items-baseline text-sm font-semibold "
                       )}
                     >
-                      {item.changeType === "increase" ? (
+                      {item.changeType === "noChange" ? (
+                        <Icon
+                          icon="ph:circle-half-tilt-fill"
+                          width={28}
+                          height={28}
+                          className="text-slate-400"
+                        />
+                      ) : item.changeType === "increase" ? (
                         <Icon
                           icon="material-symbols:arrow-circle-up-outline"
                           width={28}
@@ -73,10 +93,12 @@ export const StatCards = (props: StatCardProps) => {
                     </div>
                     <p
                       className={clsx(
-                        item.changeType === "increase"
+                        item.changeType === "noChange"
+                          ? "text-slate-400"
+                          : item.changeType === "increase"
                           ? "text-green-400"
                           : "text-red-400",
-                        "ml-2 flex items-baseline text-sm font-semibold"
+                        "ml-1 flex items-baseline text-sm font-semibold"
                       )}
                     >
                       <span className="sr-only">
@@ -92,7 +114,7 @@ export const StatCards = (props: StatCardProps) => {
                 {loading ? (
                   <Loader />
                 ) : (
-                  <div className="w-full h-full ">
+                  <div className="h-full w-full ">
                     {" "}
                     <ApexChart
                       width="100%"
@@ -118,7 +140,10 @@ export const StatCards = (props: StatCardProps) => {
                           sparkline: { enabled: true },
                         },
                         colors: [
-                          item.changeType === "increase"
+                          //"#4f46e5",
+                          item.changeType === "noChange"
+                            ? "#94a3b8"
+                            : item.changeType === "increase"
                             ? "#4ade80"
                             : "#f87171",
                         ],

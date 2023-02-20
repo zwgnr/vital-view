@@ -33,7 +33,7 @@ export const TrendChart = (props: TrendChartType) => {
         // },
         plotOptions: {
           bar: {
-            columnWidth: "33%",
+            columnWidth: dateRange === 'last7Days' ? '15%' : '33%',
           },
         },
         dataLabels: {
@@ -56,7 +56,7 @@ export const TrendChart = (props: TrendChartType) => {
             enabled: false,
           },
         },
-        colors: ["#334155"],
+        colors: ["#4f46e5"],
         xaxis: {
           categories: period,
           tickAmount: dateRange === "thisYear" ? 12 : 7,

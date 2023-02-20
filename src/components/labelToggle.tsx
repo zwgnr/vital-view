@@ -15,7 +15,7 @@ export const LabelToggle = (props: ToggleProps) => {
         checked={enabled}
         onChange={setEnabled}
         className={clsx(
-          enabled ? "bg-indigo-600" : "bg-gray-200",
+          enabled ? "bg-indigo-600" : "bg-slate-200",
           "relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-offset-2 focus-visible:ring-2 focus-visible:ring-indigo-500"
         )}
       >
@@ -28,7 +28,7 @@ export const LabelToggle = (props: ToggleProps) => {
         />
       </Switch>
       <Switch.Label as="span" className="ml-3">
-        <span className="text-sm font-medium text-gray-900 dark:text-white">
+        <span className="text-sm font-bold text-gray-900 dark:text-white">
           Labels
         </span>
       </Switch.Label>

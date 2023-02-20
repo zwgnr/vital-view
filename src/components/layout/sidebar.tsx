@@ -11,7 +11,7 @@ export const SideBar = () => {
   const { data: session, status } = useSession();
   const router = useRouter();
   return (
-    <div className=" hidden w-56 flex-col border-r-2 border-gray-200 bg-white pt-5 dark:bg-slate-900 md:flex">
+    <div className=" hidden w-56 flex-col bg-white pt-5 dark:bg-slate-900 md:flex">
       <div className="flex items-center justify-center px-4">
         <Icon
           width={36}
@@ -46,9 +46,9 @@ export const SideBar = () => {
                   href={item.href}
                   className={clsx(
                     router.pathname == item.href
-                      ? " bg-blue-500 text-white"
-                      : "text-slate-800 hover:bg-slate-200",
-                    "group flex items-center rounded-md px-2 py-2 text-sm font-semibold"
+                      ? " text-black font-semibold"
+                      : "text-gray-400 hover:bg-slate-200",
+                    "group flex items-center rounded-md px-2 py-2 text-sm"
                   )}
                 >
                   <Icon
@@ -57,7 +57,7 @@ export const SideBar = () => {
                     height={24}
                     className={clsx(
                       router.pathname == item.href
-                        ? "text-white"
+                        ? "text-indigo-500"
                         : "hover:text-white",
                       "mr-3 h-6 w-6 flex-shrink-0"
                     )}

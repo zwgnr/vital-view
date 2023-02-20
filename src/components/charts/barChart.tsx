@@ -17,7 +17,7 @@ export const BarChart = (props: BarChart) => {
       width="100%"
       height="90%"
       options={{
-        colors: ["#2563eb", "#93c5fd", "#dbeafe"],
+        colors: ["#4f46e5", "#c7d2fe", "#94a3b8"],
         dataLabels: {
           enabled: enabled ? true : false,
         },
@@ -32,6 +32,7 @@ export const BarChart = (props: BarChart) => {
 
         chart: {
           id: "main-chart",
+          toolbar: { show: false },
           foreColor: theme === "dark" ? "white" : "black",
           stacked: true,
           zoom: {

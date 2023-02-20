@@ -11,7 +11,7 @@ export const TopBar = (props: SetSideBarOpenPropsOnlyProp) => {
   const { setSidebarOpen } = props;
 
   return (
-    <div className="flex h-16 w-full border-b border-gray-200 p-1 dark:border-gray-800  dark:bg-slate-900">
+    <div className="flex h-16 w-full  p-1 dark:border-gray-800  dark:bg-slate-900">
       <button
         type="button"
         className="border-r border-gray-200 px-4 text-gray-100 md:hidden"

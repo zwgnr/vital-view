@@ -4,7 +4,7 @@ export type Stats = {
   stat: number;
   unit: string | null;
   change: string;
-  changeType: string;
+  changeType?: string;
   dataset: number[];
 };
 

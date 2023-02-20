@@ -31,6 +31,32 @@ export const Sleep = () => {
     useRouter().push("/sign-in");
   }
 
+  const getDailySleepChangeType = () => {
+    if (dailySleep?.percentChange.score === 0) {
+      return "noChange";
+    }
+    if (dailySleep?.percentChange.score > 0) {
+      return "increase";
+    }
+    if (dailySleep?.percentChange.score < 0) {
+      return "decrease";
+    }
+  };
+
+  const getSleepChangeType = (param: string) => {
+    console.log(sleep?.percentChange.durationChange);
+
+    if (sleep?.percentChange[param] === 0) {
+      return "noChange";
+    }
+    if (sleep?.percentChange[param] > 0) {
+      return "increase";
+    }
+    if (sleep?.percentChange[param] < 0) {
+      return "decrease";
+    }
+  };
+
   const stats: Stats[] = [
     {
       id: 1,
@@ -38,7 +64,7 @@ export const Sleep = () => {
       stat: dailySleep?.rangeAverage.score,
       unit: null,
       change: `${dailySleep?.percentChange.score} %`,
-      changeType: dailySleep?.percentChange.score > 0 ? "increase" : "decrease",
+      changeType: getDailySleepChangeType(),
       dataset: dailySleep?.rangeDataPoints.score,
     },
     {
@@ -47,8 +73,7 @@ export const Sleep = () => {
       stat: sleep?.rangeAverage.efficiency,
       unit: "%",
       change: `${sleep?.percentChange.efficiencyChange} %`,
-      changeType:
-        sleep?.percentChange.efficiencyChange > 0 ? "increase" : "decrease",
+      changeType: getSleepChangeType("efficiencyChange"),
       dataset: sleep?.rangeDataPoints.efficiency,
     },
     {
@@ -60,8 +85,7 @@ export const Sleep = () => {
          `,
       unit: "hr",
       change: `${sleep?.percentChange.durationChange} %`,
-      changeType:
-        sleep?.percentChange.durationChange > 0 ? "increase" : "decrease",
+      changeType: getSleepChangeType("durationChange"),
       dataset: sleep?.rangeDataPoints.duration,
     },
   ];
@@ -126,14 +150,14 @@ export const Sleep = () => {
 
   if (status === "authenticated") {
     return (
-      <div className="mb-6 flex flex-grow flex-col gap-6 overflow-y-auto bg-white p-4 dark:bg-slate-800 sm:px-12 sm:py-8">
+      <div className=" flex flex-grow flex-col gap-6 overflow-y-auto bg-slate-100 p-4 dark:bg-slate-800 sm:px-6 sm:py-8">
         <>
           <div className="flex w-full items-center justify-between">
             <DatePicker dateRange={dateRange} setDateRange={setDateRange} />
             <LabelToggle enabled={enabled} setEnabled={setEnabled} />
           </div>
           {/*StatCards*/}
-          <div className="flex h-1/5 w-full gap-4 flex-col lg:flex-row">
+          <div className="flex h-1/5 w-full flex-col gap-4 lg:flex-row">
             <StatCards
               data={stats}
               activeTrendName={activeTrendName}
@@ -142,15 +166,15 @@ export const Sleep = () => {
             />
           </div>
           {/*TrendsChart   */}
-          <div className="flex-grow rounded-xl border-2 p-6 dark:bg-slate-700 ">
+          <div className="flex-grow rounded-xl bg-white p-6 dark:bg-slate-700 ">
             <div className="flex items-center justify-between">
               <h1 className="text-md font-bold">Trends</h1>
               <Menu as="div" className="relative">
                 <Menu.Button
                   type="button"
-                  className="flex items-center rounded-md bg-black p-2  text-xs text-white  hover:bg-slate-200 dark:bg-slate-700 "
+                  className="flex items-center rounded-md bg-slate-200 p-2  text-xs text-black  hover:bg-slate-300 dark:bg-slate-700 "
                 >
-                  <h1>{trendDisplayName}</h1>
+                  <h1 className="font-bold">{trendDisplayName}</h1>
                   <Icon
                     icon="carbon:chevron-down"
                     width={24}
@@ -169,8 +193,8 @@ export const Sleep = () => {
                   leaveFrom="transform opacity-100 scale-100"
                   leaveTo="transform opacity-0 scale-95"
                 >
-                  <Menu.Items className=" dark:text-whit absolute left-0 z-50 mt-3 w-36 origin-top-right overflow-hidden rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-slate-800">
-                    <div className="py-1 ">
+                  <Menu.Items className=" dark:text-whit absolute left-0 z-50 mt-3 w-36 origin-top-right  overflow-hidden rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-slate-800">
+                    <div className="py-1">
                       <Menu.Item>
                         {() => (
                           <button
@@ -180,10 +204,10 @@ export const Sleep = () => {
                             }}
                             className={clsx(
                               "flex w-36",
-                              1 > 3
-                                ? "bg-gray-600 text-blue-300 "
-                                : "text-gray-700 hover:bg-slate-500 dark:text-white",
-                              "block px-4 py-2 text-sm"
+                              trendDisplayName === "Sleep Score"
+                                ? "text-indigo-600"
+                                : "text-gray-700 hover:bg-slate-200 dark:text-white",
+                              "block px-4 py-2 text-sm "
                             )}
                           >
                             Sleep Score
@@ -199,9 +223,9 @@ export const Sleep = () => {
                             }}
                             className={clsx(
                               "flex w-36",
-                              1 > 3
-                                ? "bg-gray-100 text-gray-900"
-                                : "text-gray-700 hover:bg-slate-500 dark:text-white",
+                              trendDisplayName === "Efficiency"
+                                ? "text-indigo-600"
+                                : "text-gray-700 hover:bg-slate-200 dark:text-white",
                               "block px-4 py-2 text-sm"
                             )}
                           >
@@ -218,29 +242,13 @@ export const Sleep = () => {
                             }}
                             className={clsx(
                               "flex w-36",
-                              1 > 3
-                                ? "bg-gray-100 text-gray-900"
-                                : "text-gray-700 hover:bg-slate-500 dark:text-white",
+                              trendDisplayName === "Duration"
+                                ? "text-indigo-600"
+                                : "text-gray-700 hover:bg-slate-200 dark:text-white",
                               "block px-4 py-2 text-sm"
                             )}
                           >
                             Duration
-                          </button>
-                        )}
-                      </Menu.Item>
-                      <Menu.Item>
-                        {() => (
-                          <button
-                            onClick={() => {}}
-                            className={clsx(
-                              "flex w-36",
-                              1 > 3
-                                ? "bg-gray-100 text-gray-900"
-                                : "text-gray-700 hover:bg-slate-500 dark:text-white",
-                              "block px-4 py-2 text-sm "
-                            )}
-                          >
-                            This Year
                           </button>
                         )}
                       </Menu.Item>
@@ -265,8 +273,8 @@ export const Sleep = () => {
             )}
           </div>
 
-          <div className="grid min-h-0 h-72 grid-cols-3 gap-4 ">
-            <div className="col-span-3 min-h-0  rounded-xl border-2 border-slate-200 p-4 pb-12 dark:bg-slate-700 xl:col-span-2 ">
+          <div className="grid h-72 min-h-0 grid-cols-3 gap-4 ">
+            <div className="col-span-3 min-h-0  rounded-xl bg-white p-4 pb-12 dark:bg-slate-700 xl:col-span-2 ">
               <p className="text-md font-bold">Score Board</p>
               {sleepLoading ? (
                 <div className="flex items-center justify-center">
@@ -281,7 +289,7 @@ export const Sleep = () => {
                 />
               )}
             </div>
-            <div className=" col-span-3 rounded-xl border-2 border-slate-200 p-6 dark:bg-slate-700 xl:col-span-1">
+            <div className=" col-span-3 rounded-xl bg-white p-6 dark:bg-slate-700 xl:col-span-1">
               <h1 className="font-semibold">Sleep Stages</h1>
               {sleepLoading ? (
                 <div className="flex items-center justify-center">
