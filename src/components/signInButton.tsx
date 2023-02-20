@@ -11,7 +11,7 @@ export const SignInButton = () => {
               e.preventDefault();
               signIn("oura", { callbackUrl: "/" });
             }}
-            className="mr-4 rounded-md bg-blue-500 p-2"
+            className="mr-4 text-white rounded-md bg-indigo-600 p-2"
           >
             Sign In with Oura
           </button>

@@ -6,6 +6,8 @@ import { TopBar } from "./topBar";
 import { Fragment, Dispatch, SetStateAction } from "react";
 import { useSession } from "next-auth/react";
 import { Loader } from "../loader";
+import SignIn from "../../pages/sign-in";
+import { useRouter } from "next/router";
 
 export type SideBarOpenProps = {
   sidebarOpen: boolean;
@@ -32,9 +34,10 @@ export default function Layout(props: LayoutProps) {
         setSidebarOpen={setSidebarOpen}
       />
 
-      {status === "loading" ? (
+      {status === "unauthenticated" ? (
+        <SignIn />
+      ) : status === "loading" ? (
         <div className="flex h-screen w-full overflow-hidden">
-          <SideBar />
           <Loader />
         </div>
       ) : (

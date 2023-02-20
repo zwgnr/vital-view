@@ -30,10 +30,6 @@ export const Activity = () => {
     useState<keyof TrendData>("Score");
   const [trendDisplayName, setTrendDisplayName] = useState("Activity Score");
 
-  if (status === "unauthenticated") {
-    useRouter().push("/sign-in");
-  }
-
   const getActivityChangeType = (param: string) => {
     if (activity?.percentChange[param] === 0) {
       return "noChange";
@@ -63,7 +59,7 @@ export const Activity = () => {
       unit: "cals",
       change: `${activity?.percentChange.activeCalories} %`,
       changeType: getActivityChangeType("activeCalories"),
-      dataset: activityLoading ? null : activity.rangeDataPoints.activeCalories,
+      dataset: activity?.rangeDataPoints.activeCalories,
     },
     {
       id: 3,
@@ -75,7 +71,7 @@ export const Activity = () => {
       unit: "steps",
       change: `${activity?.percentChange.steps} %`,
       changeType: getActivityChangeType("steps"),
-      dataset: activityLoading ? null : activity.rangeDataPoints.steps,
+      dataset: activity?.rangeDataPoints.steps,
     },
   ];
 

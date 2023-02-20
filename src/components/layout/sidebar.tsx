@@ -23,50 +23,33 @@ export const SideBar = () => {
       </div>
       <div className="mt-5 flex flex-1 flex-col">
         <nav className="flex-1 space-y-1 px-2 pb-4">
-          {status !== "authenticated" ? (
-            <Link
-              href="/"
-              className={clsx(
-                "group flex items-center rounded-md bg-indigo-800 px-2 py-2 text-sm font-medium text-white"
-              )}
-            >
-              <Icon
-                icon="ph:house"
-                width={24}
-                height={24}
-                className="mr-3 h-6 w-6 flex-shrink-0 text-gray-700"
-              />
-              Overview
-            </Link>
-          ) : (
-            <>
-              {navigation.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
+          <>
+            {navigation.map((item) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                className={clsx(
+                  router.pathname == item.href
+                    ? " font-semibold text-black"
+                    : "text-gray-400 hover:bg-slate-200",
+                  "group flex items-center rounded-md px-2 py-2 text-sm"
+                )}
+              >
+                <Icon
+                  icon={item.icon}
+                  width={24}
+                  height={24}
                   className={clsx(
                     router.pathname == item.href
-                      ? " text-black font-semibold"
-                      : "text-gray-400 hover:bg-slate-200",
-                    "group flex items-center rounded-md px-2 py-2 text-sm"
+                      ? "text-indigo-500"
+                      : "hover:text-white",
+                    "mr-3 h-6 w-6 flex-shrink-0"
                   )}
-                >
-                  <Icon
-                    icon={item.icon}
-                    width={24}
-                    height={24}
-                    className={clsx(
-                      router.pathname == item.href
-                        ? "text-indigo-500"
-                        : "hover:text-white",
-                      "mr-3 h-6 w-6 flex-shrink-0"
-                    )}
-                  />
-                  {item.name}
-                </Link>
-              ))}
-            </>
-          )}
+                />
+                {item.name}
+              </Link>
+            ))}
+          </>
         </nav>
         <div className="flex flex-row items-center justify-center gap-2 p-2">
           <Icon icon="mdi:github" width={24} height={24} />
