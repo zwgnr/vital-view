@@ -61,12 +61,12 @@ export const MobileMenuDialog = (props: SideBarOpenProps) => {
             </div>
             <div className="flex items-center justify-center px-4">
               <Icon
-                width={36}
-                height={36}
+                width={28}
+                height={28}
                 className="flex-shrink-0 text-slate-800 dark:text-white"
                 icon="icon-park-outline:chart-ring"
               />
-              <h1 className=" ml-3 text-xl text-slate-800 dark:text-white">
+              <h1 className="ml-2 text-xl font-bold text-slate-800 dark:text-white">
                 Ring Lab
               </h1>
             </div>

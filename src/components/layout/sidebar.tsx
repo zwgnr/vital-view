@@ -16,12 +16,12 @@ export const SideBar = () => {
     <div className=" hidden w-56 flex-col bg-white pt-5 dark:bg-slate-800 md:flex">
       <div className="flex items-center justify-center px-4">
         <Icon
-          width={36}
-          height={36}
+          width={28}
+          height={28}
           className="flex-shrink-0 text-slate-800 dark:text-white"
           icon="icon-park-outline:chart-ring"
         />
-        <h1 className=" ml-3 text-xl  dark:text-white">Ring Lab</h1>
+        <h1 className="ml-2 text-xl font-bold dark:text-white">Ring Lab</h1>
       </div>
       <div className="mt-5 flex flex-1 flex-col">
         <nav className="flex-1 space-y-1 px-2 pb-4">
