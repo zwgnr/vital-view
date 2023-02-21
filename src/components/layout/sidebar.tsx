@@ -3,6 +3,7 @@ import { clsx } from "clsx";
 import { Icon } from "@iconify/react";
 import { useSession, signOut } from "next-auth/react";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 import { Email } from "../email";
 import { navigation } from "./navigation";
@@ -15,12 +16,7 @@ export const SideBar = () => {
   return (
     <div className=" hidden w-56 flex-col bg-white pt-5 dark:bg-slate-800 md:flex">
       <div className="flex items-center justify-center px-4">
-        <Icon
-          width={28}
-          height={28}
-          className="flex-shrink-0 text-slate-800 dark:text-white"
-          icon="icon-park-outline:chart-ring"
-        />
+        <Image src="/ringLabLogo.png" alt="RingLab Logo" width={36} height={36} />
         <h1 className="ml-2 text-xl font-bold dark:text-white">Ring Lab</h1>
       </div>
       <div className="mt-5 flex flex-1 flex-col">
@@ -33,7 +29,7 @@ export const SideBar = () => {
                 className={clsx(
                   router.pathname == item.href
                     ? " font-semibold text-black dark:text-white"
-                    : "text-gray-600 hover:bg-slate-100 dark:hover:bg-slate-700 dark:text-gray-400",
+                    : "text-gray-600 hover:bg-slate-100 dark:text-gray-400 dark:hover:bg-slate-700",
                   "group flex items-center rounded-md px-2 py-2 text-sm"
                 )}
               >

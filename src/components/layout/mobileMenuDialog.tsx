@@ -5,6 +5,7 @@ import { Icon } from "@iconify/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { signOut, useSession } from "next-auth/react";
+import Image from "next/image";
 
 import { navigation } from "./navigation";
 import { type SideBarOpenProps } from "./layout";
@@ -60,11 +61,11 @@ export const MobileMenuDialog = (props: SideBarOpenProps) => {
               </button>
             </div>
             <div className="flex items-center justify-center px-4">
-              <Icon
-                width={28}
-                height={28}
-                className="flex-shrink-0 text-slate-800 dark:text-white"
-                icon="icon-park-outline:chart-ring"
+              <Image
+                src="/ringLabLogo.png"
+                alt="RingLab Logo"
+                width={36}
+                height={36}
               />
               <h1 className="ml-2 text-xl font-bold text-slate-800 dark:text-white">
                 Ring Lab

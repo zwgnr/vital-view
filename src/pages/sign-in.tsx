@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { SignInButton } from "../components/signInButton";
-import { Icon } from "@iconify/react";
+
 export const SignIn: NextPage = () => {
   const { data: session, status } = useSession();
   const router = useRouter();

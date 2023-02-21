@@ -1,5 +1,5 @@
 <div align="center">
-<img src='./public/ring-lab-logo.png'/> 
+<img src='./public/ringLabLogo.png' width="150" height="150"/> 
 <h1>RingLab</h1>
 </div>
 
