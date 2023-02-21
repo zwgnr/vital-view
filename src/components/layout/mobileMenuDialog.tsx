@@ -64,7 +64,7 @@ export const MobileMenuDialog = (props: SideBarOpenProps) => {
                 width={36}
                 height={36}
                 className="flex-shrink-0 text-slate-800 dark:text-white"
-                icon="ion:cube-outline"
+                icon="icon-park-outline:chart-ring"
               />
               <h1 className=" ml-3 text-xl text-slate-800 dark:text-white">
                 Ring Lab
