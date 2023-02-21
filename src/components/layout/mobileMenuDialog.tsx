@@ -100,7 +100,11 @@ export const MobileMenuDialog = (props: SideBarOpenProps) => {
                 </>
               </nav>
               <div className="flex flex-row items-center justify-center gap-2 p-2">
-                <a href="https://github.com/zwagnr/ring-lab">
+                <a
+                  href="https://github.com/zwagnr/ring-lab"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <Icon
                     icon="mdi:github"
                     width={24}

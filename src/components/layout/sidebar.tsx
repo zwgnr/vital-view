@@ -16,7 +16,12 @@ export const SideBar = () => {
   return (
     <div className=" hidden w-56 flex-col bg-white pt-5 dark:bg-slate-800 md:flex">
       <div className="flex items-center justify-center px-4">
-        <Image src="/ringLabLogo.png" alt="RingLab Logo" width={36} height={36} />
+        <Image
+          src="/ringLabLogo.png"
+          alt="RingLab Logo"
+          width={36}
+          height={36}
+        />
         <h1 className="ml-2 text-xl font-bold dark:text-white">Ring Lab</h1>
       </div>
       <div className="mt-5 flex flex-1 flex-col">
@@ -48,7 +53,11 @@ export const SideBar = () => {
           </>
         </nav>
         <div className="flex flex-row items-center justify-center gap-2 p-2">
-          <a href="https://github.com/zwagnr/ring-lab">
+          <a
+            href="https://github.com/zwagnr/ring-lab"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <Icon
               icon="mdi:github"
               width={24}

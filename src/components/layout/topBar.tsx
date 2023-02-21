@@ -24,7 +24,7 @@ export const TopBar = (props: SetSideBarOpenPropsOnlyProp) => {
     return null;
   };
   return (
-    <div className="flex h-16 w-full p-1 pt-4 dark:border-gray-800 bg-slate-100  dark:bg-slate-900">
+    <div className="flex h-16 w-full bg-slate-100 p-1 pt-4 dark:border-gray-800  dark:bg-slate-900">
       <button
         type="button"
         className="border-r border-gray-200 px-4 text-gray-100 md:hidden"
@@ -50,13 +50,19 @@ export const TopBar = (props: SetSideBarOpenPropsOnlyProp) => {
             className="rounded-full p-1 text-gray-400 hover:text-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
           >
             <span className="sr-only">Help</span>
-            <Icon
-              icon="ic:round-help-outline"
-              width={24}
-              height={24}
-              color="gray"
-              aria-hidden="true"
-            />
+            <a
+              href="https://github.com/zwagnr/ring-lab#readme"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Icon
+                icon="ic:round-help-outline"
+                width={24}
+                height={24}
+                color="gray"
+                aria-hidden="true"
+              />
+            </a>
           </button>
           <button
             type="button"
