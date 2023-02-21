@@ -6,7 +6,7 @@ import { clsx } from "clsx";
 import { type SideBarOpenProps } from "./layout";
 import { Icon } from "@iconify/react";
 import Link from "next/link";
-import router from "next/router";
+import { useRouter } from "next/router";
 import { signOut, useSession } from "next-auth/react";
 
 import { Email } from "../email";
@@ -15,6 +15,7 @@ const package_json = require("../../../package.json");
 
 export const MobileMenuDialog = (props: SideBarOpenProps) => {
   const { data: session, status } = useSession();
+  const router = useRouter();
   const { sidebarOpen, setSidebarOpen } = props;
   return (
     <Transition.Root show={sidebarOpen} as={Fragment}>
