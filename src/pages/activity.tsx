@@ -7,16 +7,11 @@ import { LabelToggle } from "../components/labelToggle";
 import { TrendChart } from "../components/charts/trends";
 import { StatCards } from "../components/statCards";
 
-import {
-  type Stats,
-  type HeatMapData,
-  type BarChartData,
-} from "../types/sharedTypes";
+import { type Stats, type HeatMapData } from "../types/sharedTypes";
 
 import { Heatmap } from "../components/charts/heatmap";
-import { BarChart } from "../components/charts/barChart";
+import { DonutChart } from "../components/charts/donutChart";
 import { useSession } from "next-auth/react";
-import { useRouter } from "next/router";
 import { Menu, Transition } from "@headlessui/react";
 import { Icon } from "@iconify/react";
 import clsx from "clsx";
@@ -119,20 +114,14 @@ export const Activity = () => {
     },
   ];
 
-  const barChartData: BarChartData[] = [
-    {
-      name: "Low",
-      data: [activity?.rangeAverage.lowActiveTime],
-    },
-    {
-      name: "Med",
-      data: [activity?.rangeAverage.medActiveTime],
-    },
-    {
-      name: "High",
-      data: [activity?.rangeAverage.highActiveTime],
-    },
+  const donutChartData: number[] = [
+    activity?.rangeAverage.lowActiveTime,
+    activity?.rangeAverage.medActiveTime,
+    activity?.rangeAverage.highActiveTime,
   ];
+
+  const donutChartLabels = ["Low", "Med", "High"];
+
   if (status === "authenticated") {
     return (
       <div className="flex flex-grow flex-col gap-6 overflow-y-auto bg-slate-100 p-4 dark:bg-slate-900 sm:px-6 sm:pt-2 sm:pb-12">
@@ -275,7 +264,11 @@ export const Activity = () => {
                   <Loader size="h-16 w-16" />
                 </div>
               ) : (
-                <BarChart enabled={enabled} data={barChartData} />
+                <DonutChart
+                  enabled={enabled}
+                  data={donutChartData}
+                  labels={donutChartLabels}
+                />
               )}
             </div>
           </div>

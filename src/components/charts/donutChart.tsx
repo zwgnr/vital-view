@@ -1,17 +1,16 @@
 import { useTheme } from "next-themes";
 import dynamic from "next/dynamic";
 
-import { type BarChartData } from "../../types/sharedTypes";
-
 const ApexChart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
-type BarChart = {
+type DonutChart = {
   enabled: boolean;
-  data: BarChartData[];
+  data: number[];
+  labels: string[];
 };
 
-export const BarChart = (props: BarChart) => {
-  const { enabled, data } = props;
+export const DonutChart = (props: DonutChart) => {
+  const { enabled, data, labels } = props;
   const { theme, setTheme } = useTheme();
   return (
     <ApexChart
@@ -25,19 +24,14 @@ export const BarChart = (props: BarChart) => {
         markers: {
           size: [0, 0],
         },
-        plotOptions: {
-          bar: {
-            horizontal: true,
-          },
-        },
         legend: {
-          position: 'right',
+          position: "right",
         },
+        labels: [...labels],
         chart: {
           id: "main-chart",
           toolbar: { show: false },
           foreColor: theme === "dark" ? "white" : "black",
-          stacked: true,
           zoom: {
             enabled: false,
           },
@@ -49,7 +43,7 @@ export const BarChart = (props: BarChart) => {
         },
         xaxis: {
           categories: [""],
-          axisTicks:{ show: false },
+          axisTicks: { show: false },
         },
         grid: {
           yaxis: { lines: { show: false } },
@@ -58,7 +52,7 @@ export const BarChart = (props: BarChart) => {
         tooltip: { fillSeriesColor: true },
       }}
       series={data}
-      type="bar"
+      type="donut"
     />
   );
 };

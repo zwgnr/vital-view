@@ -13,8 +13,4 @@ export type HeatMapData = {
   data: number[];
 };
 
-export type BarChartData = {
-  name: string;
-  data: number[];
-};
 

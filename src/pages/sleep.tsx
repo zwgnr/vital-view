@@ -5,10 +5,10 @@ import { Loader } from "../components/loader";
 import DatePicker from "../components/datePicker";
 import { LabelToggle } from "../components/labelToggle";
 import { TrendChart } from "../components/charts/trends";
-import { BarChartData, HeatMapData, Stats } from "../types/sharedTypes";
+import { HeatMapData, Stats } from "../types/sharedTypes";
 import { StatCards } from "../components/statCards";
 import { Heatmap } from "../components/charts/heatmap";
-import { BarChart } from "../components/charts/barChart";
+import { DonutChart } from "../components/charts/donutChart";
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
 import { Menu, Transition } from "@headlessui/react";
@@ -132,20 +132,13 @@ export const Sleep = () => {
     },
   ];
 
-  const barChartData: BarChartData[] = [
-    {
-      name: "Deep",
-      data: [sleep?.rangeAverage.deepSleep],
-    },
-    {
-      name: "Rem",
-      data: [sleep?.rangeAverage.remSleep],
-    },
-    {
-      name: "Light",
-      data: [sleep?.rangeAverage.lightSleep],
-    },
+  const donutChartData: number[] = [
+    sleep?.rangeAverage.deepSleep,
+    sleep?.rangeAverage.remSleep,
+    sleep?.rangeAverage.lightSleep,
   ];
+
+  const donutChartLabels: string[] = ["Deep Sleep", "REM Sleep", "Light Sleep"];
 
   if (status === "authenticated") {
     return (
@@ -290,7 +283,11 @@ export const Sleep = () => {
                   <Loader size="h-16 w-16" />
                 </div>
               ) : (
-                <BarChart enabled={enabled} data={barChartData} />
+                <DonutChart
+                  enabled={enabled}
+                  data={donutChartData}
+                  labels={donutChartLabels}
+                />
               )}
             </div>
           </div>
