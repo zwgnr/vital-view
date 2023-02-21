@@ -27,7 +27,7 @@ export default function Layout(props: LayoutProps) {
       <Head>
         <title>Ring Lab</title>
         <meta name="description" content="Oura Ring Stats Dashboard" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.svg" />
       </Head>
       <MobileMenuDialog
         sidebarOpen={sidebarOpen}
