@@ -9,7 +9,7 @@
 </h3>
 
 <p align="center">
-<img src='public/sleepPage30DaysLightMode.png' width="100%" height="100%"/> 
+<img src='public/sleepPage30DaysDarkMode.png' width="100%" height="100%"/> 
 </p>
 
 
