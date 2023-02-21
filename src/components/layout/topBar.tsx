@@ -23,7 +23,7 @@ export const TopBar = (props: SetSideBarOpenPropsOnlyProp) => {
     return null;
   };
   return (
-    <div className="flex h-16 w-full  p-1 dark:border-gray-800  dark:bg-slate-900">
+    <div className="flex h-16 w-full  p-1 dark:border-gray-800  dark:bg-slate-800">
       <button
         type="button"
         className="border-r border-gray-200 px-4 text-gray-100 md:hidden"

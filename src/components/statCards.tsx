@@ -22,7 +22,7 @@ export const StatCards = (props: StatCardProps) => {
     <>
       {data.map((item) => (
         <div className="w-full lg:w-1/3" key={item.id}>
-          <div className=" flex h-full flex-col flex-wrap rounded-xl bg-white p-4 dark:bg-slate-700  hover:dark:bg-slate-500">
+          <div className=" flex h-full flex-col flex-wrap rounded-xl bg-white p-4 dark:bg-slate-800">
             {loading ? (
               <div className="flex h-full items-center justify-center">
                 <Loader size='h-12 w-12'/>

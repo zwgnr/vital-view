@@ -17,7 +17,7 @@ export default function DatePicker(props: DatePickerProps) {
       <Menu as="div" className="relative">
         <Menu.Button
           type="button"
-          className="flex items-center rounded-md p-2 text-sm text-black font-bold  bg-slate-200 hover:bg-slate-300 dark:bg-slate-700 "
+          className="flex items-center rounded-md bg-slate-200 p-2 text-sm font-bold text-black  hover:bg-slate-300  dark:bg-slate-700 dark:hover:bg-slate-600 dark:text-white "
         >
           {rangeDisplayName}
           <Icon
@@ -38,7 +38,7 @@ export default function DatePicker(props: DatePickerProps) {
           leaveFrom="transform opacity-100 scale-100"
           leaveTo="transform opacity-0 scale-95"
         >
-          <Menu.Items className="bg- dark:text-whit absolute left-0 z-50 mt-3 w-36 origin-top-right overflow-hidden rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none bg-white dark:bg-slate-800">
+          <Menu.Items className="dark:text-whit absolute left-0 z-50 mt-3 w-36 origin-top-right overflow-hidden rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-slate-800">
             <div className="py-1 ">
               <Menu.Item>
                 {() => (
@@ -51,7 +51,7 @@ export default function DatePicker(props: DatePickerProps) {
                       "flex w-36",
                       rangeDisplayName === "Today"
                         ? "text-indigo-600"
-                        : "text-gray-700 hover:bg-slate-100 dark:text-white",
+                        : "text-gray-700 hover:bg-slate-100 dark:text-white dark:hover:bg-slate-700",
                       "block px-4 py-2 text-sm"
                     )}
                   >
@@ -70,7 +70,7 @@ export default function DatePicker(props: DatePickerProps) {
                       "flex w-36",
                       rangeDisplayName === "Last 7 Days"
                         ? " text-indigo-600"
-                        : "text-gray-700 hover:bg-slate-100 dark:text-white",
+                        : "text-gray-700 hover:bg-slate-100 dark:text-white dark:hover:bg-slate-700",
                       "block px-4 py-2 text-sm"
                     )}
                   >
@@ -89,7 +89,7 @@ export default function DatePicker(props: DatePickerProps) {
                       "flex w-36",
                       rangeDisplayName === "Last 30 Days"
                         ? "text-indigo-600"
-                        : "text-gray-700 hover:bg-slate-100 dark:text-white",
+                        : "text-gray-700 hover:bg-slate-100 dark:text-white dark:hover:bg-slate-700",
                       "block px-4 py-2 text-sm"
                     )}
                   >
@@ -108,7 +108,7 @@ export default function DatePicker(props: DatePickerProps) {
                       "flex w-36",
                       rangeDisplayName === "This Year"
                         ? "text-indigo-600"
-                        : "text-gray-700 hover:bg-slate-100 dark:text-white",
+                        : "text-gray-700 hover:bg-slate-100 dark:text-white dark:hover:bg-slate-700",
                       "block px-4 py-2 text-sm "
                     )}
                   >

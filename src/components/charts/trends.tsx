@@ -19,32 +19,26 @@ export const TrendChart = (props: TrendChartType) => {
       width="100%"
       height="100%"
       options={{
-        //fill: {
-        //  type: "gradient",
-        //  gradient: {
-        //    shade: "dark",
-        //    gradientToColors: ["#f5c1ff"],
-        //    shadeIntensity: 1,
-        //    type: "vertical",
-        //    opacityFrom: 1,
-        //    opacityTo: .5,
-        //    stops: [0, 100, 100, 100 ],
-        //  },
-        // },
+        fill: {
+          type: "gradient",
+          gradient: {
+            shade: "dark",
+            gradientToColors: ["#4f46e5"],
+            shadeIntensity: 1,
+            type: "vertical",
+            opacityFrom: 1,
+            opacityTo: 0.5,
+            stops: [0, 100, 100, 100],
+          },
+        },
         plotOptions: {
           bar: {
-            columnWidth: dateRange === 'last7Days' ? '15%' : '33%',
+            columnWidth: dateRange === "last7Days" ? "15%" : "33%",
           },
         },
         dataLabels: {
           enabled: enabled ? true : false,
         },
-        //stroke: {
-        //  curve: "smooth",
-        //  dashArray: [0, 6],
-        //  width: [4, 2],
-        //  colors:["#0f172a"]
-        // },
         markers: {
           size: [0, 0],
         },

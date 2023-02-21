@@ -34,10 +34,10 @@ export const Heatmap = (props: HeatmapChartType) => {
           tickAmount: dateRange === "thisYear" ? 12 : 7,
           tooltip: { enabled: true },
         },
-        stroke: { colors: ["white"], width: 6 },
+        stroke: { colors: [theme === 'light' ? 'white' : '#1e293b'], width: 6 },
         tooltip: {
           fillSeriesColor: true,
-          theme: "light",
+          theme: "dark",
           x: {
             formatter(val, opts) {
               if (dateRange === "today") {
