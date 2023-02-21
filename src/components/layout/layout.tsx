@@ -1,13 +1,13 @@
-import { ReactNode, useState } from "react";
-import { SideBar } from "./sidebar";
+import { ReactNode, useState, Dispatch, SetStateAction } from "react";
 import Head from "next/head";
+import { useSession } from "next-auth/react";
+
+import { SideBar } from "./sidebar";
 import { MobileMenuDialog } from "./mobileMenuDialog";
 import { TopBar } from "./topBar";
-import { Fragment, Dispatch, SetStateAction } from "react";
-import { useSession } from "next-auth/react";
 import { Loader } from "../loader";
 import SignIn from "../../pages/sign-in";
-import { useRouter } from "next/router";
+
 
 export type SideBarOpenProps = {
   sidebarOpen: boolean;

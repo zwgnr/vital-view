@@ -1,7 +1,8 @@
 import { useTheme } from "next-themes";
-import { Icon } from "@iconify/react";
-import { type SideBarOpenProps } from "./layout";
 import { useRouter } from "next/router";
+import { Icon } from "@iconify/react";
+
+import { type SideBarOpenProps } from "./layout";
 
 type SetSideBarOpenPropsOnlyProp = Omit<SideBarOpenProps, "sidebarOpen">;
 

@@ -1,8 +1,6 @@
-import { Icon } from "@iconify/react";
-import clsx from "clsx";
 import { useTheme } from "next-themes";
 import dynamic from "next/dynamic";
-import { useState } from "react";
+
 import { useActivity } from "../../hooks/useActivity";
 import { useDailySleep } from "../../hooks/useDailySleep";
 import { useReadiness } from "../../hooks/useReadiness";
@@ -16,12 +14,10 @@ export const Trends = () => {
   const { readiness, readinessLoading, readinessError } =
     useReadiness("last7Days");
   const { activity, activityLoading, activityError } = useActivity("last7Days");
-  const [sleepTrend, setSleepTrend] = useState(
-    dailySleep?.rangeDataPoints.score
-  );
+
   const { theme, setTheme } = useTheme();
   return (
-    <div className="flex min-h-0 w-full flex-grow h-1/2 sm:h-full flex-col rounded-xl bg-white  dark:bg-slate-800 ">
+    <div className="flex h-1/2 min-h-0 w-full flex-grow flex-col rounded-xl bg-white dark:bg-slate-800  sm:h-full ">
       <>
         <div className="flex items-center justify-around px-8"></div>
         <div className="h-full  min-h-0  w-full min-w-0 overflow-hidden rounded-xl p-4">
@@ -29,8 +25,8 @@ export const Trends = () => {
           <div className="h-full">
             <div className="bg-slate-00 h-full">
               {dailySleepLoading ? (
-                <div className="flex items-center justify-center h-full">
-                  <Loader size='h-24 w-24'/>
+                <div className="flex h-full items-center justify-center">
+                  <Loader size="h-24 w-24" />
                 </div>
               ) : (
                 <ApexChart

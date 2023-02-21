@@ -1,11 +1,9 @@
 import { Icon } from "@iconify/react";
-import clsx from "clsx";
-import { Dispatch, SetStateAction } from "react";
-
-import { type Stats } from "../types/sharedTypes";
-
 import dynamic from "next/dynamic";
 import { useTheme } from "next-themes";
+import clsx from "clsx";
+
+import { type Stats } from "../types/sharedTypes";
 import { Loader } from "./loader";
 
 const ApexChart = dynamic(() => import("react-apexcharts"), { ssr: false });

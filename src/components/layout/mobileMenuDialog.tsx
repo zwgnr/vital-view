@@ -1,14 +1,13 @@
 import { Fragment } from "react";
-import { Dialog, Transition, Menu } from "@headlessui/react";
-import { navigation } from "./navigation";
 import { clsx } from "clsx";
-
-import { type SideBarOpenProps } from "./layout";
+import { Dialog, Transition } from "@headlessui/react";
 import { Icon } from "@iconify/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { signOut, useSession } from "next-auth/react";
 
+import { navigation } from "./navigation";
+import { type SideBarOpenProps } from "./layout";
 import { Email } from "../email";
 
 const package_json = require("../../../package.json");

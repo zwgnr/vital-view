@@ -1,5 +1,6 @@
 import { useTheme } from "next-themes";
 import dynamic from "next/dynamic";
+
 import { type HeatMapData } from "../../types/sharedTypes";
 
 const ApexChart = dynamic(() => import("react-apexcharts"), { ssr: false });
