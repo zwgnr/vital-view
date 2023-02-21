@@ -13,12 +13,12 @@ export const SideBar = () => {
   const { data: session, status } = useSession();
   const router = useRouter();
   return (
-    <div className=" hidden w-56 flex-col bg-white pt-5 dark:bg-slate-900 md:flex">
+    <div className=" hidden w-56 flex-col bg-white pt-5 dark:bg-slate-800 md:flex">
       <div className="flex items-center justify-center px-4">
         <Icon
           width={36}
           height={36}
-          className="flex-shrink-0 text-slate-800"
+          className="flex-shrink-0 text-slate-800 dark:text-white"
           icon="ion:cube-outline"
         />
         <h1 className=" ml-3 text-xl  dark:text-white">Ring Lab</h1>
@@ -32,8 +32,8 @@ export const SideBar = () => {
                 href={item.href}
                 className={clsx(
                   router.pathname == item.href
-                    ? " font-semibold text-black"
-                    : "text-gray-600 hover:bg-slate-100",
+                    ? " font-semibold text-black dark:text-white"
+                    : "text-gray-600 hover:bg-slate-700 dark:text-gray-400",
                   "group flex items-center rounded-md px-2 py-2 text-sm"
                 )}
               >
@@ -74,13 +74,13 @@ export const SideBar = () => {
                   height={24}
                   className="mr-3 h-6 w-6 flex-shrink-0 text-gray-600"
                 />
-                <p className="dark:text-white">
+                <p className="dark:text-gray-400">
                   <Email />
                 </p>
               </div>
 
               <button
-                className="group flex w-full items-center rounded-md px-2 py-2 text-sm font-medium text-gray-600 hover:bg-slate-100"
+                className="group flex w-full items-center rounded-md px-2 py-2 text-sm font-medium text-gray-600 hover:bg-slate-100 dark:text-gray-400 dark:hover:bg-slate-700"
                 onClick={(e) => {
                   e.preventDefault();
                   signOut();
@@ -92,7 +92,7 @@ export const SideBar = () => {
                   height={24}
                   className="mr-3 h-6 w-6 flex-shrink-0 text-gray-600"
                 />
-                <p className="dark:text-white">Logout </p>
+                <p className="dark:text-gray-400">Logout </p>
               </button>
             </div>
           ) : null}
