@@ -142,7 +142,7 @@ export const Readiness = () => {
   ];
   if (status === "authenticated") {
     return (
-      <div className="flex flex-grow flex-col gap-6 overflow-y-auto bg-slate-100 p-4 dark:bg-slate-900 sm:px-6 sm:py-8">
+      <div className="flex flex-grow flex-col gap-6 overflow-y-auto bg-slate-100 p-4 dark:bg-slate-900 sm:p-6 sm:pt-2">
         <>
           <div className="flex w-full items-center justify-between">
             <DatePicker dateRange={dateRange} setDateRange={setDateRange} />
