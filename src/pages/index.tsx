@@ -12,7 +12,7 @@ export const Home = () => {
   }
   if (status === "authenticated") {
     return (
-      <div className="flex flex-grow h-screen flex-col gap-6 overflow-y-auto  bg-slate-100 p-8 dark:bg-slate-800 sm:p-6">
+      <div className="flex flex-grow h-screen flex-col gap-6 overflow-y-auto  bg-slate-100 p-8 dark:bg-slate-900 sm:p-6">
         <h1 className="text-3xl">{greeter()}</h1>
         <TodaysScores />
         <Trends />
