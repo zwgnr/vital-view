@@ -258,7 +258,7 @@ export const Readiness = () => {
               />
             )}
           </div>
-          <div className="grid h-2/5 min-h-0 gap-4 ">
+          <div className="grid h-2/5 min-h-0 gap-4">
             <div className=" col-span-3 h-72 min-h-0 rounded-xl  bg-white p-4 pb-12 dark:bg-slate-800 lg:h-full xl:col-span-3 ">
               <p className="text-md font-bold">Score Board</p>
               {readinessLoading ? (

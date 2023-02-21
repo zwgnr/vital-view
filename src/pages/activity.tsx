@@ -252,7 +252,7 @@ export const Activity = () => {
               />
             )}
           </div>
-          <div className="grid h-2/5 min-h-0 grid-cols-3 gap-4">
+          <div className="grid h-2/5 min-h-0 grid-cols-3 gap-6">
             <div className="col-span-3 h-72 min-h-0 rounded-xl bg-white p-4 pb-12 dark:bg-slate-800 lg:col-span-2 lg:h-full">
               <p className="text-md font-bold">Score Board</p>
               {activityLoading ? (
