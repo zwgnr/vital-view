@@ -246,7 +246,7 @@ export const Readiness = () => {
             </div>
             {readinessLoading ? (
               <div className="flex items-center justify-center">
-                <Loader />
+                <Loader size='h-16 w-16'/>
               </div>
             ) : (
               <TrendChart
@@ -263,7 +263,7 @@ export const Readiness = () => {
               <p className="text-md font-bold">Score Board</p>
               {readinessLoading ? (
                 <div className="flex h-full items-center justify-center">
-                  <Loader />
+                  <Loader size='h-16 w-16'/>
                 </div>
               ) : (
                 <Heatmap

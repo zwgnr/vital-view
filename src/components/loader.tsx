@@ -1,9 +1,15 @@
-export const Loader = () => {
+import clsx from "clsx";
+
+export const Loader = (props: any) => {
+  const { size } = props;
   return (
     <div role="status">
       <svg
         aria-hidden="true"
-        className="mr-2 h-32 w-32 animate-spin fill-indigo-600 text-gray-200 dark:text-gray-600"
+        className={clsx(
+          size,
+          "mr-2 animate-spin fill-indigo-600 text-gray-200 dark:text-gray-600"
+        )}
         viewBox="0 0 100 101"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"

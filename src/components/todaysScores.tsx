@@ -20,7 +20,7 @@ export const TodaysScores = () => {
         <div className="flex h-full w-full justify-center overflow-hidden rounded-xl md:w-1/3 ">
           <div className="flex h-full min-h-0 w-full flex-col items-center justify-center rounded-xl ">
             {dailySleepLoading ? (
-              <Loader />
+              <Loader size='h-12 w-12'/>
             ) : (
               <RadialScoreChart label={["Sleep"]} data={todaysSleep} />
             )}
@@ -29,7 +29,7 @@ export const TodaysScores = () => {
         <div className="flex h-full w-full justify-center overflow-hidden  rounded-xl md:w-1/3 ">
           <div className="flex h-full min-h-0 w-full flex-col items-center justify-center rounded-xl ">
             {readinessLoading ? (
-              <Loader />
+              <Loader size='h-12 w-12'/>
             ) : (
               <RadialScoreChart label={["Readiness"]} data={todaysReadiness} />
             )}
@@ -38,7 +38,7 @@ export const TodaysScores = () => {
         <div className="flex h-full w-full justify-center overflow-hidden  rounded-xl md:w-1/3 ">
           <div className="flex h-full min-h-0 w-full flex-col items-center justify-center rounded-xl ">
             {activityLoading ? (
-              <Loader />
+              <Loader size='h-12 w-12'/>
             ) : (
               <RadialScoreChart label={["Activity"]} data={todaysActivity} />
             )}

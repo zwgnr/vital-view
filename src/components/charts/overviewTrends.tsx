@@ -30,7 +30,7 @@ export const Trends = () => {
             <div className="bg-slate-00 h-full">
               {dailySleepLoading ? (
                 <div className="flex items-center justify-center h-full">
-                  <Loader />
+                  <Loader size='h-24 w-24'/>
                 </div>
               ) : (
                 <ApexChart

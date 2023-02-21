@@ -254,7 +254,7 @@ export const Sleep = () => {
 
             {sleepLoading ? (
               <div className="flex items-center justify-center">
-                <Loader />
+                <Loader size='h-16 w-16'/>
               </div>
             ) : (
               <TrendChart
@@ -272,7 +272,7 @@ export const Sleep = () => {
               <p className="text-md font-bold">Score Board</p>
               {dailySleepLoading ? (
                 <div className="flex h-full items-center justify-center">
-                  <Loader />
+                  <Loader size='h-16 w-16'/>
                 </div>
               ) : (
                 <Heatmap
@@ -287,7 +287,7 @@ export const Sleep = () => {
               <h1 className="font-semibold">Sleep Stages</h1>
               {sleepLoading ? (
                 <div className="flex h-full items-center justify-center">
-                  <Loader />
+                  <Loader size='h-16 w-16'/>
                 </div>
               ) : (
                 <BarChart enabled={enabled} data={barChartData} />

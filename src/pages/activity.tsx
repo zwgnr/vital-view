@@ -240,7 +240,7 @@ export const Activity = () => {
             </div>
             {activityLoading ? (
               <div className="flex items-center justify-center">
-                <Loader />
+                <Loader size='h-16 w-16'/>
               </div>
             ) : (
               <TrendChart
@@ -257,7 +257,7 @@ export const Activity = () => {
               <p className="text-md font-bold">Score Board</p>
               {activityLoading ? (
                 <div className="flex h-full items-center justify-center">
-                  <Loader />
+                  <Loader size='h-16 w-16'/>
                 </div>
               ) : (
                 <Heatmap
@@ -272,7 +272,7 @@ export const Activity = () => {
               <h1 className="text-md font-bold">Movement</h1>
               {activityLoading ? (
                 <div className="flex h-full items-center justify-center">
-                  <Loader />
+                  <Loader size='h-16 w-16'/>
                 </div>
               ) : (
                 <BarChart enabled={enabled} data={barChartData} />

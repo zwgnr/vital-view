@@ -24,8 +24,8 @@ export const StatCards = (props: StatCardProps) => {
         <div className="w-full lg:w-1/3" key={item.id}>
           <div className=" flex h-full flex-col flex-wrap rounded-xl bg-white p-4 dark:bg-slate-700  hover:dark:bg-slate-500">
             {loading ? (
-              <div className="flex items-center justify-center">
-                <Loader />
+              <div className="flex h-full items-center justify-center">
+                <Loader size='h-12 w-12'/>
               </div>
             ) : (
               <div className="flex h-full flex-col justify-between  pb-8 ">
