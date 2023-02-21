@@ -29,7 +29,9 @@ export const Trends = () => {
           <div className="h-full">
             <div className="bg-slate-00 h-full">
               {dailySleepLoading ? (
-                <Loader />
+                <div className="flex items-center justify-center h-full">
+                  <Loader />
+                </div>
               ) : (
                 <ApexChart
                   width={"100%"}
@@ -41,7 +43,7 @@ export const Trends = () => {
                     xaxis: {
                       categories: dailySleep?.timePeriod,
                     },
-                    colors:['#7dd3fc','#d8b4fe','#5eead4'],
+                    colors: ["#7dd3fc", "#d8b4fe", "#5eead4"],
                     chart: {
                       id: "trends",
                       sparkline: {
