@@ -56,6 +56,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
           percentChange: {
             score: getDailyChange(data, "score"),
           },
+          timePeriod: [data[1].day],
         });
       case "thisYear":
         return res.status(200).json({

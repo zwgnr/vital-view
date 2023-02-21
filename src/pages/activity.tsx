@@ -29,6 +29,7 @@ export const Activity = () => {
   const [activeTrendName, setActiveTrendName] =
     useState<keyof TrendData>("Score");
   const [trendDisplayName, setTrendDisplayName] = useState("Activity Score");
+  const loading = activityLoading;
 
   const getActivityChangeType = (param: string) => {
     if (activity?.percentChange[param] === 0) {
@@ -143,11 +144,7 @@ export const Activity = () => {
           </div>
           {/*StatCards*/}
           <div className="flex h-1/5 w-full flex-col gap-4 lg:flex-row">
-            <StatCards
-              data={stats}
-              activeTrendName={activeTrendName}
-              setActiveTrendName={setActiveTrendName}
-            />
+            <StatCards data={stats} loading={loading} />
           </div>
           {/*TrendsChart*/}
           <div className="flex-grow rounded-xl bg-white p-4 dark:bg-slate-700 ">
@@ -256,10 +253,10 @@ export const Activity = () => {
             )}
           </div>
           <div className="grid h-2/5 min-h-0 grid-cols-3 gap-4">
-            <div className="col-span-3 h-72 min-h-0 rounded-xl bg-white p-4 pb-12 dark:bg-slate-700 lg:h-full lg:col-span-2">
+            <div className="col-span-3 h-72 min-h-0 rounded-xl bg-white p-4 pb-12 dark:bg-slate-700 lg:col-span-2 lg:h-full">
               <p className="text-md font-bold">Score Board</p>
               {activityLoading ? (
-                <div className="flex items-center justify-center">
+                <div className="flex h-full items-center justify-center">
                   <Loader />
                 </div>
               ) : (
@@ -274,7 +271,7 @@ export const Activity = () => {
             <div className="col-span-3 rounded-xl bg-white p-6 dark:bg-slate-700 lg:col-span-1">
               <h1 className="text-md font-bold">Movement</h1>
               {activityLoading ? (
-                <div className="flex items-center justify-center">
+                <div className="flex h-full items-center justify-center">
                   <Loader />
                 </div>
               ) : (

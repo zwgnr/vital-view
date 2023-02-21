@@ -26,7 +26,8 @@ export const Sleep = () => {
     useState<keyof TrendData>("Score");
   const [trendDisplayName, setTrendDisplayName] = useState("Sleep Score");
 
-  const loading = dailySleepLoading && sleepLoading;
+  const loading = sleepLoading;
+
   if (status === "unauthenticated") {
     useRouter().push("/sign-in");
   }
@@ -156,12 +157,7 @@ export const Sleep = () => {
           </div>
           {/*StatCards*/}
           <div className="flex h-1/5 w-full flex-col gap-4 lg:flex-row">
-            <StatCards
-              data={stats}
-              activeTrendName={activeTrendName}
-              setActiveTrendName={setActiveTrendName}
-              loading={loading}
-            />
+            <StatCards data={stats} loading={loading} />
           </div>
           {/*TrendsChart   */}
           <div className="flex-grow rounded-xl bg-white p-4 dark:bg-slate-700 ">
@@ -274,15 +270,15 @@ export const Sleep = () => {
           <div className="grid h-2/5 min-h-0 grid-cols-3 gap-4 ">
             <div className="col-span-3 h-72 min-h-0 rounded-xl  bg-white p-4 pb-12 dark:bg-slate-700 lg:col-span-2 lg:h-full">
               <p className="text-md font-bold">Score Board</p>
-              {sleepLoading ? (
-                <div className="flex items-center justify-center">
+              {dailySleepLoading ? (
+                <div className="flex h-full items-center justify-center">
                   <Loader />
                 </div>
               ) : (
                 <Heatmap
                   enabled={enabled}
                   dateRange={dateRange}
-                  period={sleep?.timePeriod}
+                  period={dailySleep?.timePeriod}
                   data={heatmapData}
                 />
               )}
@@ -290,7 +286,7 @@ export const Sleep = () => {
             <div className=" col-span-3 rounded-xl bg-white p-4 dark:bg-slate-700 lg:col-span-1">
               <h1 className="font-semibold">Sleep Stages</h1>
               {sleepLoading ? (
-                <div className="flex items-center justify-center">
+                <div className="flex h-full items-center justify-center">
                   <Loader />
                 </div>
               ) : (

@@ -27,6 +27,8 @@ export const Readiness = () => {
 
   const [trendDisplayName, setTrendDisplayName] = useState("Readiness Score");
 
+  const loading = sleepLoading;
+
   const getReadinessChangeType = () => {
     if (readiness?.percentChange.score === 0) {
       return "noChange";
@@ -148,11 +150,7 @@ export const Readiness = () => {
           </div>
           {/*StatCards*/}
           <div className="flex h-1/5 w-full flex-col gap-4 lg:flex-row">
-            <StatCards
-              data={stats}
-              activeTrendName={activeTrendName}
-              setActiveTrendName={setActiveTrendName}
-            />
+            <StatCards data={stats} loading={loading}/>
           </div>
           {/*TrendsChart*/}
           <div className="flex-grow rounded-xl bg-white p-4 dark:bg-slate-700 ">
@@ -246,7 +244,7 @@ export const Readiness = () => {
                 </Transition>
               </Menu>
             </div>
-            {sleepLoading && readinessLoading ? (
+            {readinessLoading ? (
               <div className="flex items-center justify-center">
                 <Loader />
               </div>
@@ -256,7 +254,7 @@ export const Readiness = () => {
                 dateRange={dateRange}
                 name={activeTrendName}
                 data={trendData[activeTrendName]}
-                period={sleep?.timePeriod}
+                period={readiness?.timePeriod}
               />
             )}
           </div>
@@ -264,14 +262,14 @@ export const Readiness = () => {
             <div className=" col-span-3 h-72 min-h-0 rounded-xl  bg-white p-4 pb-12 dark:bg-slate-700 lg:h-full xl:col-span-3 ">
               <p className="text-md font-bold">Score Board</p>
               {readinessLoading ? (
-                <div className="flex items-center justify-center">
+                <div className="flex h-full items-center justify-center">
                   <Loader />
                 </div>
               ) : (
                 <Heatmap
                   enabled={enabled}
                   dateRange={dateRange}
-                  period={sleep?.timePeriod}
+                  period={readiness?.timePeriod}
                   data={heatmapData}
                 />
               )}
