@@ -34,7 +34,7 @@ export const TopBar = (props: SetSideBarOpenPropsOnlyProp) => {
           icon="material-symbols:menu-rounded"
           width={36}
           height={36}
-          color="white"
+          color="black"
           aria-hidden="true"
         />
       </button>

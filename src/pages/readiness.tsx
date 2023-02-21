@@ -260,8 +260,8 @@ export const Readiness = () => {
               />
             )}
           </div>
-          <div className="grid h-72 min-h-0 gap-4 ">
-            <div className=" col-span-3 min-h-0  rounded-xl bg-white p-4 pb-12 dark:bg-slate-700 xl:col-span-3 ">
+          <div className="grid h-2/5 min-h-0 gap-4 ">
+            <div className=" col-span-3 h-72 min-h-0 rounded-xl  bg-white p-4 pb-12 dark:bg-slate-700 lg:h-full xl:col-span-3 ">
               <p className="text-md font-bold">Score Board</p>
               {readinessLoading ? (
                 <div className="flex items-center justify-center">

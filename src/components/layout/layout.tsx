@@ -44,7 +44,7 @@ export default function Layout(props: LayoutProps) {
         <div
           className={
             status === "authenticated"
-              ? "flex w-full overflow-hidden md:h-screen"
+              ? "flex w-full overflow-hidden lg:h-screen"
               : "flex h-screen w-full overflow-hidden"
           }
         >
