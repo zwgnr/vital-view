@@ -58,6 +58,9 @@ export const Heatmap = (props: HeatmapChartType) => {
             },
           },
         },
+        legend: {
+          position: 'right',
+        },
         plotOptions: {
           heatmap: {
             shadeIntensity: 0.5,

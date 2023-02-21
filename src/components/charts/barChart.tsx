@@ -30,7 +30,9 @@ export const BarChart = (props: BarChart) => {
             horizontal: true,
           },
         },
-
+        legend: {
+          position: 'right',
+        },
         chart: {
           id: "main-chart",
           toolbar: { show: false },

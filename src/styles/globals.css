@@ -9,3 +9,7 @@
     @apply min-h-screen;
   }
 }
+
+.apexcharts-legend {
+  justify-content: center !important;
+}
