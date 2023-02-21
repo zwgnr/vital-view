@@ -11,6 +11,8 @@ import { signOut, useSession } from "next-auth/react";
 
 import { Email } from "../email";
 
+const package_json = require("../../../package.json");
+
 export const MobileMenuDialog = (props: SideBarOpenProps) => {
   const { data: session, status } = useSession();
   const { sidebarOpen, setSidebarOpen } = props;
@@ -41,7 +43,7 @@ export const MobileMenuDialog = (props: SideBarOpenProps) => {
           leaveFrom="translate-x-0"
           leaveTo="-translate-x-full"
         >
-          <div className="relative flex w-full max-w-xs flex-1 flex-col bg-slate-900 pt-5 pb-4">
+          <div className="relative flex w-full max-w-xs flex-1 flex-col bg-white pt-5 pb-4">
             <div className="absolute top-0 right-0 -mr-12 pt-2">
               <button
                 type="button"
@@ -61,57 +63,51 @@ export const MobileMenuDialog = (props: SideBarOpenProps) => {
               <Icon
                 width={36}
                 height={36}
-                className="flex-shrink-0 text-indigo-300"
+                className="flex-shrink-0 text-slate-800"
                 icon="ion:cube-outline"
               />
-              <h1 className=" ml-3 text-xl text-white">Ring Lab</h1>
+              <h1 className=" ml-3 text-xl text-slate-800">Ring Lab</h1>
             </div>
             <div className="mt-5 flex flex-1 flex-col">
               <nav className="flex-1 space-y-1 px-2 pb-4">
-                {status !== "authenticated" ? (
-                  <Link
-                    href="/"
-                    className={clsx(
-                      "group flex items-center rounded-md bg-indigo-800 px-2 py-2 text-sm font-medium text-white"
-                    )}
-                  >
-                    <Icon
-                      icon="ph:house"
-                      width={24}
-                      height={24}
-                      className="mr-3 h-6 w-6 flex-shrink-0 text-indigo-300"
-                    />
-                    Overview
-                  </Link>
-                ) : (
-                  <>
-                    {" "}
-                    {navigation.map((item) => (
-                      <Link
-                        key={item.name}
-                        href={item.href}
+                <>
+                  {navigation.map((item) => (
+                    <Link
+                      key={item.name}
+                      href={item.href}
+                      className={clsx(
+                        router.pathname == item.href
+                          ? "font-semibold text-black"
+                          : "text-gray-600 hover:bg-slate-100",
+                        "group flex items-center rounded-md px-2 py-2 text-sm"
+                      )}
+                    >
+                      <Icon
+                        icon={item.icon}
+                        width={24}
+                        height={24}
                         className={clsx(
-                          router.pathname == item.href
-                            ? "bg-indigo-800 text-white"
-                            : "text-indigo-100 hover:bg-indigo-600",
-                          "group flex items-center rounded-md px-2 py-2 text-sm font-medium"
+                          router.pathname == item.href ? "text-indigo-500" : "",
+                          "mr-3 h-6 w-6 flex-shrink-0"
                         )}
-                      >
-                        <Icon
-                          icon={item.icon}
-                          width={24}
-                          height={24}
-                          className="mr-3 h-6 w-6 flex-shrink-0 text-indigo-300"
-                        />
-                        {item.name}
-                      </Link>
-                    ))}
-                  </>
-                )}
+                      />
+                      {item.name}
+                    </Link>
+                  ))}
+                </>
               </nav>
               <div className="flex flex-row items-center justify-center gap-2 p-2">
-                <Icon icon="mdi:github" width={24} height={24} />
-                <p className="text-xs text-white">v.0.0.1</p>
+                <a href="https://github.com/zwagnr/ring-lab">
+                  <Icon
+                    icon="mdi:github"
+                    width={24}
+                    height={24}
+                    className="hover:text-indigo-600"
+                  />
+                </a>
+                <p className="text-xs dark:text-white ">
+                  {`v${package_json.version}`}
+                </p>
               </div>
 
               <div className="flex flex-row">
@@ -122,9 +118,9 @@ export const MobileMenuDialog = (props: SideBarOpenProps) => {
                         icon="clarity:avatar-line"
                         width={24}
                         height={24}
-                        className="mr-3 h-6 w-6 flex-shrink-0 text-indigo-300"
+                        className="mr-3 h-6 w-6 flex-shrink-0 text-gray-600"
                       />
-                      <p className="text-white">
+                      <p className="text-gray-600">
                         <Email />
                       </p>
                     </div>
@@ -140,9 +136,9 @@ export const MobileMenuDialog = (props: SideBarOpenProps) => {
                         icon="material-symbols:logout"
                         width={24}
                         height={24}
-                        className="mr-3 h-6 w-6 flex-shrink-0 text-indigo-300"
+                        className="mr-3 h-6 w-6 flex-shrink-0 text-gray-600"
                       />
-                      <p className="text-white">Logout </p>
+                      <p className="text-gray-600">Logout </p>
                     </button>
                   </div>
                 ) : null}
