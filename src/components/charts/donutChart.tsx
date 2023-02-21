@@ -28,6 +28,7 @@ export const DonutChart = (props: DonutChart) => {
           position: "right",
         },
         labels: [...labels],
+        stroke: {colors:[theme === "dark" ? "#1e293b" : "white",]},
         chart: {
           id: "main-chart",
           toolbar: { show: false },
