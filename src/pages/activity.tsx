@@ -90,27 +90,27 @@ export const Activity = () => {
 
   const heatmapData: HeatMapData[] = [
     {
-      name: "trainingVolume",
+      name: "Training Volume",
       data: activity?.rangeDataPoints.trainingVolume,
     },
     {
-      name: "trainingFrequency",
+      name: "Training Frequency",
       data: activity?.rangeDataPoints.trainingFrequency,
     },
     {
-      name: "stayActive",
+      name: "Stay Active",
       data: activity?.rangeDataPoints.stayActive,
     },
     {
-      name: "recoveryTime",
+      name: "Recovery Time",
       data: activity?.rangeDataPoints.recoveryTime,
     },
     {
-      name: "moveEveryHour",
+      name: "Move Every Hour",
       data: activity?.rangeDataPoints.moveEveryHour,
     },
     {
-      name: "meetDailyTargets",
+      name: "Meet Daily Targets",
       data: activity?.rangeDataPoints.meetDailyTargets,
     },
     {

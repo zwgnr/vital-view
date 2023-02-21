@@ -104,27 +104,27 @@ export const Readiness = () => {
 
   const heatmapData: HeatMapData[] = [
     {
-      name: "sleepBalance",
+      name: "Sleep Balance",
       data: readiness?.rangeDataPoints.sleepBalance,
     },
     {
-      name: "restingHeartRate",
+      name: "RHR",
       data: readiness?.rangeDataPoints.restingHeartRate,
     },
     {
-      name: "recoveryIndex",
+      name: "Recovery Index",
       data: readiness?.rangeDataPoints.recoveryIndex,
     },
     {
-      name: "previousNight",
+      name: "Prev. Night",
       data: readiness?.rangeDataPoints.previousNight,
     },
     {
-      name: "previousDayActivity",
+      name: "Prev. Day Activity",
       data: readiness?.rangeDataPoints.previousDayActivity,
     },
     {
-      name: "hrvBalance",
+      name: "HRV Balance",
       data: readiness?.rangeDataPoints.hrvBalance,
     },
     {
