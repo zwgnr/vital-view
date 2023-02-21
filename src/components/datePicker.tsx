@@ -51,7 +51,7 @@ export default function DatePicker(props: DatePickerProps) {
                       "flex w-36",
                       rangeDisplayName === "Today"
                         ? "text-indigo-600"
-                        : "text-gray-700 hover:bg-slate-200 dark:text-white",
+                        : "text-gray-700 hover:bg-slate-100 dark:text-white",
                       "block px-4 py-2 text-sm"
                     )}
                   >
@@ -70,7 +70,7 @@ export default function DatePicker(props: DatePickerProps) {
                       "flex w-36",
                       rangeDisplayName === "Last 7 Days"
                         ? " text-indigo-600"
-                        : "text-gray-700 hover:bg-slate-200 dark:text-white",
+                        : "text-gray-700 hover:bg-slate-100 dark:text-white",
                       "block px-4 py-2 text-sm"
                     )}
                   >
@@ -89,7 +89,7 @@ export default function DatePicker(props: DatePickerProps) {
                       "flex w-36",
                       rangeDisplayName === "Last 30 Days"
                         ? "text-indigo-600"
-                        : "text-gray-700 hover:bg-slate-200 dark:text-white",
+                        : "text-gray-700 hover:bg-slate-100 dark:text-white",
                       "block px-4 py-2 text-sm"
                     )}
                   >
@@ -108,7 +108,7 @@ export default function DatePicker(props: DatePickerProps) {
                       "flex w-36",
                       rangeDisplayName === "This Year"
                         ? "text-indigo-600"
-                        : "text-gray-700 hover:bg-slate-200 dark:text-white",
+                        : "text-gray-700 hover:bg-slate-100 dark:text-white",
                       "block px-4 py-2 text-sm "
                     )}
                   >

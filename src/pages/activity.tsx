@@ -190,7 +190,7 @@ export const Activity = () => {
                               "flex w-36",
                               trendDisplayName === "Activity Score"
                                 ? "text-indigo-600"
-                                : "text-gray-700 hover:bg-slate-200 dark:text-white",
+                                : "text-gray-700 hover:bg-slate-100 dark:text-white",
                               "block px-4 py-2 text-sm "
                             )}
                           >
@@ -209,7 +209,7 @@ export const Activity = () => {
                               "flex w-36",
                               trendDisplayName === "Active Burn"
                                 ? "text-indigo-600"
-                                : "text-gray-700 hover:bg-slate-200 dark:text-white",
+                                : "text-gray-700 hover:bg-slate-100 dark:text-white",
                               "block px-4 py-2 text-sm"
                             )}
                           >
@@ -228,7 +228,7 @@ export const Activity = () => {
                               "flex w-36",
                               trendDisplayName === "Steps"
                                 ? "text-indigo-600"
-                                : "text-gray-700 hover:bg-slate-200 dark:text-white",
+                                : "text-gray-700 hover:bg-slate-100 dark:text-white",
                               "block px-4 py-2 text-sm"
                             )}
                           >

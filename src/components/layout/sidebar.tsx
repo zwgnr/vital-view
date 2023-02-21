@@ -33,7 +33,7 @@ export const SideBar = () => {
                 className={clsx(
                   router.pathname == item.href
                     ? " font-semibold text-black"
-                    : "text-gray-400 hover:bg-slate-200",
+                    : "text-gray-600 hover:bg-slate-100",
                   "group flex items-center rounded-md px-2 py-2 text-sm"
                 )}
               >
@@ -67,12 +67,12 @@ export const SideBar = () => {
         <div className="flex flex-row">
           {status === "authenticated" ? (
             <div className="border-t border-gray-300 p-2">
-              <div className="group flex items-center rounded-md px-2 py-2 text-sm font-medium text-gray-400">
+              <div className="group flex items-center rounded-md px-2 py-2 text-sm font-medium text-gray-600">
                 <Icon
                   icon="clarity:avatar-line"
                   width={24}
                   height={24}
-                  className="mr-3 h-6 w-6 flex-shrink-0 text-gray-400"
+                  className="mr-3 h-6 w-6 flex-shrink-0 text-gray-600"
                 />
                 <p className="dark:text-white">
                   <Email />
@@ -80,7 +80,7 @@ export const SideBar = () => {
               </div>
 
               <button
-                className="group flex w-full items-center rounded-md px-2 py-2 text-sm font-medium text-gray-400 hover:bg-slate-200"
+                className="group flex w-full items-center rounded-md px-2 py-2 text-sm font-medium text-gray-600 hover:bg-slate-100"
                 onClick={(e) => {
                   e.preventDefault();
                   signOut();
@@ -90,7 +90,7 @@ export const SideBar = () => {
                   icon="material-symbols:logout"
                   width={24}
                   height={24}
-                  className="mr-3 h-6 w-6 flex-shrink-0 text-gray-400"
+                  className="mr-3 h-6 w-6 flex-shrink-0 text-gray-600"
                 />
                 <p className="dark:text-white">Logout </p>
               </button>

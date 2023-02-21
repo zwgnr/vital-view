@@ -205,7 +205,7 @@ export const Sleep = () => {
                               "flex w-36",
                               trendDisplayName === "Sleep Score"
                                 ? "text-indigo-600"
-                                : "text-gray-700 hover:bg-slate-200 dark:text-white",
+                                : "text-gray-700 hover:bg-slate-100 dark:text-white",
                               "block px-4 py-2 text-sm "
                             )}
                           >
@@ -224,7 +224,7 @@ export const Sleep = () => {
                               "flex w-36",
                               trendDisplayName === "Efficiency"
                                 ? "text-indigo-600"
-                                : "text-gray-700 hover:bg-slate-200 dark:text-white",
+                                : "text-gray-700 hover:bg-slate-100 dark:text-white",
                               "block px-4 py-2 text-sm"
                             )}
                           >
@@ -243,7 +243,7 @@ export const Sleep = () => {
                               "flex w-36",
                               trendDisplayName === "Duration"
                                 ? "text-indigo-600"
-                                : "text-gray-700 hover:bg-slate-200 dark:text-white",
+                                : "text-gray-700 hover:bg-slate-100 dark:text-white",
                               "block px-4 py-2 text-sm"
                             )}
                           >

@@ -193,9 +193,9 @@ export const Readiness = () => {
                             }}
                             className={clsx(
                               "flex w-36",
-                              trendDisplayName === "Sleep Score"
+                              trendDisplayName === "Readiness Score"
                                 ? "text-indigo-600"
-                                : "text-gray-700 hover:bg-slate-200 dark:text-white",
+                                : "text-gray-700 hover:bg-slate-100 dark:text-white",
                               "block px-4 py-2 text-sm "
                             )}
                           >
@@ -214,7 +214,7 @@ export const Readiness = () => {
                               "flex w-36",
                               trendDisplayName === "RHR"
                                 ? "text-indigo-600"
-                                : "text-gray-700 hover:bg-slate-200 dark:text-white",
+                                : "text-gray-700 hover:bg-slate-100 dark:text-white",
                               "block px-4 py-2 text-sm"
                             )}
                           >
@@ -233,7 +233,7 @@ export const Readiness = () => {
                               "flex w-36",
                               trendDisplayName === "HRV"
                                 ? "text-indigo-600"
-                                : "text-gray-700 hover:bg-slate-200 dark:text-white",
+                                : "text-gray-700 hover:bg-slate-100 dark:text-white",
                               "block px-4 py-2 text-sm"
                             )}
                           >
