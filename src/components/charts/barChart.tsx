@@ -16,7 +16,7 @@ export const BarChart = (props: BarChart) => {
   return (
     <ApexChart
       width="100%"
-      height="90%"
+      height="100%"
       options={{
         colors: ["#4f46e5", "#c7d2fe", "#94a3b8"],
         dataLabels: {
@@ -39,12 +39,19 @@ export const BarChart = (props: BarChart) => {
           zoom: {
             enabled: false,
           },
+          events: {
+            mounted: (chart) => {
+              chart.windowResizeHandler();
+            },
+          },
         },
         xaxis: {
           categories: [""],
+          axisTicks:{ show: false },
         },
         grid: {
           yaxis: { lines: { show: false } },
+          xaxis: { lines: { show: false } },
         },
         tooltip: { fillSeriesColor: true },
       }}

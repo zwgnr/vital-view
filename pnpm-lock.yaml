@@ -33,7 +33,7 @@ specifiers:
 
 dependencies:
   '@headlessui/react': 1.7.7_biqbaboplfbrettd7655fr4n2y
-  apexcharts: 3.36.3
+  apexcharts: 3.37.0
   clsx: 1.2.1
   dayjs: 1.11.7
   duration: link:dayjs/plugin/duration
@@ -41,7 +41,7 @@ dependencies:
   next-auth: 4.19.2_q76c2b4vyoegvsbrcwkfvimnai
   next-themes: 0.2.1_q76c2b4vyoegvsbrcwkfvimnai
   react: 18.2.0
-  react-apexcharts: 1.4.0_g3lvop6jrvmpqnlf3mxot4n2ym
+  react-apexcharts: 1.4.0_biej67c4ah34dlf2pfz4joq77a
   react-dom: 18.2.0_react@18.2.0
   sharp: 0.31.3
   swr: 2.0.0_react@18.2.0
@@ -541,8 +541,8 @@ packages:
       picomatch: 2.3.1
     dev: true
 
-  /apexcharts/3.36.3:
-    resolution: {integrity: sha512-8/FXEs0ohXMff07Gv28XjhPwEJphIUdq2/wii/pcvi54Tw6z1mjrV8ydN8rlWi/ve8BAPBefJkLmRWv7UOBsLw==}
+  /apexcharts/3.37.0:
+    resolution: {integrity: sha512-0mg1gDKUo3JG00Q//LK0jEXBS6OLjpuglqZ8ec9cqfA5oP8owopD9n5EhfARbWROb5o8GSPzFuohTJiCm2ecWw==}
     dependencies:
       svg.draggable.js: 2.2.2
       svg.easing.js: 2.0.0
@@ -2438,13 +2438,13 @@ packages:
       strip-json-comments: 2.0.1
     dev: false
 
-  /react-apexcharts/1.4.0_g3lvop6jrvmpqnlf3mxot4n2ym:
+  /react-apexcharts/1.4.0_biej67c4ah34dlf2pfz4joq77a:
     resolution: {integrity: sha512-DrcMV4aAMrUG+n6412yzyATWEyCDWlpPBBhVbpzBC4PDeuYU6iF84SmExbck+jx5MUm4U5PM3/T307Mc3kzc9Q==}
     peerDependencies:
       apexcharts: ^3.18.0
       react: '>=0.13'
     dependencies:
-      apexcharts: 3.36.3
+      apexcharts: 3.37.0
       prop-types: 15.8.1
       react: 18.2.0
     dev: false

@@ -54,9 +54,11 @@ export const TrendChart = (props: TrendChartType) => {
         xaxis: {
           categories: period,
           tickAmount: dateRange === "thisYear" ? 12 : 7,
+          axisTicks:{ show: false },
         },
         grid: {
           yaxis: { lines: { show: false } },
+          xaxis: { lines: { show: false } },
         },
         tooltip: { theme: "dark", x: { show: false } },
       }}

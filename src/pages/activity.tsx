@@ -135,7 +135,7 @@ export const Activity = () => {
   ];
   if (status === "authenticated") {
     return (
-      <div className="flex flex-grow flex-col gap-6 overflow-y-auto bg-slate-100 p-4 dark:bg-slate-900 sm:px-6 sm:py-8">
+      <div className="flex flex-grow flex-col gap-6 overflow-y-auto bg-slate-100 p-4 dark:bg-slate-900 sm:px-6 sm:py-8 sm:pb-12">
         <>
           {/*DatePicker*/}
           <div className="flex w-full items-center justify-between">

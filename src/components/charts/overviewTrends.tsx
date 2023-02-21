@@ -38,6 +38,7 @@ export const Trends = () => {
                     },
                     xaxis: {
                       categories: dailySleep?.timePeriod,
+                      axisTicks: { show: false },
                     },
                     colors: ["#7dd3fc", "#d8b4fe", "#5eead4"],
                     chart: {
@@ -62,6 +63,7 @@ export const Trends = () => {
                     },
                     grid: {
                       yaxis: { lines: { show: false } },
+                      xaxis: { lines: { show: false } },
                     },
                   }}
                   series={[

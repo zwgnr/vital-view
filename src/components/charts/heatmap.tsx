@@ -27,6 +27,11 @@ export const Heatmap = (props: HeatmapChartType) => {
           id: "heatmap",
           foreColor: theme === "dark" ? "white" : "black",
           toolbar: { show: false },
+          events: {
+            mounted: (chart) => {
+              chart.windowResizeHandler();
+            },
+          },
         },
 
         xaxis: {
@@ -34,8 +39,13 @@ export const Heatmap = (props: HeatmapChartType) => {
           labels: { show: false },
           tickAmount: dateRange === "thisYear" ? 12 : 7,
           tooltip: { enabled: true },
+          axisTicks: { show: false },
         },
-        stroke: { colors: [theme === 'light' ? 'white' : '#1e293b'], width: 6 },
+        grid: {
+          yaxis: { lines: { show: false } },
+          xaxis: { lines: { show: false } },
+        },
+        stroke: { colors: [theme === "light" ? "white" : "#1e293b"], width: 6 },
         tooltip: {
           fillSeriesColor: true,
           theme: "dark",
