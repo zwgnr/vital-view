@@ -33,7 +33,7 @@ export const SideBar = () => {
                 className={clsx(
                   router.pathname == item.href
                     ? " font-semibold text-black dark:text-white"
-                    : "text-gray-600 hover:bg-slate-700 dark:text-gray-400",
+                    : "text-gray-600 hover:bg-slate-100 dark:hover:bg-slate-700 dark:text-gray-400",
                   "group flex items-center rounded-md px-2 py-2 text-sm"
                 )}
               >
@@ -80,7 +80,7 @@ export const SideBar = () => {
               </div>
 
               <button
-                className="group flex w-full items-center rounded-md px-2 py-2 text-sm font-medium text-gray-600 hover:bg-slate-100 dark:text-gray-400 dark:hover:bg-slate-700"
+                className="group flex w-full items-center rounded-md px-2 py-2 text-sm font-medium text-gray-600  hover:bg-slate-100 dark:text-gray-400 dark:hover:bg-slate-700"
                 onClick={(e) => {
                   e.preventDefault();
                   signOut();
@@ -92,7 +92,7 @@ export const SideBar = () => {
                   height={24}
                   className="mr-3 h-6 w-6 flex-shrink-0 text-gray-600"
                 />
-                <p className="dark:text-gray-400">Logout </p>
+                <p className="dark:text-gray-400 ">Logout </p>
               </button>
             </div>
           ) : null}
