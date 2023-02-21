@@ -17,10 +17,10 @@ export const Trends = () => {
 
   const { theme, setTheme } = useTheme();
   return (
-    <div className="flex h-1/2 min-h-0 w-full flex-grow flex-col rounded-xl bg-white dark:bg-slate-800  sm:h-full ">
+    <div className="flex h-1/2 min-h-0 w-full flex-grow flex-col rounded-2xl bg-white dark:bg-slate-800  sm:h-full ">
       <>
         <div className="flex items-center justify-around px-8"></div>
-        <div className="h-full  min-h-0  w-full min-w-0 overflow-hidden rounded-xl p-4">
+        <div className="h-full  min-h-0  w-full min-w-0 overflow-hidden rounded-2xl p-4">
           <h1 className="text-md font-bold">Trends (last 7 days)</h1>
           <div className="h-full">
             <div className="bg-slate-00 h-full">

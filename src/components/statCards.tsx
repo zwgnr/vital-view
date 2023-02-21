@@ -20,14 +20,14 @@ export const StatCards = (props: StatCardProps) => {
     <>
       {data.map((item) => (
         <div className="w-full lg:w-1/3" key={item.id}>
-          <div className=" flex h-full flex-col flex-wrap rounded-xl bg-white p-4 dark:bg-slate-800">
+          <div className=" flex h-full flex-col flex-wrap rounded-2xl bg-white p-4 dark:bg-slate-800">
             {loading ? (
               <div className="flex h-full items-center justify-center">
                 <Loader size='h-12 w-12'/>
               </div>
             ) : (
-              <div className="flex h-full flex-col justify-between  pb-8 ">
-                <div className="flex items-center justify-between ">
+              <div className="flex h-full flex-col justify-between pb-8 ">
+                <div className="flex items-center justify-between">
                   <p className="truncate text-lg font-semibold text-slate-500 dark:text-gray-300">
                     {item.name}
                   </p>
@@ -49,7 +49,7 @@ export const StatCards = (props: StatCardProps) => {
                           : item.changeType === "increase"
                           ? "bg-green-100"
                           : "bg-red-100",
-                        "flex w-fit items-center rounded-xl p-1 px-2"
+                        "flex w-fit items-center rounded-2xl p-1 px-2"
                       )}
                     >
                       <div

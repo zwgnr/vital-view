@@ -153,7 +153,7 @@ export const Readiness = () => {
             <StatCards data={stats} loading={loading} />
           </div>
           {/*TrendsChart*/}
-          <div className="flex-grow rounded-xl bg-white p-4 dark:bg-slate-800 ">
+          <div className="flex-grow rounded-2xl bg-white p-4 dark:bg-slate-800 ">
             <div className="flex items-center justify-between">
               <h1 className="text-md font-bold">Trends</h1>
               <Menu as="div" className="relative">
@@ -259,7 +259,7 @@ export const Readiness = () => {
             )}
           </div>
           <div className="grid h-2/5 min-h-0 gap-4">
-            <div className=" col-span-3 h-72 min-h-0 rounded-xl  bg-white p-4 pb-12 dark:bg-slate-800 lg:h-full xl:col-span-3 ">
+            <div className=" col-span-3 h-72 min-h-0 rounded-2xl  bg-white p-4 pb-12 dark:bg-slate-800 lg:h-full xl:col-span-3 ">
               <p className="text-md font-bold">Score Board</p>
               {readinessLoading ? (
                 <div className="flex h-full items-center justify-center">
