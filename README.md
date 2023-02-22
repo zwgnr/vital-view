@@ -14,7 +14,7 @@
 </div>
 
 <p align="center">
-<img src='public/sleepPage30DaysDarkMode.png' width="100%" height="100%"/> 
+<img src='public/preview.png' width="100%" height="100%"/> 
 </p>
 
 # Features
