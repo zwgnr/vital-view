@@ -33,7 +33,7 @@ export const authOptions: NextAuthOptions = {
         params: {
           scope: "email personal daily heartrate workout tag session",
           response_type: "code",
-          redirect_uri: redirectURI,
+          redirect_uri: "https://bucolic-cupcake-1cb665.netlify.app/",
         },
       },
       token: {
