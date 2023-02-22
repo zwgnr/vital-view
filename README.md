@@ -15,7 +15,7 @@
 
 <p align="center">
   <a href="/">
-    <img src="https://img.shields.io/github/license/{username}/{repo-name}.svg" alt="License">
+    <img src="https://img.shields.io/github/license/{zwagnr}/{ring-lab}.svg" alt="License">
   </a>
   <a href="/">
     <img src="https://img.shields.io/github/release/{username}/{repo-name}.svg" alt="codecov badge">
