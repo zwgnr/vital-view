@@ -166,8 +166,10 @@ export const getPriorYearlyDurationAverage = (
   let rangeData = getPriorYearlyDurationHours(dateRange, data, param);
   let filterZero = rangeData.filter((val) => val !== 0);
   let rangeAverage = Number(
-    filterZero.reduce((acc, curr) => acc + curr, 0) / filterZero.length
-  ).toFixed(1);
+    (
+      filterZero.reduce((acc, curr) => acc + curr, 0) / filterZero.length
+    ).toFixed(1)
+  );
   return rangeAverage;
 };
 
@@ -179,8 +181,10 @@ export const getYearlyDurationAverage = (
   let rangeData = getYearlyDurationHours(dateRange, data, param);
   let filterZero = rangeData.filter((val) => val !== 0);
   let rangeAverage = Number(
-    filterZero.reduce((acc, curr) => acc + curr, 0) / filterZero.length
-  ).toFixed(1);
+    (
+      filterZero.reduce((acc, curr) => acc + curr, 0) / filterZero.length
+    ).toFixed(1)
+  );
   return rangeAverage;
 };
 

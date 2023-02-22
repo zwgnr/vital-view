@@ -117,8 +117,11 @@ export const Activity = () => {
   const donutChartData: number[] = [
     activity?.rangeAverage.lowActiveTime,
     activity?.rangeAverage.medActiveTime,
-    activity?.rangeAverage.highActiveTime,
+    activity?.rangeAverage.highActiveTime === null
+      ? 0
+      : activity?.rangeAverage.highActiveTime,
   ];
+  console.log(donutChartData);
 
   const donutChartLabels = ["Low", "Med", "High"];
 
