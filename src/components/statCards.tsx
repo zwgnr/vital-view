@@ -47,8 +47,8 @@ export const StatCards = (props: StatCardProps) => {
                         item.changeType === "noChange"
                           ? "bg-slate-100"
                           : item.changeType === "increase"
-                          ? "bg-green-100"
-                          : "bg-red-100",
+                          ? "bg-green-100 dark:bg-green-900"
+                          : "bg-red-100 dark:bg-red-900",
                         "flex w-fit items-center rounded-2xl p-1 px-2"
                       )}
                     >
