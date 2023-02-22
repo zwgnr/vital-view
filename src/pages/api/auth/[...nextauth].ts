@@ -1,6 +1,11 @@
 import NextAuth, { type NextAuthOptions } from "next-auth";
 
-export const authOptions:NextAuthOptions = {
+const redirectURI =
+  process.env.NODE_ENV === "development"
+    ? "http://localhost:3000/api/auth/callback/oura"
+    : "vercel";
+
+export const authOptions: NextAuthOptions = {
   // Include user.id on session
   callbacks: {
     async jwt({ token, account, profile }) {
@@ -28,14 +33,13 @@ export const authOptions:NextAuthOptions = {
         params: {
           scope: "email personal daily heartrate workout tag session",
           response_type: "code",
-          redirect_uri: "http://localhost:3000/api/auth/callback/oura",
+          redirect_uri: redirectURI,
         },
       },
       token: {
         url: "https://api.ouraring.com/oauth/token",
       },
-      userinfo:
-        "https://api.ouraring.com/v2/usercollection/personal_info",
+      userinfo: "https://api.ouraring.com/v2/usercollection/personal_info",
       clientId: process.env.OURA_CLIENT_ID,
       clientSecret: process.env.OURA_CLIENT_SECRET,
 
