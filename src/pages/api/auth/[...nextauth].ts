@@ -3,7 +3,7 @@ import NextAuth, { type NextAuthOptions } from "next-auth";
 const redirectURI =
   process.env.NODE_ENV === "development"
     ? "http://localhost:3000/api/auth/callback/oura"
-    : "http://ring-lab.vercel.app/api/auth/callback/oura";
+    : "https://ring-lab.vercel.app/api/auth/callback/oura";
 
 export const authOptions: NextAuthOptions = {
   // Include user.id on session
@@ -33,7 +33,7 @@ export const authOptions: NextAuthOptions = {
         params: {
           scope: "email personal daily heartrate workout tag session",
           response_type: "code",
-          redirect_uri: "https://ring-lab.vercel.app/api/auth/callback/oura",
+          redirect_uri: redirectURI,
         },
       },
       token: {
