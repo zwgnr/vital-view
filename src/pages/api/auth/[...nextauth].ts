@@ -51,6 +51,7 @@ export const authOptions: NextAuthOptions = {
       },
     },
   ],
+  secret: 'Placeholder' 
 };
 
 export default NextAuth(authOptions);
