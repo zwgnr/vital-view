@@ -9,18 +9,9 @@
 </h3>
 <div align="center">
 
-  <a href='/'>![Website](https://img.shields.io/badge/RingLabxyz-000000?style=for-the-badge)
+  <a href='/'>![Website](	https://img.shields.io/badge/RingLabXYZ-000000?style=for-the-badge)
   </a>
 </div>
-
-<p align="center">
-  <a href="/">
-    <img src="https://img.shields.io/github/license/{zwagnr}/{ring-lab}.svg" alt="License">
-  </a>
-  <a href="/">
-    <img src="https://img.shields.io/github/release/{username}/{repo-name}.svg" alt="codecov badge">
-  </a>
-</p>
 
 <p align="center">
 <img src='public/sleepPage30DaysDarkMode.png' width="100%" height="100%"/> 
