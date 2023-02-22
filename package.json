@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@headlessui/react": "^1.7.7",
-    "apexcharts": "^3.36.3",
+    "apexcharts": "3.36.3",
     "clsx": "^1.2.1",
     "dayjs": "^1.11.7",
     "duration": "link:dayjs/plugin/duration",
