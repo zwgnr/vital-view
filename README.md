@@ -28,14 +28,11 @@
 
 🍩 Donut Chart to view Sleep Stages and Activity Zone time.
 
-🌙 Dark Mode.
+🌙 Light/Dark Mode.
 
 📱 Responsive mobile support!
 
-# F.A.Q.
-
-coming soon!
-
+------
 
 <div align="center">
 
