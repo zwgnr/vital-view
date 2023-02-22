@@ -33,7 +33,7 @@ export const authOptions: NextAuthOptions = {
         params: {
           scope: "email personal daily heartrate workout tag session",
           response_type: "code",
-          redirect_uri: "http://ring-lab.vercel.app/api/auth/callback/oura",
+          redirect_uri: redirectURI,
         },
       },
       token: {
