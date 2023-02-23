@@ -131,7 +131,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
             activeCalories: getYearlyPercentChange(
               dateRange,
               data,
-              "activeCalories"
+              "active_calories"
             ),
             steps: getYearlyPercentChange(dateRange, data, "steps"),
           },
