@@ -9,7 +9,7 @@
 </h3>
 <div align="center">
 
-  <a href='/'>![Website](	https://img.shields.io/badge/RingLabXYZ-000000?style=for-the-badge)
+  <a href='https://ringlab.app'>![Website](	https://img.shields.io/badge/RingLab-000000?style=for-the-badge)
   </a>
 </div>
 
