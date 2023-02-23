@@ -24,7 +24,7 @@ export const Trends = () => {
           <h1 className="text-md font-bold">Trends (last 7 days)</h1>
           <div className="h-full">
             <div className="bg-slate-00 h-full">
-              {dailySleepLoading ? (
+              {dailySleepLoading && readinessLoading && activityLoading ? (
                 <div className="flex h-full items-center justify-center">
                   <Loader size="h-24 w-24" />
                 </div>
@@ -69,15 +69,21 @@ export const Trends = () => {
                   series={[
                     {
                       name: "sleep",
-                      data: dailySleep?.rangeDataPoints.score,
+                      data: dailySleepLoading
+                        ? []
+                        : dailySleep?.rangeDataPoints.score,
                     },
                     {
                       name: "readiness",
-                      data: readiness?.rangeDataPoints.score,
+                      data: readinessLoading
+                        ? []
+                        : readiness?.rangeDataPoints.score,
                     },
                     {
                       name: "activity",
-                      data: activity?.rangeDataPoints.score,
+                      data: activityLoading
+                        ? []
+                        : activity?.rangeDataPoints.score,
                     },
                   ]}
                   type="line"
