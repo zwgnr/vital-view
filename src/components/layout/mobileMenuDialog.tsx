@@ -116,7 +116,14 @@ export const MobileMenuDialog = (props: SideBarOpenProps) => {
                   {`v${package_json.version}`}
                 </p>
               </div>
-
+              <div className="flex flex-row items-center justify-center gap-2 p-2">
+                <Link href="/privacy" className="text-xs">
+                  Privacy
+                </Link>
+                <Link href="/terms" className="text-xs">
+                  Terms
+                </Link>
+              </div>
               <div className="flex flex-row">
                 {status === "authenticated" ? (
                   <div className="w-full border-t border-gray-300 p-2">
