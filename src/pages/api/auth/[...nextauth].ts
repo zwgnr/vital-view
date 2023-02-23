@@ -3,7 +3,7 @@ import NextAuth, { type NextAuthOptions } from "next-auth";
 const redirectURI =
   process.env.NODE_ENV === "development"
     ? "http://localhost:3000/api/auth/callback/oura"
-    : "https://ring-lab.vercel.app/api/auth/callback/oura";
+    : "https://ringlab.app/api/auth/callback/oura";
 
 export const authOptions: NextAuthOptions = {
   // Include user.id on session
