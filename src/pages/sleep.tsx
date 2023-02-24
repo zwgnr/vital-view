@@ -17,130 +17,133 @@ import { Icon } from "@iconify/react";
 
 export const Sleep = () => {
   const { data: session, status } = useSession();
-  const [dateRange, setDateRange] = useState("last7Days");
-  const { dailySleep, dailySleepLoading, dailySleepError } =
-    useDailySleep(dateRange);
-  const { sleep, sleepLoading } = useSleep(dateRange);
-  const [enabled, setEnabled] = useState(false);
-  const [activeTrendName, setActiveTrendName] =
-    useState<keyof TrendData>("Score");
-  const [trendDisplayName, setTrendDisplayName] = useState("Sleep Score");
-
-  const loading = sleepLoading;
-
   if (status === "unauthenticated") {
-    useRouter().push("/sign-in");
+    useRouter().push("/");
   }
-
-  const getDailySleepChangeType = () => {
-    if (dailySleep?.percentChange.score === 0) {
-      return "noChange";
-    }
-    if (dailySleep?.percentChange.score > 0) {
-      return "increase";
-    }
-    if (dailySleep?.percentChange.score < 0) {
-      return "decrease";
-    }
-  };
-
-  const getSleepChangeType = (param: string) => {
-    if (sleep?.percentChange[param] === 0) {
-      return "noChange";
-    }
-    if (sleep?.percentChange[param] > 0) {
-      return "increase";
-    }
-    if (sleep?.percentChange[param] < 0) {
-      return "decrease";
-    }
-  };
-
-  const stats: Stats[] = [
-    {
-      id: 1,
-      name: "Sleep Score",
-      stat: dailySleep?.rangeAverage.score,
-      unit: null,
-      change: `${dailySleep?.percentChange.score} %`,
-      changeType: getDailySleepChangeType(),
-      dataset: dailySleep?.rangeDataPoints.score,
-    },
-    {
-      id: 2,
-      name: "Efficiency",
-      stat: sleep?.rangeAverage.efficiency,
-      unit: "%",
-      change: `${sleep?.percentChange.efficiencyChange} %`,
-      changeType: getSleepChangeType("efficiencyChange"),
-      dataset: sleep?.rangeDataPoints.efficiency,
-    },
-    {
-      id: 3,
-      name: "Duration",
-      stat: sleepLoading
-        ? null
-        : `${sleep.rangeAverage.duration} 
-         `,
-      unit: "hr",
-      change: `${sleep?.percentChange.durationChange} %`,
-      changeType: getSleepChangeType("durationChange"),
-      dataset: sleep?.rangeDataPoints.duration,
-    },
-  ];
-
-  type TrendData = {
-    Score: number[];
-    Efficiency: number[];
-    Duration: number[];
-  };
-
-  const trendData: TrendData = {
-    Score: stats[0]!.dataset,
-    Efficiency: stats[1]!.dataset,
-    Duration: stats[2]!.dataset,
-  };
-
-  const heatmapData: HeatMapData[] = [
-    {
-      name: "Deep Sleep",
-      data: dailySleep?.rangeDataPoints.deepSleep,
-    },
-    {
-      name: "Rem Sleep",
-      data: dailySleep?.rangeDataPoints.remSleep,
-    },
-    {
-      name: "Efficiency",
-      data: dailySleep?.rangeDataPoints.efficiency,
-    },
-    {
-      name: "Latency",
-      data: dailySleep?.rangeDataPoints.latency,
-    },
-    {
-      name: "Restfulness",
-      data: dailySleep?.rangeDataPoints.restfulness,
-    },
-    {
-      name: "Total Sleep",
-      data: dailySleep?.rangeDataPoints.totalSleep,
-    },
-    {
-      name: "Overall Score",
-      data: dailySleep?.rangeDataPoints.score,
-    },
-  ];
-
-  const donutChartData: number[] = [
-    sleep?.rangeAverage.deepSleep,
-    sleep?.rangeAverage.remSleep,
-    sleep?.rangeAverage.lightSleep,
-  ];
-
-  const donutChartLabels: string[] = ["Deep Sleep", "REM Sleep", "Light Sleep"];
-
   if (status === "authenticated") {
+    const [dateRange, setDateRange] = useState("last7Days");
+    const { dailySleep, dailySleepLoading, dailySleepError } =
+      useDailySleep(dateRange);
+    const { sleep, sleepLoading } = useSleep(dateRange);
+    const [enabled, setEnabled] = useState(false);
+    const [activeTrendName, setActiveTrendName] =
+      useState<keyof TrendData>("Score");
+    const [trendDisplayName, setTrendDisplayName] = useState("Sleep Score");
+
+    const loading = sleepLoading;
+
+    const getDailySleepChangeType = () => {
+      if (dailySleep?.percentChange.score === 0) {
+        return "noChange";
+      }
+      if (dailySleep?.percentChange.score > 0) {
+        return "increase";
+      }
+      if (dailySleep?.percentChange.score < 0) {
+        return "decrease";
+      }
+    };
+
+    const getSleepChangeType = (param: string) => {
+      if (sleep?.percentChange[param] === 0) {
+        return "noChange";
+      }
+      if (sleep?.percentChange[param] > 0) {
+        return "increase";
+      }
+      if (sleep?.percentChange[param] < 0) {
+        return "decrease";
+      }
+    };
+
+    const stats: Stats[] = [
+      {
+        id: 1,
+        name: "Sleep Score",
+        stat: dailySleep?.rangeAverage.score,
+        unit: null,
+        change: `${dailySleep?.percentChange.score} %`,
+        changeType: getDailySleepChangeType(),
+        dataset: dailySleep?.rangeDataPoints.score,
+      },
+      {
+        id: 2,
+        name: "Efficiency",
+        stat: sleep?.rangeAverage.efficiency,
+        unit: "%",
+        change: `${sleep?.percentChange.efficiencyChange} %`,
+        changeType: getSleepChangeType("efficiencyChange"),
+        dataset: sleep?.rangeDataPoints.efficiency,
+      },
+      {
+        id: 3,
+        name: "Duration",
+        stat: sleepLoading
+          ? null
+          : `${sleep.rangeAverage.duration} 
+         `,
+        unit: "hr",
+        change: `${sleep?.percentChange.durationChange} %`,
+        changeType: getSleepChangeType("durationChange"),
+        dataset: sleep?.rangeDataPoints.duration,
+      },
+    ];
+
+    type TrendData = {
+      Score: number[];
+      Efficiency: number[];
+      Duration: number[];
+    };
+
+    const trendData: TrendData = {
+      Score: stats[0]!.dataset,
+      Efficiency: stats[1]!.dataset,
+      Duration: stats[2]!.dataset,
+    };
+
+    const heatmapData: HeatMapData[] = [
+      {
+        name: "Deep Sleep",
+        data: dailySleep?.rangeDataPoints.deepSleep,
+      },
+      {
+        name: "Rem Sleep",
+        data: dailySleep?.rangeDataPoints.remSleep,
+      },
+      {
+        name: "Efficiency",
+        data: dailySleep?.rangeDataPoints.efficiency,
+      },
+      {
+        name: "Latency",
+        data: dailySleep?.rangeDataPoints.latency,
+      },
+      {
+        name: "Restfulness",
+        data: dailySleep?.rangeDataPoints.restfulness,
+      },
+      {
+        name: "Total Sleep",
+        data: dailySleep?.rangeDataPoints.totalSleep,
+      },
+      {
+        name: "Overall Score",
+        data: dailySleep?.rangeDataPoints.score,
+      },
+    ];
+
+    const donutChartData: number[] = [
+      sleep?.rangeAverage.deepSleep,
+      sleep?.rangeAverage.remSleep,
+      sleep?.rangeAverage.lightSleep,
+    ];
+
+    const donutChartLabels: string[] = [
+      "Deep Sleep",
+      "REM Sleep",
+      "Light Sleep",
+    ];
+
     return (
       <div className="flex flex-grow flex-col gap-6 overflow-y-auto bg-slate-100 p-4 dark:bg-slate-900 sm:px-6 sm:pt-2 sm:pb-12">
         <>

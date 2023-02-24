@@ -15,117 +15,121 @@ import { useSession } from "next-auth/react";
 import { Menu, Transition } from "@headlessui/react";
 import { Icon } from "@iconify/react";
 import clsx from "clsx";
+import { useRouter } from "next/router";
 
 export const Activity = () => {
   const { data: session, status } = useSession();
-  const [dateRange, setDateRange] = useState("last7Days");
-  const { activity, activityLoading } = useActivity(dateRange);
-  const [enabled, setEnabled] = useState(false);
-  const [activeTrendName, setActiveTrendName] =
-    useState<keyof TrendData>("Score");
-  const [trendDisplayName, setTrendDisplayName] = useState("Activity Score");
-  const loading = activityLoading;
-
-  const getActivityChangeType = (param: string) => {
-    if (activity?.percentChange[param] === 0) {
-      return "noChange";
-    }
-    if (activity?.percentChange[param] > 0) {
-      return "increase";
-    }
-    if (activity?.percentChange[param] < 0) {
-      return "decrease";
-    }
-  };
-
-  const stats: Stats[] = [
-    {
-      id: 1,
-      name: "Score",
-      stat: activity?.rangeAverage.score,
-      unit: null,
-      change: `${activity?.percentChange.score} %`,
-      changeType: getActivityChangeType("score"),
-      dataset: activity?.rangeDataPoints.score,
-    },
-    {
-      id: 2,
-      name: "Active Burn",
-      stat: activity?.rangeAverage.activeCalories,
-      unit: "cals",
-      change: `${activity?.percentChange.activeCalories} %`,
-      changeType: getActivityChangeType("activeCalories"),
-      dataset: activity?.rangeDataPoints.activeCalories,
-    },
-    {
-      id: 3,
-      name: "Steps",
-      stat: activityLoading
-        ? null
-        : `${activity.rangeAverage.steps} 
-         `,
-      unit: "steps",
-      change: `${activity?.percentChange.steps} %`,
-      changeType: getActivityChangeType("steps"),
-      dataset: activity?.rangeDataPoints.steps,
-    },
-  ];
-
-  type TrendData = {
-    Score: number[];
-    "Active Burn": number[];
-    Steps: number[];
-  };
-
-  const trendData: TrendData = {
-    Score: stats[0]!.dataset,
-    "Active Burn": stats[1]!.dataset,
-    Steps: stats[2]!.dataset,
-  };
-
-  const heatmapData: HeatMapData[] = [
-    {
-      name: "Training Volume",
-      data: activity?.rangeDataPoints.trainingVolume,
-    },
-    {
-      name: "Training Frequency",
-      data: activity?.rangeDataPoints.trainingFrequency,
-    },
-    {
-      name: "Stay Active",
-      data: activity?.rangeDataPoints.stayActive,
-    },
-    {
-      name: "Recovery Time",
-      data: activity?.rangeDataPoints.recoveryTime,
-    },
-    {
-      name: "Move Every Hour",
-      data: activity?.rangeDataPoints.moveEveryHour,
-    },
-    {
-      name: "Meet Daily Targets",
-      data: activity?.rangeDataPoints.meetDailyTargets,
-    },
-    {
-      name: "Overall Score",
-      data: activity?.rangeDataPoints.score,
-    },
-  ];
-
-  const donutChartData: number[] = [
-    activity?.rangeAverage.lowActiveTime,
-    activity?.rangeAverage.medActiveTime,
-    activity?.rangeAverage.highActiveTime === null
-      ? 0
-      : activity?.rangeAverage.highActiveTime,
-  ];
-  console.log(donutChartData);
-
-  const donutChartLabels = ["Low", "Med", "High"];
+  if (status === "unauthenticated") {
+    useRouter().push("/");
+  }
 
   if (status === "authenticated") {
+    const [dateRange, setDateRange] = useState("last7Days");
+    const { activity, activityLoading } = useActivity(dateRange);
+    const [enabled, setEnabled] = useState(false);
+    const [activeTrendName, setActiveTrendName] =
+      useState<keyof TrendData>("Score");
+    const [trendDisplayName, setTrendDisplayName] = useState("Activity Score");
+    const loading = activityLoading;
+
+    const getActivityChangeType = (param: string) => {
+      if (activity?.percentChange[param] === 0) {
+        return "noChange";
+      }
+      if (activity?.percentChange[param] > 0) {
+        return "increase";
+      }
+      if (activity?.percentChange[param] < 0) {
+        return "decrease";
+      }
+    };
+
+    const stats: Stats[] = [
+      {
+        id: 1,
+        name: "Score",
+        stat: activity?.rangeAverage.score,
+        unit: null,
+        change: `${activity?.percentChange.score} %`,
+        changeType: getActivityChangeType("score"),
+        dataset: activity?.rangeDataPoints.score,
+      },
+      {
+        id: 2,
+        name: "Active Burn",
+        stat: activity?.rangeAverage.activeCalories,
+        unit: "cals",
+        change: `${activity?.percentChange.activeCalories} %`,
+        changeType: getActivityChangeType("activeCalories"),
+        dataset: activity?.rangeDataPoints.activeCalories,
+      },
+      {
+        id: 3,
+        name: "Steps",
+        stat: activityLoading
+          ? null
+          : `${activity.rangeAverage.steps} 
+         `,
+        unit: "steps",
+        change: `${activity?.percentChange.steps} %`,
+        changeType: getActivityChangeType("steps"),
+        dataset: activity?.rangeDataPoints.steps,
+      },
+    ];
+
+    type TrendData = {
+      Score: number[];
+      "Active Burn": number[];
+      Steps: number[];
+    };
+
+    const trendData: TrendData = {
+      Score: stats[0]!.dataset,
+      "Active Burn": stats[1]!.dataset,
+      Steps: stats[2]!.dataset,
+    };
+
+    const heatmapData: HeatMapData[] = [
+      {
+        name: "Training Volume",
+        data: activity?.rangeDataPoints.trainingVolume,
+      },
+      {
+        name: "Training Frequency",
+        data: activity?.rangeDataPoints.trainingFrequency,
+      },
+      {
+        name: "Stay Active",
+        data: activity?.rangeDataPoints.stayActive,
+      },
+      {
+        name: "Recovery Time",
+        data: activity?.rangeDataPoints.recoveryTime,
+      },
+      {
+        name: "Move Every Hour",
+        data: activity?.rangeDataPoints.moveEveryHour,
+      },
+      {
+        name: "Meet Daily Targets",
+        data: activity?.rangeDataPoints.meetDailyTargets,
+      },
+      {
+        name: "Overall Score",
+        data: activity?.rangeDataPoints.score,
+      },
+    ];
+
+    const donutChartData: number[] = [
+      activity?.rangeAverage.lowActiveTime,
+      activity?.rangeAverage.medActiveTime,
+      activity?.rangeAverage.highActiveTime === null
+        ? 0
+        : activity?.rangeAverage.highActiveTime,
+    ];
+
+    const donutChartLabels = ["Low", "Med", "High"];
+
     return (
       <div className="flex flex-grow flex-col gap-6 overflow-y-auto bg-slate-100 p-4 dark:bg-slate-900 sm:px-6 sm:pt-2 sm:pb-12">
         <>

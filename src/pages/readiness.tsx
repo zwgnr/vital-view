@@ -18,129 +18,131 @@ import clsx from "clsx";
 
 export const Readiness = () => {
   const { data: session, status } = useSession();
-  const [dateRange, setDateRange] = useState("last7Days");
-  const { sleep, sleepLoading } = useSleep(dateRange);
-  const { readiness, readinessLoading } = useReadiness(dateRange);
-  const [enabled, setEnabled] = useState(false);
-  const [activeTrendName, setActiveTrendName] =
-    useState<keyof TrendData>("Score");
-
-  const [trendDisplayName, setTrendDisplayName] = useState("Readiness Score");
-
-  const loading = sleepLoading;
-
-  const getReadinessChangeType = () => {
-    if (readiness?.percentChange.score === 0) {
-      return "noChange";
-    }
-    if (readiness?.percentChange.score > 0) {
-      return "increase";
-    }
-    if (readiness?.percentChange.score < 0) {
-      return "decrease";
-    }
-  };
-
-  const getSleepChangeType = (param: string) => {
-    if (sleep?.percentChange[param] === 0) {
-      return "noChange";
-    }
-    if (sleep?.percentChange[param] > 0) {
-      return "increase";
-    }
-    if (sleep?.percentChange[param] < 0) {
-      return "decrease";
-    }
-  };
 
   if (status === "unauthenticated") {
-    useRouter().push("/sign-in");
+    useRouter().push("/");
   }
 
-  const stats: Stats[] = [
-    {
-      id: 1,
-      name: "Score",
-      stat: readiness?.rangeAverage.score,
-      unit: null,
-      change: `${readiness?.percentChange.score} %`,
-      changeType: getReadinessChangeType(),
-      dataset: readiness?.rangeDataPoints.score,
-    },
-    {
-      id: 2,
-      name: "RHR",
-      stat: sleep?.rangeAverage.restingHeartRate,
-      unit: "bpm",
-      change: `${sleep?.percentChange.restingHeartRateChange} %`,
-      changeType: getSleepChangeType("restingHeartRateChange"),
-      dataset: sleep?.rangeDataPoints.restingHeartRate,
-    },
-    {
-      id: 3,
-      name: "HRV",
-      stat: sleepLoading
-        ? null
-        : `${sleep.rangeAverage.hrv} 
-         `,
-      unit: "ms",
-      change: `${sleep?.percentChange.hrvChange} %`,
-      changeType: getSleepChangeType("hrvChange"),
-      dataset: sleep?.rangeDataPoints.hrv,
-    },
-  ];
-
-  type TrendData = {
-    Score: number[];
-    RHR: number[];
-    HRV: number[];
-  };
-
-  const trendData: TrendData = {
-    Score: stats[0]!.dataset,
-    RHR: stats[1]!.dataset,
-    HRV: stats[2]!.dataset,
-  };
-
-  const heatmapData: HeatMapData[] = [
-    {
-      name: "Sleep Balance",
-      data: readiness?.rangeDataPoints.sleepBalance,
-    },
-    {
-      name: "RHR",
-      data: readiness?.rangeDataPoints.restingHeartRate,
-    },
-    {
-      name: "Recovery Index",
-      data: readiness?.rangeDataPoints.recoveryIndex,
-    },
-    {
-      name: "Prev. Night",
-      data: readiness?.rangeDataPoints.previousNight,
-    },
-    {
-      name: "Prev. Day Activity",
-      data: readiness?.rangeDataPoints.previousDayActivity,
-    },
-    {
-      name: "HRV Balance",
-      data: readiness?.rangeDataPoints.hrvBalance,
-    },
-    {
-      name: "Body Temperature",
-      data: readiness?.rangeDataPoints.bodyTemperature,
-    },
-    {
-      name: "Activity Balance",
-      data: readiness?.rangeDataPoints.activityBalance,
-    },
-    {
-      name: "Overall Score",
-      data: readiness?.rangeDataPoints.score,
-    },
-  ];
   if (status === "authenticated") {
+    const [dateRange, setDateRange] = useState("last7Days");
+    const { sleep, sleepLoading } = useSleep(dateRange);
+    const { readiness, readinessLoading } = useReadiness(dateRange);
+    const [enabled, setEnabled] = useState(false);
+    const [activeTrendName, setActiveTrendName] =
+      useState<keyof TrendData>("Score");
+
+    const [trendDisplayName, setTrendDisplayName] = useState("Readiness Score");
+
+    const loading = sleepLoading;
+
+    const getReadinessChangeType = () => {
+      if (readiness?.percentChange.score === 0) {
+        return "noChange";
+      }
+      if (readiness?.percentChange.score > 0) {
+        return "increase";
+      }
+      if (readiness?.percentChange.score < 0) {
+        return "decrease";
+      }
+    };
+
+    const getSleepChangeType = (param: string) => {
+      if (sleep?.percentChange[param] === 0) {
+        return "noChange";
+      }
+      if (sleep?.percentChange[param] > 0) {
+        return "increase";
+      }
+      if (sleep?.percentChange[param] < 0) {
+        return "decrease";
+      }
+    };
+
+    const stats: Stats[] = [
+      {
+        id: 1,
+        name: "Score",
+        stat: readiness?.rangeAverage.score,
+        unit: null,
+        change: `${readiness?.percentChange.score} %`,
+        changeType: getReadinessChangeType(),
+        dataset: readiness?.rangeDataPoints.score,
+      },
+      {
+        id: 2,
+        name: "RHR",
+        stat: sleep?.rangeAverage.restingHeartRate,
+        unit: "bpm",
+        change: `${sleep?.percentChange.restingHeartRateChange} %`,
+        changeType: getSleepChangeType("restingHeartRateChange"),
+        dataset: sleep?.rangeDataPoints.restingHeartRate,
+      },
+      {
+        id: 3,
+        name: "HRV",
+        stat: sleepLoading
+          ? null
+          : `${sleep.rangeAverage.hrv} 
+         `,
+        unit: "ms",
+        change: `${sleep?.percentChange.hrvChange} %`,
+        changeType: getSleepChangeType("hrvChange"),
+        dataset: sleep?.rangeDataPoints.hrv,
+      },
+    ];
+
+    type TrendData = {
+      Score: number[];
+      RHR: number[];
+      HRV: number[];
+    };
+
+    const trendData: TrendData = {
+      Score: stats[0]!.dataset,
+      RHR: stats[1]!.dataset,
+      HRV: stats[2]!.dataset,
+    };
+
+    const heatmapData: HeatMapData[] = [
+      {
+        name: "Sleep Balance",
+        data: readiness?.rangeDataPoints.sleepBalance,
+      },
+      {
+        name: "RHR",
+        data: readiness?.rangeDataPoints.restingHeartRate,
+      },
+      {
+        name: "Recovery Index",
+        data: readiness?.rangeDataPoints.recoveryIndex,
+      },
+      {
+        name: "Prev. Night",
+        data: readiness?.rangeDataPoints.previousNight,
+      },
+      {
+        name: "Prev. Day Activity",
+        data: readiness?.rangeDataPoints.previousDayActivity,
+      },
+      {
+        name: "HRV Balance",
+        data: readiness?.rangeDataPoints.hrvBalance,
+      },
+      {
+        name: "Body Temperature",
+        data: readiness?.rangeDataPoints.bodyTemperature,
+      },
+      {
+        name: "Activity Balance",
+        data: readiness?.rangeDataPoints.activityBalance,
+      },
+      {
+        name: "Overall Score",
+        data: readiness?.rangeDataPoints.score,
+      },
+    ];
+
     return (
       <div className="flex flex-grow flex-col gap-6 overflow-y-auto bg-slate-100 p-4 dark:bg-slate-900 sm:p-6 sm:pt-2">
         <>

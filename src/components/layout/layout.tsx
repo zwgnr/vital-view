@@ -1,13 +1,14 @@
 import { ReactNode, useState, Dispatch, SetStateAction } from "react";
 import Head from "next/head";
 import { useSession } from "next-auth/react";
-
+import Image from "next/image";
 import { SideBar } from "./sidebar";
 import { MobileMenuDialog } from "./mobileMenuDialog";
 import { TopBar } from "./topBar";
 import { Loader } from "../loader";
-import SignIn from "../../pages/sign-in";
-
+import SignIn from "../../pages/overview";
+import { SignInButton } from "../signInButton";
+import Link from "next/link";
 
 export type SideBarOpenProps = {
   sidebarOpen: boolean;
@@ -35,7 +36,12 @@ export default function Layout(props: LayoutProps) {
       />
 
       {status === "unauthenticated" ? (
-        <SignIn />
+        <main className="flex h-full flex-grow flex-col overflow-hidden bg-gradient-to-r from-indigo-100 via-indigo-300 to-indigo-600 text-black dark:text-white">
+          {/* <div className="flex flex-grow overflow-x-hidden"></div> */}
+          <div className="flex h-screen  flex-col items-center justify-center bg-gradient-to-r from-indigo-100 via-indigo-300 to-indigo-600 dark:bg-slate-700">
+            {children}
+          </div>
+        </main>
       ) : status === "loading" ? (
         <div className="flex h-screen w-full overflow-hidden">
           <Loader />
