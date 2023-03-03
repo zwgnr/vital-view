@@ -26,7 +26,7 @@ export default function Layout(props: LayoutProps) {
   return (
     <>
       <Head>
-        <title>Ring Lab</title>
+        <title>Vital View</title>
         <meta name="description" content="Oura Ring Stats Dashboard" />
         <link rel="icon" href="/favicon.svg" />
       </Head>

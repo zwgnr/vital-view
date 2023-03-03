@@ -62,13 +62,13 @@ export const MobileMenuDialog = (props: SideBarOpenProps) => {
             </div>
             <div className="flex items-center justify-center px-4">
               <Image
-                src="/ringLabLogo.png"
-                alt="RingLab Logo"
+                src="/vitalview.png"
+                alt="Vital View Logo"
                 width={36}
                 height={36}
               />
               <h1 className="ml-2 text-xl font-bold text-slate-800 dark:text-white">
-                Ring Lab
+                Vital View
               </h1>
             </div>
             <div className="mt-5 flex flex-1 flex-col">

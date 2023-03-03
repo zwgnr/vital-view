@@ -16,15 +16,17 @@ export const Home: NextPage = () => {
     <>
       <div className="flex h-screen w-full  flex-col items-center justify-center bg-gradient-to-r from-indigo-100 via-indigo-300 to-indigo-600 dark:bg-slate-700">
         <Image
-          src="/ringLabLogo.png"
-          alt="Oura Ring"
+          src="/vitalview.png"
+          alt="Vital View Logo"
           width={150}
           height={150}
           className="mb-4"
         />
         <h1 className="mb-8 flex flex-col items-center justify-center gap-2">
-          <p className="text-4xl md:text-5xl">Welcome to RingLab.</p>
-          <p className="text-xl">A data dashboard for your Oura Ring.</p>
+          <p className="text-4xl md:text-5xl">Welcome to Vital View.</p>
+          <p className="text-xl">
+            A data dashboard for your most vital health metrics.
+          </p>
         </h1>
         <SignInButton />
         <div className="mt-8 flex gap-4">

@@ -1,6 +1,6 @@
 <div align="center">
-<img src='./public/ringLabLogo.png' width="150" height="150"/> 
-<h1>RingLab</h1>
+<img src='./public/vitalview.png' width="150" height="150"/> 
+<h1>Vital View</h1>
 </div>
 <h3 align="center">An Analytics Dashboard for your 
   <span>
@@ -9,7 +9,7 @@
 </h3>
 <div align="center">
 
-  <a href='https://ringlab.app'>![Website](	https://img.shields.io/badge/RingLab-000000?style=for-the-badge)
+  <a href='https://vitalview.app'>![Website](	https://img.shields.io/badge/VitalView-000000?style=for-the-badge)
   </a>
 </div>
 

@@ -17,12 +17,12 @@ export const SideBar = () => {
     <div className=" hidden w-56 flex-col bg-white pt-5 dark:bg-slate-800 md:flex">
       <div className="flex items-center justify-center px-4">
         <Image
-          src="/ringLabLogo.png"
-          alt="RingLab Logo"
+          src="/vitalview.png"
+          alt="Vital View Logo"
           width={36}
           height={36}
         />
-        <h1 className="ml-2 text-xl font-bold dark:text-white">Ring Lab</h1>
+        <h1 className="ml-2 text-xl font-bold dark:text-white">Vital View</h1>
       </div>
       <div className="mt-5 flex flex-1 flex-col">
         <nav className="flex-1 space-y-1 px-2 pb-4">
@@ -69,16 +69,10 @@ export const SideBar = () => {
           <p className="text-xs dark:text-white">{`v${package_json.version}`}</p>
         </div>
         <div className="flex flex-row items-center justify-center gap-2 p-2">
-          <Link
-            href="/privacy"
-            className="text-xs"
-          >
+          <Link href="/privacy" className="text-xs">
             Privacy
           </Link>
-          <Link
-            href="/terms"
-            className="text-xs"
-          >
+          <Link href="/terms" className="text-xs">
             Terms
           </Link>
         </div>
