@@ -5,10 +5,9 @@ import { Loader } from "./loader";
 import { RadialScoreChart } from "./charts/radialScoreChart";
 
 export const TodaysScores = () => {
-  const { dailySleep, dailySleepLoading, dailySleepError } =
-    useDailySleep("today");
-  const { readiness, readinessLoading, readinessError } = useReadiness("today");
-  const { activity, activityLoading, activityError } = useActivity("today");
+  const { dailySleep, dailySleepLoading } = useDailySleep("today");
+  const { readiness, readinessLoading } = useReadiness("today");
+  const { activity, activityLoading } = useActivity("today");
   const todaysSleep = dailySleep?.rangeDataPoints.score;
   const todaysReadiness = readiness?.rangeDataPoints.score;
   const todaysActivity = activity?.rangeDataPoints.score;

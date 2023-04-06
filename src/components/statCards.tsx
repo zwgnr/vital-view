@@ -15,7 +15,7 @@ export type StatCardProps = {
 
 export const StatCards = (props: StatCardProps) => {
   const { data, loading } = props;
-  const { theme, setTheme } = useTheme();
+  const { theme } = useTheme();
   return (
     <>
       {data.map((item) => (
@@ -23,7 +23,7 @@ export const StatCards = (props: StatCardProps) => {
           <div className=" flex h-full flex-col flex-wrap rounded-2xl bg-white p-4 dark:bg-slate-800">
             {loading ? (
               <div className="flex h-full items-center justify-center">
-                <Loader size='h-12 w-12'/>
+                <Loader size="h-12 w-12" />
               </div>
             ) : (
               <div className="flex h-full flex-col justify-between pb-8 ">

@@ -12,5 +12,3 @@ export type HeatMapData = {
   name: string;
   data: number[];
 };
-
-

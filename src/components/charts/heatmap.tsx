@@ -7,14 +7,14 @@ const ApexChart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
 type HeatmapChartType = {
   enabled: boolean;
-  period: any;
+  period: unknown;
   dateRange: string;
   data: HeatMapData[];
 };
 
 export const Heatmap = (props: HeatmapChartType) => {
   const { enabled, period, dateRange, data } = props;
-  const { theme, setTheme } = useTheme();
+  const { theme } = useTheme();
   return (
     <ApexChart
       width="100%"
@@ -50,7 +50,7 @@ export const Heatmap = (props: HeatmapChartType) => {
           fillSeriesColor: true,
           theme: "dark",
           x: {
-            formatter(val, opts) {
+            formatter(val) {
               if (dateRange === "today") {
                 return val.toString();
               }
@@ -59,7 +59,7 @@ export const Heatmap = (props: HeatmapChartType) => {
           },
         },
         legend: {
-          position: 'right',
+          position: "right",
         },
         plotOptions: {
           heatmap: {

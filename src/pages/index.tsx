@@ -1,13 +1,12 @@
 import { type NextPage } from "next";
 import Image from "next/image";
 import { useSession } from "next-auth/react";
-import { useRouter } from "next/router";
 import { SignInButton } from "../components/signInButton";
 import Link from "next/link";
 import Overview from "./overview";
 
 export const Home: NextPage = () => {
-  const { data: session, status } = useSession();
+  const { status } = useSession();
 
   if (status === "authenticated") {
     return <Overview />;

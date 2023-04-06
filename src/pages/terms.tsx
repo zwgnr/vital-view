@@ -1,18 +1,13 @@
-import { useSession } from "next-auth/react";
-import { useRouter } from "next/router";
-
 export const Terms = () => {
-  const { data: session, status } = useSession();
-
   return (
     <div className="flex flex-grow flex-col gap-6 overflow-y-auto bg-slate-100 p-16 dark:bg-slate-900">
       <p className="">
         <h1 className="text-xl font-bold">Terms and Conditions</h1>
         <br />
         <p>
-          Please read these Terms and Conditions ("Terms") carefully before
-          using our service ("Service"). By using the Service, you agree to be
-          bound by these Terms.
+          Please read these Terms and Conditions (Terms) carefully before using
+          our service (Service). By using the Service, you agree to be bound by
+          these Terms.
         </p>
         <br />
         <p className="pb-2">1. Use of Service</p>
@@ -21,7 +16,7 @@ export const Terms = () => {
             You may use the Service only for lawful purposes and in accordance
             with these Terms. You may not use the Service in any manner that
             could damage, disable, overburden, or impair the Service or
-            interfere with any other party's use of the Service.
+            interfere with any other party&apos;s use of the Service.
           </li>
         </ul>
         <br />
@@ -39,11 +34,11 @@ export const Terms = () => {
         <p className="pb-2">3. Disclaimer of Warranties</p>
         <ul className="ml-8 list-disc">
           <li>
-            The Service is provided "as is" and without warranty of any kind,
-            either express or implied, including, but not limited to, the
-            implied warranties of merchantability and fitness for a particular
-            purpose. We do not warrant that the Service will be uninterrupted or
-            error-free, or that defects will be corrected.
+            The Service is provided `&quot;`as is`&quot;` and without warranty
+            of any kind, either express or implied, including, but not limited
+            to, the implied warranties of merchantability and fitness for a
+            particular purpose. We do not warrant that the Service will be
+            uninterrupted or error-free, or that defects will be corrected.
           </li>
         </ul>
         <br />

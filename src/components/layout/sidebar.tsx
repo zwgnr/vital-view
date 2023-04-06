@@ -8,10 +8,10 @@ import Image from "next/image";
 import { Email } from "../email";
 import { navigation } from "./navigation";
 
-const package_json = require("../../../package.json");
+import package_json from "../../../package.json";
 
 export const SideBar = () => {
-  const { data: session, status } = useSession();
+  const { status } = useSession();
   const router = useRouter();
   return (
     <div className=" hidden w-56 flex-col bg-white pt-5 dark:bg-slate-800 md:flex">

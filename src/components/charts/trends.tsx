@@ -5,7 +5,7 @@ const ApexChart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
 export type TrendChartType = {
   enabled: boolean;
-  period: any;
+  period: unknown;
   dateRange: string;
   name: string;
   data: number[];
@@ -13,7 +13,7 @@ export type TrendChartType = {
 
 export const TrendChart = (props: TrendChartType) => {
   const { dateRange, enabled, name, data, period } = props;
-  const { theme, setTheme } = useTheme();
+  const { theme } = useTheme();
   return (
     <ApexChart
       width="100%"
@@ -54,7 +54,7 @@ export const TrendChart = (props: TrendChartType) => {
         xaxis: {
           categories: period,
           tickAmount: dateRange === "thisYear" ? 12 : 7,
-          axisTicks:{ show: false },
+          axisTicks: { show: false },
         },
         grid: {
           yaxis: { lines: { show: false } },

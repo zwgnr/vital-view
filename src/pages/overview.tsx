@@ -1,11 +1,10 @@
-import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
 import { TodaysScores } from "../components/todaysScores";
 import { Trends } from "../components/charts/overviewTrends";
 import { greeter } from "../lib/greeter";
 
 export const Overview = () => {
-  const { data: session, status } = useSession();
+  const { status } = useSession();
 
   if (status === "authenticated") {
     return (

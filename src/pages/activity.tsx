@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import { Fragment, useState } from "react";
 
 import { useActivity } from "../hooks/useActivity";
@@ -18,9 +19,11 @@ import clsx from "clsx";
 import { useRouter } from "next/router";
 
 export const Activity = () => {
-  const { data: session, status } = useSession();
+  const { status } = useSession();
+  const router = useRouter();
+
   if (status === "unauthenticated") {
-    useRouter().push("/");
+    router.push("/");
   }
 
   if (status === "authenticated") {
@@ -84,9 +87,9 @@ export const Activity = () => {
     };
 
     const trendData: TrendData = {
-      Score: stats[0]!.dataset,
-      "Active Burn": stats[1]!.dataset,
-      Steps: stats[2]!.dataset,
+      Score: stats[0]?.dataset ?? [],
+      "Active Burn": stats[1]?.dataset ?? [],
+      Steps: stats[2]?.dataset ?? [],
     };
 
     const heatmapData: HeatMapData[] = [

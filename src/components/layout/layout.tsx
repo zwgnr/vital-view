@@ -1,14 +1,11 @@
 import { ReactNode, useState, Dispatch, SetStateAction } from "react";
 import Head from "next/head";
 import { useSession } from "next-auth/react";
-import Image from "next/image";
+
 import { SideBar } from "./sidebar";
 import { MobileMenuDialog } from "./mobileMenuDialog";
 import { TopBar } from "./topBar";
 import { Loader } from "../loader";
-import SignIn from "../../pages/overview";
-import { SignInButton } from "../signInButton";
-import Link from "next/link";
 
 export type SideBarOpenProps = {
   sidebarOpen: boolean;
@@ -21,7 +18,7 @@ export type LayoutProps = {
 
 export default function Layout(props: LayoutProps) {
   const { children } = props;
-  const { data: session, status } = useSession();
+  const { status } = useSession();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   return (
     <>
@@ -44,7 +41,7 @@ export default function Layout(props: LayoutProps) {
         </main>
       ) : status === "loading" ? (
         <div className="flex h-screen w-full overflow-hidden">
-          <Loader />
+          <Loader size={""} />
         </div>
       ) : (
         <div

@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 
-import { getRange, getPriorRange } from "../../../lib/range/getRanges";
+import { getRange } from "../../../lib/range/getRanges";
 import {
   getRangeData,
   getChange,
@@ -20,6 +20,7 @@ import { queryDates } from "../../../lib/dates/dates";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../auth/[...nextauth]";
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const session = await getServerSession(req, res, authOptions);
 

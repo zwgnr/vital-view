@@ -9,13 +9,11 @@ import { Loader } from "../loader";
 const ApexChart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
 export const Trends = () => {
-  const { dailySleep, dailySleepLoading, dailySleepError } =
-    useDailySleep("last7Days");
-  const { readiness, readinessLoading, readinessError } =
-    useReadiness("last7Days");
-  const { activity, activityLoading, activityError } = useActivity("last7Days");
+  const { dailySleep, dailySleepLoading } = useDailySleep("last7Days");
+  const { readiness, readinessLoading } = useReadiness("last7Days");
+  const { activity, activityLoading } = useActivity("last7Days");
 
-  const { theme, setTheme } = useTheme();
+  const { theme } = useTheme();
   return (
     <div className="flex h-1/2 min-h-0 w-full flex-grow flex-col rounded-2xl bg-white dark:bg-slate-800  sm:h-full ">
       <>

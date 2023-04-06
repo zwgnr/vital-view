@@ -1,6 +1,10 @@
 import clsx from "clsx";
 
-export const Loader = (props: any) => {
+type LoaderProps = {
+  size: string;
+};
+
+export const Loader = (props: LoaderProps) => {
   const { size } = props;
   return (
     <div role="status">

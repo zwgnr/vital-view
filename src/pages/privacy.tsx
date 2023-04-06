@@ -1,12 +1,12 @@
 export const Privacy = () => {
   return (
-    <div className="flex flex-grow h-screen flex-col gap-6 overflow-y-auto bg-slate-100 p-16 dark:bg-slate-900">
+    <div className="flex h-screen flex-grow flex-col gap-6 overflow-y-auto bg-slate-100 p-16 dark:bg-slate-900">
       <p className="">
         <h1 className="text-xl font-bold">Privacy Policy</h1>
         <br />
         <p>
           This Privacy Policy describes how we collect, use, and disclose your
-          personal information when you use our website/application ("Service").
+          personal information when you use our website/application (Service).
           By using the Service, you consent to the collection, use, and
           disclosure of your personal information in accordance with this
           Privacy Policy.

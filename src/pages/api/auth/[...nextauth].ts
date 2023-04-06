@@ -8,7 +8,7 @@ const redirectURI =
 export const authOptions: NextAuthOptions = {
   // Include user.id on session
   callbacks: {
-    async jwt({ token, account, profile }) {
+    async jwt({ token, account }) {
       // Persist the OAuth access_token and or the user id to the token right after signin
       if (account) {
         token.accessToken = account.access_token;
@@ -16,7 +16,7 @@ export const authOptions: NextAuthOptions = {
       }
       return token;
     },
-    async session({ session, token, user }) {
+    async session({ session, token }) {
       // Send properties to the client, like an access_token and user id from a provider.
       session.accessToken = token.accessToken;
       return session;

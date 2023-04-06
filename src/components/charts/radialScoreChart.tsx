@@ -11,8 +11,8 @@ export type RadialScoreChartProps = {
 
 export const RadialScoreChart = (props: RadialScoreChartProps) => {
   const { label, data } = props;
-  const { theme, setTheme } = useTheme();
-  const todaysScore = data[0]!;
+  const { theme } = useTheme();
+  const todaysScore = data[0] ?? 0;
 
   const fillColor = () => {
     if (todaysScore >= 85) return ["#4f46e5"];
@@ -93,10 +93,15 @@ export const RadialScoreChart = (props: RadialScoreChartProps) => {
         series={data}
         type="radialBar"
       />
-      {data[0]! < 85 ? (
+      {data[0] ?? 0 < 85 ? (
         <div className="h-6 w-6"></div>
       ) : (
-        <Icon icon="ph:crown-simple-bold" width={24} height={24} color="#4f46e5" />
+        <Icon
+          icon="ph:crown-simple-bold"
+          width={24}
+          height={24}
+          color="#4f46e5"
+        />
       )}
     </>
   );

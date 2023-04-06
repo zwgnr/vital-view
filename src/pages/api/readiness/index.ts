@@ -2,6 +2,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import { authOptions } from "../auth/[...nextauth]";
 import { getServerSession } from "next-auth";
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const session = await getServerSession(req, res, authOptions);
 

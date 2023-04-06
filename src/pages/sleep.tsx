@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import { Fragment, useState } from "react";
 import { useSleep } from "../hooks/useSleep";
 import { useDailySleep } from "../hooks/useDailySleep";
@@ -16,14 +17,15 @@ import clsx from "clsx";
 import { Icon } from "@iconify/react";
 
 export const Sleep = () => {
-  const { data: session, status } = useSession();
+  const { status } = useSession();
+  const router = useRouter();
+
   if (status === "unauthenticated") {
-    useRouter().push("/");
+    router.push("/");
   }
   if (status === "authenticated") {
     const [dateRange, setDateRange] = useState("last7Days");
-    const { dailySleep, dailySleepLoading, dailySleepError } =
-      useDailySleep(dateRange);
+    const { dailySleep, dailySleepLoading } = useDailySleep(dateRange);
     const { sleep, sleepLoading } = useSleep(dateRange);
     const [enabled, setEnabled] = useState(false);
     const [activeTrendName, setActiveTrendName] =
@@ -96,9 +98,9 @@ export const Sleep = () => {
     };
 
     const trendData: TrendData = {
-      Score: stats[0]!.dataset,
-      Efficiency: stats[1]!.dataset,
-      Duration: stats[2]!.dataset,
+      Score: stats[0]?.dataset ?? [],
+      Efficiency: stats[1]?.dataset ?? [],
+      Duration: stats[2]?.dataset ?? [],
     };
 
     const heatmapData: HeatMapData[] = [

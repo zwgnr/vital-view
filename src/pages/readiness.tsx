@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import { Fragment, useState } from "react";
 
 import { useSleep } from "../hooks/useSleep";
@@ -17,10 +18,11 @@ import { Icon } from "@iconify/react";
 import clsx from "clsx";
 
 export const Readiness = () => {
-  const { data: session, status } = useSession();
+  const { status } = useSession();
+  const router = useRouter();
 
   if (status === "unauthenticated") {
-    useRouter().push("/");
+    router.push("/");
   }
 
   if (status === "authenticated") {
@@ -99,9 +101,9 @@ export const Readiness = () => {
     };
 
     const trendData: TrendData = {
-      Score: stats[0]!.dataset,
-      RHR: stats[1]!.dataset,
-      HRV: stats[2]!.dataset,
+      Score: stats[0]?.dataset ?? [],
+      RHR: stats[1]?.dataset ?? [],
+      HRV: stats[2]?.dataset ?? [],
     };
 
     const heatmapData: HeatMapData[] = [

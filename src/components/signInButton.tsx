@@ -1,7 +1,7 @@
 import { useSession, signIn } from "next-auth/react";
 
 export const SignInButton = () => {
-  const { data: session, status } = useSession();
+  const { status } = useSession();
   return (
     <>
       {status !== "authenticated" ? (
@@ -11,7 +11,7 @@ export const SignInButton = () => {
               e.preventDefault();
               signIn("oura", { callbackUrl: "/" });
             }}
-            className=" text-md font-bold text-white rounded-md bg-indigo-600 hover:bg-indigo-500 p-4"
+            className=" text-md rounded-md bg-indigo-600 p-4 font-bold text-white hover:bg-indigo-500"
           >
             Sign In with Oura
           </button>

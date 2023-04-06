@@ -1,15 +1,18 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import dayjs from "dayjs";
 import { getRange, getPriorRange } from "./getRanges";
 import duration from "dayjs/plugin/duration";
 
 dayjs.extend(duration);
+
 //range = filtered timeframe, param = oura key >>> returns array of individual stats for the time period
 export const getRangeData = (range: object[], param: string) =>
   range.map((item: { [key: string]: any }) => item[param]);
 
 export const getRangeAverage = (range: object[], param: string) => {
-  let rangeData = getRangeData(range, param);
-  let averageScore = Math.floor(
+  const rangeData = getRangeData(range, param);
+
+  const averageScore = Math.floor(
     rangeData.reduce((acc, curr) => acc + curr, 0) / rangeData.length
   );
   return averageScore;
@@ -20,8 +23,8 @@ export const getDurationHours = (
   data: object[],
   param: string
 ) => {
-  let durationInSeconds = getRangeData(getRange(dateRange, data), param);
-  let duration = durationInSeconds.map((item: number) =>
+  const durationInSeconds = getRangeData(getRange(dateRange, data), param);
+  const duration = durationInSeconds.map((item: number) =>
     Number(dayjs.duration(item, "seconds").asHours().toFixed(1))
   );
   return duration;
@@ -32,12 +35,11 @@ export const getAverageDuration = (
   data: object[],
   param: string
 ) => {
-  let rangeData = getDurationHours(dateRange, data, param);
-  let averageDuration = Number(
-    (
-      rangeData.reduce((acc: any, curr: any) => acc + curr, 0) /
-      rangeData.length
-    ).toFixed(1)
+  const rangeData = getDurationHours(dateRange, data, param);
+  const averageDuration = Number(
+    (rangeData.reduce((acc, curr) => acc + curr, 0) / rangeData.length).toFixed(
+      1
+    )
   );
   return averageDuration;
 };
@@ -123,9 +125,9 @@ export const getYearlyRangeData = (range: object[], param: string) => {
 };
 
 export const getYearlyRangeAverage = (range: object[], param: string) => {
-  let rangeData = getYearlyRangeData(range, param);
-  let filterZero = rangeData.filter((val) => val !== 0);
-  let rangeAverage = Math.floor(
+  const rangeData = getYearlyRangeData(range, param);
+  const filterZero = rangeData.filter((val) => val !== 0);
+  const rangeAverage = Math.floor(
     filterZero.reduce((acc, curr) => acc + curr, 0) / filterZero.length
   );
   return rangeAverage;
@@ -136,8 +138,11 @@ export const getYearlyDurationHours = (
   data: object[],
   param: string
 ) => {
-  let durationInSeconds = getYearlyRangeData(getRange(dateRange, data), param);
-  let duration = durationInSeconds.map((item: number) =>
+  const durationInSeconds = getYearlyRangeData(
+    getRange(dateRange, data),
+    param
+  );
+  const duration = durationInSeconds.map((item: number) =>
     Number(dayjs.duration(item, "seconds").asHours().toFixed(1))
   );
   return duration;
@@ -148,11 +153,11 @@ export const getPriorYearlyDurationHours = (
   data: object[],
   param: string
 ) => {
-  let durationInSeconds = getYearlyRangeData(
+  const durationInSeconds = getYearlyRangeData(
     getPriorRange(dateRange, data),
     param
   );
-  let duration = durationInSeconds.map((item: number) =>
+  const duration = durationInSeconds.map((item: number) =>
     Number(dayjs.duration(item, "seconds").asHours().toFixed(1))
   );
   return duration;
@@ -163,9 +168,9 @@ export const getPriorYearlyDurationAverage = (
   data: object[],
   param: string
 ) => {
-  let rangeData = getPriorYearlyDurationHours(dateRange, data, param);
-  let filterZero = rangeData.filter((val) => val !== 0);
-  let rangeAverage = Number(
+  const rangeData = getPriorYearlyDurationHours(dateRange, data, param);
+  const filterZero = rangeData.filter((val) => val !== 0);
+  const rangeAverage = Number(
     (
       filterZero.reduce((acc, curr) => acc + curr, 0) / filterZero.length
     ).toFixed(1)
@@ -178,9 +183,9 @@ export const getYearlyDurationAverage = (
   data: object[],
   param: string
 ) => {
-  let rangeData = getYearlyDurationHours(dateRange, data, param);
-  let filterZero = rangeData.filter((val) => val !== 0);
-  let rangeAverage = Number(
+  const rangeData = getYearlyDurationHours(dateRange, data, param);
+  const filterZero = rangeData.filter((val) => val !== 0);
+  const rangeAverage = Number(
     (
       filterZero.reduce((acc, curr) => acc + curr, 0) / filterZero.length
     ).toFixed(1)
@@ -212,8 +217,8 @@ export const getContributorData = (range: object[], param: string) =>
   );
 
 export const getContributorAverage = (range: object[], param: string) => {
-  let rangeData = getContributorData(range, param);
-  let rangeAverage = Math.floor(
+  const rangeData = getContributorData(range, param);
+  const rangeAverage = Math.floor(
     rangeData.reduce((acc, curr) => acc + curr, 0) / rangeData.length
   );
   return rangeAverage;
@@ -304,9 +309,9 @@ export const getYearlyContributorData = (range: object[], param: string) => {
 };
 
 export const getYearlyContributorAverage = (range: object[], param: string) => {
-  let rangeData = getYearlyContributorData(range, param);
-  let filterZero = rangeData.filter((val) => val !== 0);
-  let rangeAverage = Math.floor(
+  const rangeData = getYearlyContributorData(range, param);
+  const filterZero = rangeData.filter((val) => val !== 0);
+  const rangeAverage = Math.floor(
     filterZero.reduce((acc, curr) => acc + curr, 0) / filterZero.length
   );
   return rangeAverage;
@@ -332,7 +337,7 @@ export const getYearlyContributorChange = (
 
 //returns an array of the individual dates for a given time period in days
 export const getTimePeriod = (dateRange: string, data: object[]) => {
-  let currentRange = getRange(dateRange, data);
+  const currentRange = getRange(dateRange, data);
   const oldDates = currentRange.map((item: { [day: string]: any }) => item.day);
   const newDates = oldDates.map((element: string) =>
     dayjs(element).format("MM-DD-YY")
@@ -347,7 +352,10 @@ export const getRangeDurationPoints = (
   data: object[],
   param: string
 ) => {
-  let durationPointsInSeconds = getRangeData(getRange(dateRange, data), param);
+  const durationPointsInSeconds = getRangeData(
+    getRange(dateRange, data),
+    param
+  );
   return durationPointsInSeconds.map((item) => convertToHours(item));
 };
 
@@ -356,8 +364,8 @@ export const getPriorDurationHours = (
   data: object[],
   param: string
 ) => {
-  let durationInSeconds = getRangeData(getPriorRange(dateRange, data), param);
-  let duration = durationInSeconds.map((item: number) =>
+  const durationInSeconds = getRangeData(getPriorRange(dateRange, data), param);
+  const duration = durationInSeconds.map((item: number) =>
     Number(dayjs.duration(item, "seconds").asHours().toFixed(1))
   );
   return duration;
@@ -368,8 +376,8 @@ export const getPriorAverageDuration = (
   data: object[],
   param: string
 ) => {
-  let rangeData = getPriorDurationHours(dateRange, data, param);
-  let averageDuration = Number(
+  const rangeData = getPriorDurationHours(dateRange, data, param);
+  const averageDuration = Number(
     (
       rangeData.reduce((acc: any, curr: any) => acc + curr, 0) /
       rangeData.length
@@ -391,8 +399,8 @@ export const getDurationChange = (
 };
 
 export const getDailyDurationChange = (data: any[]) => {
-  const todaysAvg = convertToHours(data[1]!.total_sleep_duration);
-  const yesterDaysAvg = convertToHours(data[0]!.total_sleep_duration);
+  const todaysAvg = convertToHours(data[1]?.total_sleep_duration);
+  const yesterDaysAvg = convertToHours(data[0]?.total_sleep_duration);
   return Number(
     (((todaysAvg - yesterDaysAvg) / yesterDaysAvg) * 100).toFixed(1)
   );

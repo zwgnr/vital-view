@@ -9,9 +9,10 @@ type DonutChart = {
   labels: string[];
 };
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const DonutChart = (props: DonutChart) => {
   const { enabled, data, labels } = props;
-  const { theme, setTheme } = useTheme();
+  const { theme } = useTheme();
   return (
     <ApexChart
       width="100%"
@@ -28,7 +29,7 @@ export const DonutChart = (props: DonutChart) => {
           position: "right",
         },
         labels: [...labels],
-        stroke: {colors:[theme === "dark" ? "#1e293b" : "white",]},
+        stroke: { colors: [theme === "dark" ? "#1e293b" : "white"] },
         chart: {
           id: "main-chart",
           toolbar: { show: false },

@@ -9,7 +9,7 @@ export type DatePickerProps = {
 };
 
 export default function DatePicker(props: DatePickerProps) {
-  const { dateRange, setDateRange } = props;
+  const { setDateRange } = props;
   const [rangeDisplayName, setrangeDisplayName] = useState("Last 7 Days");
 
   return (
@@ -17,7 +17,7 @@ export default function DatePicker(props: DatePickerProps) {
       <Menu as="div" className="relative">
         <Menu.Button
           type="button"
-          className="flex items-center rounded-md bg-slate-200 p-2 text-sm font-bold text-black  hover:bg-slate-300  dark:bg-slate-700 dark:hover:bg-slate-600 dark:text-white "
+          className="flex items-center rounded-md bg-slate-200 p-2 text-sm font-bold text-black  hover:bg-slate-300  dark:bg-slate-700 dark:text-white dark:hover:bg-slate-600 "
         >
           {rangeDisplayName}
           <Icon

@@ -11,10 +11,10 @@ import { navigation } from "./navigation";
 import { type SideBarOpenProps } from "./layout";
 import { Email } from "../email";
 
-const package_json = require("../../../package.json");
+import package_json from "../../../package.json";
 
 export const MobileMenuDialog = (props: SideBarOpenProps) => {
-  const { data: session, status } = useSession();
+  const { status } = useSession();
   const router = useRouter();
   const { sidebarOpen, setSidebarOpen } = props;
   return (

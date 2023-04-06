@@ -8,7 +8,6 @@ import {
   getDailyChange,
   getDailyDurationChange,
   getDurationChange,
-  getPriorYearlyDurationAverage,
   getRangeAverage,
   getRangeData,
   getRangeDurationPoints,
@@ -20,11 +19,12 @@ import {
   getYearlyRangeAverage,
   getYearlyRangeData,
 } from "../../../lib/range/rangeMath";
-import { getPriorRange, getRange } from "../../../lib/range/getRanges";
-import dayjs from "dayjs";
+import { getRange } from "../../../lib/range/getRanges";
+
 import { getServerSession } from "next-auth";
 import { authOptions } from "../auth/[...nextauth]";
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const session = await getServerSession(req, res, authOptions);
 
