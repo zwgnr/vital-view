@@ -21,9 +21,9 @@ export const Home: NextPage = () => {
           height={150}
           className="mb-4"
         />
-        <h1 className="mb-8 flex flex-col items-center justify-center gap-2">
+        <h1 className="mb-8 flex flex-col items-center justify-center gap-2 px-4">
           <p className="text-4xl md:text-5xl">Welcome to Vital View.</p>
-          <p className="text-xl">
+          <p className="text-center text-xl">
             A data dashboard for your most vital health metrics.
           </p>
         </h1>
